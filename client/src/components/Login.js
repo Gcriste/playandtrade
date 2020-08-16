@@ -3,6 +3,9 @@ import axios from 'axios';
 import { Redirect, Link } from 'react-router-dom';
 import authenticate from '../utils/Authenticate';
 import setAuthToken from '../utils/SetAuthToken';
+import facebook from './assets/facebook.png';
+import youtube from './assets/youtube.png';
+import instagram from './assets/instagram.png';
 
 const styles = {
 	error: {
@@ -86,10 +89,7 @@ class Login extends Component {
 							<div className='ui form'>
 								<div className='card'>
 									<div className='card-body'>
-										<h1 className='display-4 text-center'>Log In </h1>
-										<h4 className='text-center'>
-											Or if you don't have an account hit the create account button
-										</h4>
+										<h1 className='display-4 text-center'>Play and Trade Guitars </h1>
 										<br />
 
 										<form>
@@ -100,7 +100,7 @@ class Login extends Component {
 													type='email'
 													onChange={this.handleLoginChange}
 													name='email'
-													placeholder='Enter Email Address'
+													placeholder='EMAIL-ADDRESS'
 												/>
 											</div>
 
@@ -111,28 +111,56 @@ class Login extends Component {
 													onChange={this.handleLoginChange}
 													name='password'
 													type='password'
-													placeholder='Enter Password'
+													placeholder='PASSWORD'
 												/>
 											</div>
 											<div className='row'>
-												<div className='col-md-6'>
+												<div className='col-md-6 col-12'>
 													<button
 														type='submit'
-														className='ui primary horizontal animated button'
+														className='button enter-button'
 														tabindex='0'
 														onClick={this.handleLoginSubmit}
 													>
-														<div className='visible content'>Login </div>
-														<div className='hidden content'>
-															<i className='right arrow icon' />
-														</div>
+														<div className='visible content'>ENTER</div>
 													</button>
+													<div className='forgot-div'>
+														<p className='forgot'>Forgot password</p>
+													</div>
 												</div>
 
-												<div className='col-md-6'>
-													<button className='ui yellow button'>
-														<Link to={'/createaccount'}>Create Account</Link>
-													</button>
+												<div className='col-md-6 col-12'>
+													<div className='new-container'>
+														<div className='new-user'>
+															<p class='new-user-text'>NEW USER?</p>
+														</div>
+														<button className='button create-button'>
+															<Link className='create-button-text' to={'/createaccount'}>
+																CREATE ACCOUNT
+															</Link>
+														</button>
+													</div>
+												</div>
+												<div className='col-md-6 col-4'>
+													<div className='facebook-container'>
+														<div className='icon-container'>
+															<img className='icon' src={facebook} alt='facebook' />
+														</div>
+													</div>
+												</div>
+												<div className='col-md-6 col-4'>
+													<div className='youtube-container'>
+														<div className='icon-container'>
+															<img className='icon' src={youtube} alt='youtube' />
+														</div>
+													</div>
+												</div>
+												<div className='col-md-6 col-4'>
+													<div className='instagram-container'>
+														<div className='icon-container'>
+															<img className='icon' src={instagram} alt='instagram' />
+														</div>
+													</div>
 												</div>
 											</div>
 										</form>

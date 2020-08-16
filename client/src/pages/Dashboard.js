@@ -109,7 +109,7 @@ class Dashboard extends Component {
 									<strong>Welcome, {user.firstName}</strong>
 								</h2>
 								{''}
-								<img src={user.avatar} />
+								<img className='avatar' src={user.avatar} />
 								{''}
 							</div>
 							<div className='col-md-4'>

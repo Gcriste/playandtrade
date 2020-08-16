@@ -1,4 +1,4 @@
-img {
+.avatar {
 	border-radius: 50%;
 	/* height:100px;
     width:100px; */
@@ -44,7 +44,7 @@ img {
 }
 
 .card-body {
-	background: #e0e0e0;
+	/* background: #e0e0e0; */
 }
 
 .navbar {

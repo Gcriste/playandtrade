@@ -77,18 +77,23 @@ class CreateAccount extends Component {
 							<div className='col-md-6 m-auto'>
 								<div className='card'>
 									<div className='card-body'>
-										<h1 className='display-4 text-center'>Create Account </h1>
-										<h4 className='text-center'>If you have an account hit the login button</h4>
+										<h4 className='display-4 text-center'>Create Account </h4>
+
 										<br />
 
 										<form>
 											<div className='ui form'>
+												<div className='field'>
+													<div className='account-info'>
+														<p className='account'>ACCOUNT INFO:</p>
+													</div>
+												</div>
 												<div className='field '>
 													<Input
 														value={this.state.firstName}
 														onChange={this.handleCreateChange}
 														name='firstName'
-														placeholder='Enter First Name'
+														placeholder='FIRST NAME'
 														type='name'
 													/>
 												</div>
@@ -97,9 +102,32 @@ class CreateAccount extends Component {
 														value={this.state.lastName}
 														onChange={this.handleCreateChange}
 														name='lastName'
-														placeholder='Enter Last Name'
+														placeholder='LAST NAME'
 														type='name'
 													/>
+												</div>
+												<div className='field'>
+													<Input
+														value={this.state.zipCode}
+														onChange={this.handleCreateChange}
+														name='zipCode'
+														placeholder='ZIP CODE'
+														type='zip-code'
+													/>
+												</div>
+												<div className='field'>
+													<Input
+														value={this.state.country}
+														onChange={this.handleCreateChange}
+														name='country'
+														placeholder='COUNTRY'
+														type='country'
+													/>
+												</div>
+												<div className='field'>
+													<div className='log-in-info'>
+														<p className='log-in'>LOG-IN INFO:</p>
+													</div>
 												</div>
 												<div className={`required field ${errors.email ? 'error' : ''}`}>
 													{errors.email && <div style={styles.error}> {errors.email}</div>}
@@ -107,7 +135,7 @@ class CreateAccount extends Component {
 														value={this.state.email}
 														onChange={this.handleCreateChange}
 														name='email'
-														placeholder='Enter Email'
+														placeholder='EMAIL'
 														type='email'
 													/>
 												</div>
@@ -116,11 +144,19 @@ class CreateAccount extends Component {
 														value={this.state.password}
 														onChange={this.handleCreateChange}
 														name='password'
-														placeholder='Enter Password'
+														placeholder='PASSWORD'
 														type='password'
 													/>
 												</div>
-
+												<div className='field'>
+													<Input
+														value={this.state.password}
+														onChange={this.handleCreateChange}
+														name='password'
+														placeholder='CONFIRM PASSWORD'
+														type='password'
+													/>
+												</div>
 												<div className='row'>
 													<div className='field col-md-6'>
 														<PostButton handleCreateSubmit={this.handleCreateSubmit} />
@@ -130,6 +166,10 @@ class CreateAccount extends Component {
 														<button className='ui yellow button'>
 															<Link to={'/'}>Login</Link>
 														</button>
+													</div>
+													<div className='field col-md-6'>
+														<input type='checkbox' />
+														<span className='checkmark' />
 													</div>
 												</div>
 											</div>

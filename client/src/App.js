@@ -8,7 +8,7 @@ import Dashboard from './pages/Dashboard';
 // import NoMatch from './components/NoMatch';
 import CreateAccount from './pages/CreateAccount';
 // import SearchGigs from './pages/Search';
-import Nav from './components/Nav';
+// import Nav from './components/Nav';
 // import Post from './pages/Post';
 // import PostRequest from './pages/Request';
 // import IncomingRequest from './pages/IncomingRequest';
@@ -19,7 +19,7 @@ function App() {
 	return (
 		<Router>
 			<div>
-				<Nav />
+				{/* <Nav /> */}
 				<Switch>
 					<Route exact path='/' component={Login} />
 					<Route exact path='/createaccount' component={CreateAccount} />
