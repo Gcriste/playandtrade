@@ -4,8 +4,8 @@ import axios from 'axios';
 import setAuthToken from '../utils/SetAuthToken';
 import Moment from 'react-moment';
 import './dashboard.css';
-import SavedResult from '../components/SavedList';
-import SavedRequests from '../components/SavedRequests';
+// import SavedResult from '../components/SavedList';
+// import SavedRequests from '../components/SavedRequests';
 import Nav from '../components/Nav';
 
 class Dashboard extends Component {
@@ -32,37 +32,37 @@ class Dashboard extends Component {
 				userid: response.data.id
 			});
 
-			axios.get('/api/gig/' + userId).then((res) => {
-				this.setState({
-					savedGigs: res.data
-				});
-				console.log(res.data);
+			// axios.get('/api/gig/' + userId).then((res) => {
+			// 	this.setState({
+			// 		savedGigs: res.data
+			// 	});
+			// 	console.log(res.data);
 
-				axios
-					.get('/api/request/' + userId)
-					.then((res) => {
-						let gigId = [];
-						for (var i = 0; i < res.data.length; i++) {
-							gigId.push(res.data[i].gigid);
-						}
-						this.setState({
-							savedRequests: res.data
-						});
+			// 	axios
+			// 		.get('/api/request/' + userId)
+			// 		.then((res) => {
+			// 			let gigId = [];
+			// 			for (var i = 0; i < res.data.length; i++) {
+			// 				gigId.push(res.data[i].gigid);
+			// 			}
+			// 			this.setState({
+			// 				savedRequests: res.data
+			// 			});
 
-						for (var i = 0; i < gigId.length; i++) {
-							console.log(gigId[i]);
-							axios.get('/api/gig/id/' + gigId[i]).then((res) => {
-								console.log(res.data);
-								let savedGigs = [];
-								savedGigs = this.state.dateForSavedRequests.concat(res.data);
-								this.setState({
-									dateForSavedRequests: savedGigs
-								});
-							});
-						}
-					})
-					.catch((err) => console.log(err.response));
-			});
+			// 			for (var i = 0; i < gigId.length; i++) {
+			// 				console.log(gigId[i]);
+			// 				axios.get('/api/gig/id/' + gigId[i]).then((res) => {
+			// 					console.log(res.data);
+			// 					let savedGigs = [];
+			// 					savedGigs = this.state.dateForSavedRequests.concat(res.data);
+			// 					this.setState({
+			// 						dateForSavedRequests: savedGigs
+			// 					});
+			// 				});
+			// 			}
+			// 		})
+			// 		.catch((err) => console.log(err.response));
+			// });
 		});
 	}
 
@@ -75,15 +75,15 @@ class Dashboard extends Component {
 	};
 
 	//removes gig by id
-	handleDeleteButton = (id) => {
-		console.log(id);
-		axios.delete('/api/gig/' + id).then((res) => this.componentDidMount()).catch((err) => console.log(err));
-	};
+	// handleDeleteButton = (id) => {
+	// 	console.log(id);
+	// 	axios.delete('/api/gig/' + id).then((res) => this.componentDidMount()).catch((err) => console.log(err));
+	// };
 
-	// deletes request by id
-	handleDeleteRequest = (id) => {
-		axios.delete('/api/request/' + id).then((res) => this.componentDidMount()).catch((err) => console.log(err));
-	};
+	// // deletes request by id
+	// handleDeleteRequest = (id) => {
+	// 	axios.delete('/api/request/' + id).then((res) => this.componentDidMount()).catch((err) => console.log(err));
+	// };
 
 	render() {
 		const { redirect, user } = this.state;
@@ -133,7 +133,7 @@ class Dashboard extends Component {
 						</div>
 						<div className='container'>
 							<div className='row'>
-								<div className='col-md-6'>
+								{/* <div className='col-md-6'>
 									<SavedResult
 										savedGigs={this.state.savedGigs}
 										handleDeleteButton={this.handleDeleteButton}
@@ -145,8 +145,8 @@ class Dashboard extends Component {
 										savedRequests={this.state.savedRequests}
 										dateForSavedRequests={this.state.dateForSavedRequests}
 										handleDeleteRequest={this.handleDeleteRequest}
-									/>
-								</div>
+									/> */}
+								{/* </div> */}
 							</div>
 						</div>
 					</div>

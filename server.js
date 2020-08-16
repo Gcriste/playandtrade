@@ -1,5 +1,5 @@
 const express = require('express');
-require('./client/node_modules/dotenv').config();
+require('dotenv').config();
 const passport = require('passport');
 
 const port = process.env.PORT || 5000;

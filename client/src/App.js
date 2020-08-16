@@ -23,8 +23,8 @@ function App() {
 				<Switch>
 					<Route exact path='/' component={Login} />
 					<Route exact path='/createaccount' component={CreateAccount} />
-					{/* <PrivateRoute exact path='/dashboard' component={Dashboard} />
-					<PrivateRoute exact path='/post' component={Post} />
+					<PrivateRoute exact path='/dashboard' component={Dashboard} />
+					{/*<PrivateRoute exact path='/post' component={Post} />
 					<PrivateRoute exact path='/post/:id' component={Post} />
 					<PrivateRoute exact path='/request' component={PostRequest} />
 					<PrivateRoute exact path='/request/:id' component={PostRequest} />
