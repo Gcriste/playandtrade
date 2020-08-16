@@ -12,13 +12,8 @@ export function Input(props) {
 
 export function PostButton(props) {
 	return (
-		<button
-			type='submit'
-			className='ui primary horizontal animated button'
-			tabindex='0'
-			onClick={(event) => props.handleCreateSubmit(event)}
-		>
-			<div className='visible content'>Submit </div>
+		<button type='submit' className=' button' tabindex='0' onClick={(event) => props.handleCreateSubmit(event)}>
+			<div className='visible content'>CONTINUE </div>
 			<div className='hidden content'>
 				<i className='right arrow icon' />
 			</div>

@@ -157,19 +157,30 @@ class CreateAccount extends Component {
 														type='password'
 													/>
 												</div>
+												<div className='field col-md-6 checkbox-container'>
+													<input className='checkbox' type='checkbox' />
+													<span className='checkmark' />
+													<p className='checkbox-text'>I AM 18 YEARS OR OLDER</p>
+												</div>
 												<div className='row'>
 													<div className='field col-md-6'>
-														<PostButton handleCreateSubmit={this.handleCreateSubmit} />
+														<button
+															type='submit'
+															className='button continue-button'
+															tabindex='0'
+															onClick={this.handleCreateSubmit}
+														>
+															<div className='visible content'>CONTINUE</div>
+														</button>
 													</div>
 
 													<div className='field col-md-6'>
-														<button className='ui yellow button'>
-															<Link to={'/'}>Login</Link>
-														</button>
-													</div>
-													<div className='field col-md-6'>
-														<input type='checkbox' />
-														<span className='checkmark' />
+														<p className='back-link'>
+															{' '}
+															<Link className='back-link-text' to={'/'}>
+																back
+															</Link>
+														</p>
 													</div>
 												</div>
 											</div>
