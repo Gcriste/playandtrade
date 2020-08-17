@@ -22,7 +22,9 @@ class CreateAccount extends Component {
 			firstName: '',
 			lastName: '',
 			message: '',
-			avatar: ''
+			avatar: '',
+			zipCode: '',
+			country: ''
 		};
 	}
 
@@ -43,7 +45,9 @@ class CreateAccount extends Component {
 			password: this.state.password,
 			firstName: this.state.firstName,
 			lastName: this.state.lastName,
-			avatar: this.state.avatar
+			avatar: this.state.avatar,
+			zipCode: this.state.zipCode,
+			country: this.state.country
 		};
 		axios
 			.post('api/user', newUser)
@@ -112,7 +116,7 @@ class CreateAccount extends Component {
 														onChange={this.handleCreateChange}
 														name='zipCode'
 														placeholder='ZIP CODE'
-														type='zip-code'
+														type='zipCode'
 													/>
 												</div>
 												<div className='field'>

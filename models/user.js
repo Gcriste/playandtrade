@@ -23,6 +23,15 @@ module.exports = function(sequelize, Sequelize) {
 		},
 		avatar: {
 			type: Sequelize.STRING
+		},
+		profilePic: {
+			type: Sequelize.STRING
+		},
+		zipCode: {
+			type: Sequelize.STRING
+		},
+		country: {
+			type: Sequelize.STRING
 		}
 	});
 

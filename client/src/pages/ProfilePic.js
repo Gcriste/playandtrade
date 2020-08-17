@@ -8,14 +8,21 @@ import './dashboard.css';
 // import SavedRequests from '../components/SavedRequests';
 import Nav from '../components/Nav';
 
-class Dashboard extends Component {
+class ProfilePic extends Component {
 	state = {
 		redirect: false,
 		user: {},
-		guitars: [],
-		// savedRequests: [],
-		// dateForSavedRequests: [],
-		// gigid: '',
+		// guitars,
+		email: '',
+		password: '',
+		errors: {},
+		firstName: '',
+		lastName: '',
+		message: '',
+		avatar: '',
+		profilePic: '',
+		zipCode: '',
+		country: '',
 		userid: ''
 	};
 
@@ -26,11 +33,11 @@ class Dashboard extends Component {
 		}
 
 		axios.get('/api/user').then((response) => {
+			console.log(response.data);
 			let userId = response.data.id;
 			this.setState({
 				user: response.data,
-				userid: response.data.id,
-				guitars: response.data.guitars
+				userid: response.data.id
 			});
 
 			// axios.get('/api/gig/' + userId).then((res) => {
@@ -111,8 +118,13 @@ class Dashboard extends Component {
 							</div>
 							{''}
 							<div className='col-md-4 col-12 text-center'>
-								<img className='avatar' src={user.avatar} />
-								{''}
+								<input
+									value={this.state.profilePic}
+									type='profilePic'
+									onChange={this.handleLoginChange}
+									name='profilePic'
+									placeholder='profilePic-ADDRESS'
+								/>
 							</div>
 						</div>
 						<div className='row text-center'>
@@ -167,4 +179,4 @@ class Dashboard extends Component {
 		);
 	}
 }
-export default Dashboard;
+export default ProfilePic;

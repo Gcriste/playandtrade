@@ -78,7 +78,7 @@ class Login extends Component {
 	render() {
 		const { errors, redirect } = this.state;
 		if (redirect) {
-			return <Redirect to={'/dashboard'} />;
+			return <Redirect to={'/profilepic'} />;
 		}
 
 		return (
@@ -141,21 +141,21 @@ class Login extends Component {
 														</button>
 													</div>
 												</div>
-												<div className='col-md-6 col-4'>
+												<div className='col-md-6 col-4 text-center'>
 													<div className='facebook-container'>
 														<div className='icon-container'>
 															<img className='icon' src={facebook} alt='facebook' />
 														</div>
 													</div>
 												</div>
-												<div className='col-md-6 col-4'>
+												<div className='col-md-6 col-4 text-center'>
 													<div className='youtube-container'>
 														<div className='icon-container'>
 															<img className='icon' src={youtube} alt='youtube' />
 														</div>
 													</div>
 												</div>
-												<div className='col-md-6 col-4'>
+												<div className='col-md-6 col-4 text-center'>
 													<div className='instagram-container'>
 														<div className='icon-container'>
 															<img className='icon' src={instagram} alt='instagram' />

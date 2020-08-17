@@ -29,7 +29,7 @@ module.exports = function(app) {
 	//create post route to /api/users
 	//creates a new user
 	app.post('/api/user', (req, res) => {
-		const { email, password, firstName, lastName } = req.body;
+		const { email, password, firstName, lastName, zipCode, country } = req.body;
 		db.user
 			.findOne({
 				where: {
@@ -53,7 +53,9 @@ module.exports = function(app) {
 						lastName,
 						email,
 						password,
-						avatar
+						avatar,
+						zipCode,
+						country
 					};
 
 					bcrypt.genSalt(10, (err, salt) => {
@@ -98,7 +100,9 @@ module.exports = function(app) {
 								email: user.email,
 								firstName: user.firstName,
 								lastName: user.lastName,
-								avatar: user.avatar
+								avatar: user.avatar,
+								country: user.country,
+								zipCode: user.zipCode
 							};
 							jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 * 12 }, (err, token) => {
 								res.json({
@@ -125,7 +129,9 @@ module.exports = function(app) {
 				{
 					firstName: req.body.firstName,
 					lastName: req.body.lastName,
-					email: req.body.email
+					email: req.body.email,
+					zipCode: req.body.zipCode,
+					country: req.body.country
 				},
 				{
 					where: { id: req.user.id }
@@ -142,6 +148,10 @@ module.exports = function(app) {
 							lastName: user.lastName,
 							email: user.email,
 							message: 'user account successfully updated',
+							avatar: user.avatar,
+							profilePic: user.profilePic,
+							zipCode: user.zipCode,
+							country: user.country,
 							userUpdated: true
 						});
 					});
