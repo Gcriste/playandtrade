@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Redirect, Link } from 'react-router-dom';
+import { Input } from './CreateAccount';
 import authenticate from '../utils/Authenticate';
 import setAuthToken from '../utils/SetAuthToken';
 import facebook from './assets/facebook.png';
@@ -78,7 +79,7 @@ class Login extends Component {
 	render() {
 		const { errors, redirect } = this.state;
 		if (redirect) {
-			return <Redirect to={'/profilepic'} />;
+			return <Redirect to={'/dashboard'} />;
 		}
 
 		return (
@@ -86,7 +87,7 @@ class Login extends Component {
 				<div className='container'>
 					<div className='row'>
 						<div className='col-md-6 m-auto'>
-							<div className='ui form'>
+							<div className=''>
 								<div className='card'>
 									<div className='card-body'>
 										<h1 className='display-4 text-center'>Play and Trade Guitars </h1>
@@ -95,7 +96,7 @@ class Login extends Component {
 										<form>
 											<div className={`required field ${errors.user ? 'error' : ''}`}>
 												{errors.user && <div style={styles.error}> {errors.user}</div>}
-												<input
+												<Input
 													value={this.state.email}
 													type='email'
 													onChange={this.handleLoginChange}
@@ -106,7 +107,7 @@ class Login extends Component {
 
 											<div className={`required field ${errors.password ? 'error' : ''}`}>
 												{errors.password && <div style={styles.error}> {errors.password}</div>}
-												<input
+												<Input
 													value={this.state.password}
 													onChange={this.handleLoginChange}
 													name='password'

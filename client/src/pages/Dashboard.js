@@ -8,14 +8,21 @@ import './dashboard.css';
 // import SavedRequests from '../components/SavedRequests';
 import Nav from '../components/Nav';
 
-class Dashboard extends Component {
+class ProfilePic extends Component {
 	state = {
 		redirect: false,
 		user: {},
-		guitars: [],
-		// savedRequests: [],
-		// dateForSavedRequests: [],
-		// gigid: '',
+		// guitars,
+		email: '',
+		password: '',
+		errors: {},
+		firstName: '',
+		lastName: '',
+		message: '',
+		avatar: '',
+		profilePic: '',
+		zipCode: '',
+		country: '',
 		userid: ''
 	};
 
@@ -26,11 +33,11 @@ class Dashboard extends Component {
 		}
 
 		axios.get('/api/user').then((response) => {
+			console.log(response.data);
 			let userId = response.data.id;
 			this.setState({
 				user: response.data,
-				userid: response.data.id,
-				guitars: response.data.guitars
+				userid: response.data.id
 			});
 
 			// axios.get('/api/gig/' + userId).then((res) => {
@@ -92,61 +99,73 @@ class Dashboard extends Component {
 		if (redirect) {
 			return <Redirect to='/' />;
 		}
-
-		return (
-			<div className='container'>
-				<div className='card'>
-					<div className='profile-container'>
-						<div className='row'>
-							<div className='col-md-4 col-12'>
-								{/* <h1>Home </h1> */}
-								<button className='btn btn-danger' onClick={this.handleLogout}>
-									Logout
-								</button>
-							</div>
-							<div className='col-md-4 col-12'>
-								<h2>
-									<strong>Welcome, {user.firstName}</strong>
-								</h2>
-							</div>
-							{''}
-							<div className='col-md-4 col-12 text-center'>
-								<img className='avatar' src={user.avatar} />
+		console.log(user.profilePic);
+		if (user.profilePic == 'null') {
+			return (
+				<div className='pic'>
+					<p>Yo test yo</p>
+				</div>
+			);
+		} else {
+			return (
+				<div className='container'>
+					<div className='card'>
+						<div className='profile-container'>
+							<div className='row'>
+								<div className='col-md-4 col-12'>
+									{/* <h1>Home </h1> */}
+									<button className='btn btn-danger' onClick={this.handleLogout}>
+										Logout
+									</button>
+								</div>
+								<div className='col-md-4 col-12'>
+									<h2>
+										<strong>Welcome, {user.firstName}</strong>
+									</h2>
+								</div>
 								{''}
+								<div className='col-md-4 col-12 text-center'>
+									<input
+										value={this.state.profilePic}
+										type='profilePic'
+										onChange={this.handleLoginChange}
+										name='profilePic'
+										placeholder='profilePic-ADDRESS'
+									/>
+								</div>
 							</div>
-						</div>
-						<div className='row text-center'>
+							<div className='row text-center'>
+								<div className='col-md-4 col-12 text-center'>
+									<p>
+										<strong>Email Address: {user.email}</strong>
+									</p>
+									{''}
+								</div>
+							</div>
+							<div className='row text-center'>
+								<div className='col-md-4 col-12 text-center'>
+									<p className='text-center'>
+										<strong>
+											Member Since: <Moment date={user.createdAt} format='MM/DD/YYYY' />
+										</strong>
+									</p>
+									{''}
+								</div>
+							</div>
+
 							<div className='col-md-4 col-12 text-center'>
 								<p>
-									<strong>Email Address: {user.email}</strong>
-								</p>
-								{''}
-							</div>
-						</div>
-						<div className='row text-center'>
-							<div className='col-md-4 col-12 text-center'>
-								<p className='text-center'>
 									<strong>
-										Member Since: <Moment date={user.createdAt} format='MM/DD/YYYY' />
+										Last Updated: <Moment date={user.updatedAt} format='MM/DD/YYYY' />
 									</strong>
 								</p>
 								{''}
 							</div>
 						</div>
 
-						<div className='col-md-4 col-12 text-center'>
-							<p>
-								<strong>
-									Last Updated: <Moment date={user.updatedAt} format='MM/DD/YYYY' />
-								</strong>
-							</p>
-							{''}
-						</div>
-					</div>
-
-					<div className='container'>
-						<div className='row'>
-							{/* <div className='col-md-6'>
+						<div className='container'>
+							<div className='row'>
+								{/* <div className='col-md-6'>
 									<SavedResult
 										savedGigs={this.state.savedGigs}
 										handleDeleteButton={this.handleDeleteButton}
@@ -159,12 +178,13 @@ class Dashboard extends Component {
 										dateForSavedRequests={this.state.dateForSavedRequests}
 										handleDeleteRequest={this.handleDeleteRequest}
 									/> */}
-							{/* </div> */}
+								{/* </div> */}
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		);
+			);
+		}
 	}
 }
-export default Dashboard;
+export default ProfilePic;

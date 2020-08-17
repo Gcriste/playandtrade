@@ -86,13 +86,13 @@ class CreateAccount extends Component {
 										<br />
 
 										<form>
-											<div className='ui form'>
+											<div className=''>
 												<div className='field'>
 													<div className='account-info'>
 														<p className='account'>ACCOUNT INFO:</p>
 													</div>
 												</div>
-												<div className='field '>
+												<div className='field'>
 													<Input
 														value={this.state.firstName}
 														onChange={this.handleCreateChange}
@@ -133,7 +133,7 @@ class CreateAccount extends Component {
 														<p className='log-in'>LOG-IN INFO:</p>
 													</div>
 												</div>
-												<div className={`required field ${errors.email ? 'error' : ''}`}>
+												<div className={`field ${errors.email ? 'error' : ''}`}>
 													{errors.email && <div style={styles.error}> {errors.email}</div>}
 													<Input
 														value={this.state.email}

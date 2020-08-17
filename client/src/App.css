@@ -9,9 +9,15 @@ h5,
 h6,
 input,
 button,
-Link {
+Link,
+.input-email {
 	font-family: 'BenchNine', sans-serif;
 	font-weight: bold;
+	letter-spacing: -.1px;
+}
+
+.form-control {
+	font-size: 18px;
 	letter-spacing: -.1px;
 }
 
