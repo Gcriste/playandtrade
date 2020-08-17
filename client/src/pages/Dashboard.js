@@ -8,7 +8,7 @@ import './dashboard.css';
 // import SavedRequests from '../components/SavedRequests';
 import Nav from '../components/Nav';
 
-class ProfilePic extends Component {
+class Dashboard extends Component {
 	state = {
 		redirect: false,
 		user: {},
@@ -26,6 +26,50 @@ class ProfilePic extends Component {
 		userid: ''
 	};
 
+	handleProfileChange = (event) => {
+		const { name, value } = event.target;
+		this.setState({
+			[name]: value
+		});
+	};
+
+	//submit button function
+	handleUpdateSubmit = (event) => {
+		event.preventDefault();
+		console.log('hi');
+
+		const updateUser = {
+			email: this.state.email,
+			password: this.state.password,
+			firstName: this.state.firstName,
+			lastName: this.state.lastName,
+			avatar: this.state.avatar,
+			zipCode: this.state.zipCode,
+			country: this.state.country,
+			profilePic: this.state.profilePic
+		};
+		axios
+			.put('api/user/', {
+				params: {
+					id: this.state.userid
+				},
+				updateUser
+			})
+			.then((response) => {
+				this.setState({
+					redirect: true,
+					errors: {}
+				});
+				console.log(response.data);
+			})
+			.catch((err) => {
+				console.log(err);
+				this.setState({
+					errors: err.response.data
+				});
+			});
+	};
+
 	componentDidMount() {
 		const token = localStorage.getItem('example-app');
 		if (token) {
@@ -36,6 +80,13 @@ class ProfilePic extends Component {
 			console.log(response.data);
 			let userId = response.data.id;
 			this.setState({
+				firstName: response.data.firstName,
+				lastName: response.data.lastName,
+				email: response.data.email,
+				password: response.data.password,
+				zipCode: response.data.zipCode,
+				country: response.data.country,
+				avatar: response.data.avatar,
 				user: response.data,
 				userid: response.data.id
 			});
@@ -100,10 +151,90 @@ class ProfilePic extends Component {
 			return <Redirect to='/' />;
 		}
 		console.log(user.profilePic);
-		if (user.profilePic == 'null') {
+		if (user.profilePic === null) {
 			return (
 				<div className='pic'>
-					<p>Yo test yo</p>
+					<div className='container'>
+						<div className='card'>
+							<div className='profile-container'>
+								<div className='row'>
+									<div className='col-md-4 col-12'>
+										{/* <h1>Home </h1> */}
+										<button className='btn btn-danger' onClick={this.handleLogout}>
+											Logout
+										</button>
+									</div>
+									<div className='col-md-4 col-12'>
+										<h2>
+											<strong>Welcome, {user.firstName}</strong>
+										</h2>
+									</div>
+									{''}
+								</div>
+								<div className='row text-center'>
+									<div className='col-md-4 col-12 text-center'>
+										<p>
+											<strong>Email Address: {user.email}</strong>
+										</p>
+										{''}
+									</div>
+								</div>
+								<div className='row text-center'>
+									<div className='col-md-4 col-12 text-center'>
+										<p className='text-center'>
+											<strong>
+												Member Since: <Moment date={user.createdAt} format='MM/DD/YYYY' />
+											</strong>
+										</p>
+										{''}
+									</div>
+								</div>
+
+								<div className='col-md-4 col-12 text-center'>
+									<p>
+										<strong>
+											Last Updated: <Moment date={user.updatedAt} format='MM/DD/YYYY' />
+										</strong>
+									</p>
+									{''}
+									<div className='col-md-4 col-12 text-center'>
+										<input
+											value={this.state.profilePic}
+											type='profilePic'
+											onChange={this.handleProfileChange}
+											name='profilePic'
+											placeholder='profilePic-ADDRESS'
+										/>
+									</div>
+									<button
+										type='submit'
+										className='button continue-button'
+										tabindex='0'
+										onClick={this.handleUpdateSubmit}
+									/>
+								</div>
+							</div>
+
+							<div className='container'>
+								<div className='row'>
+									{/* <div className='col-md-6'>
+									<SavedResult
+										savedGigs={this.state.savedGigs}
+										handleDeleteButton={this.handleDeleteButton}
+									/>
+								</div>
+
+								<div className='col-md-6'>
+									<SavedRequests
+										savedRequests={this.state.savedRequests}
+										dateForSavedRequests={this.state.dateForSavedRequests}
+										handleDeleteRequest={this.handleDeleteRequest}
+									/> */}
+									{/* </div> */}
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			);
 		} else {
@@ -124,15 +255,6 @@ class ProfilePic extends Component {
 									</h2>
 								</div>
 								{''}
-								<div className='col-md-4 col-12 text-center'>
-									<input
-										value={this.state.profilePic}
-										type='profilePic'
-										onChange={this.handleLoginChange}
-										name='profilePic'
-										placeholder='profilePic-ADDRESS'
-									/>
-								</div>
 							</div>
 							<div className='row text-center'>
 								<div className='col-md-4 col-12 text-center'>
@@ -187,4 +309,4 @@ class ProfilePic extends Component {
 		}
 	}
 }
-export default ProfilePic;
+export default Dashboard;
