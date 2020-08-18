@@ -32,6 +32,9 @@ module.exports = function(sequelize, Sequelize) {
 		},
 		country: {
 			type: Sequelize.STRING
+		},
+		overEighteen: {
+			type: Sequelize.BOOLEAN
 		}
 	});
 

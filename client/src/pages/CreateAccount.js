@@ -24,7 +24,8 @@ class CreateAccount extends Component {
 			message: '',
 			avatar: '',
 			zipCode: '',
-			country: ''
+			country: '',
+			overEighteen: 0
 		};
 	}
 
@@ -33,6 +34,13 @@ class CreateAccount extends Component {
 		this.setState({
 			[name]: value
 		});
+
+		if (this.state.overEighteen === 'on') {
+			this.setState({
+				overEighteen: 1
+			});
+			console.log(this.state.overEighteen);
+		}
 	};
 
 	//submit button function
@@ -47,7 +55,8 @@ class CreateAccount extends Component {
 			lastName: this.state.lastName,
 			avatar: this.state.avatar,
 			zipCode: this.state.zipCode,
-			country: this.state.country
+			country: this.state.country,
+			overEighteen: this.state.overEighteen
 		};
 		axios
 			.post('api/user', newUser)
@@ -162,9 +171,15 @@ class CreateAccount extends Component {
 													/>
 												</div>
 												<div className='field col-md-6 checkbox-container'>
-													<input className='checkbox' type='checkbox' />
+													<input
+														className='checkbox-text'
+														checked={this.state.overEighteen}
+														onChange={this.handleCreateChange}
+														type='checkbox'
+														name='overEighteen'
+													/>
 													<span className='checkmark' />
-													<p className='checkbox-text'>I AM 18 YEARS OR OLDER</p>
+													<p>I AM 18 YEARS OR OLDER</p>
 												</div>
 												<div className='row'>
 													<div className='field col-md-6'>

@@ -51,9 +51,9 @@ class Dashboard extends Component {
 		axios
 			.put('api/user/', {
 				params: {
-					id: this.state.userid
+					id: this.state.user.id
 				},
-				updateUser
+				profilePic: this.state.profilePic
 			})
 			.then((response) => {
 				this.setState({

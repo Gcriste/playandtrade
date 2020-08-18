@@ -29,7 +29,7 @@ module.exports = function(app) {
 	//create post route to /api/users
 	//creates a new user
 	app.post('/api/user', (req, res) => {
-		const { email, password, firstName, lastName, zipCode, country, profilePic } = req.body;
+		const { email, password, firstName, lastName, zipCode, country, profilePic, overEighteen } = req.body;
 		db.user
 			.findOne({
 				where: {
@@ -56,7 +56,8 @@ module.exports = function(app) {
 						avatar,
 						zipCode,
 						country,
-						profilePic
+						profilePic,
+						overEighteen
 					};
 
 					bcrypt.genSalt(10, (err, salt) => {
@@ -67,10 +68,7 @@ module.exports = function(app) {
 							db.user
 								.create(newUser)
 								.then((user) => {
-									res.status(200).json({
-										message: 'User account successfully created.',
-										userCreated: true
-									});
+									res.status(200).json(newUser);
 								})
 								.catch((err) => console.log(err));
 						});
@@ -104,7 +102,8 @@ module.exports = function(app) {
 								avatar: user.avatar,
 								country: user.country,
 								zipCode: user.zipCode,
-								profilePic: user.profilePic
+								profilePic: user.profilePic,
+								overEighteen: user.overEighteen
 							};
 							jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 * 12 }, (err, token) => {
 								res.json({
@@ -133,8 +132,10 @@ module.exports = function(app) {
 					lastName: req.body.lastName,
 					email: req.body.email,
 					zipCode: req.body.zipCode,
+					avatar: req.body.avatar,
 					country: req.body.country,
-					proflePic: req.body.profilePic
+					profilePic: req.body.profilePic,
+					overEighteen: req.body.overEighteen
 				},
 				{
 					where: { id: req.user.id }
@@ -155,6 +156,7 @@ module.exports = function(app) {
 							profilePic: user.profilePic,
 							zipCode: user.zipCode,
 							country: user.country,
+							overEighteen: user.overEighteen,
 							userUpdated: true
 						});
 					});
