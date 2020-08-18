@@ -5,6 +5,9 @@ const passport = require('passport');
 const port = process.env.PORT || 5000;
 const app = express();
 const path = require('path');
+const initRoutes = require('./routes/api/web');
+
+global.__basedir = __dirname;
 
 // Define middleware here
 app.use(express.urlencoded({ extended: false }));
@@ -14,10 +17,13 @@ app.use(express.json());
 //passport middleware
 app.use(passport.initialize());
 
+app.use(express.urlencoded({ extended: true }));
+initRoutes(app);
+
 require('./config/passport')(passport);
 
 require('./routes/api/user')(app);
-require('./routes/api/web')(app);
+// require('./routes/api/web')(app);
 // require('./routes/api/gig')(app);
 // require('./routes/api/request')(app);
 // require('./routes/api/discussion')(app);
