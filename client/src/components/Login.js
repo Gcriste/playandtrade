@@ -7,6 +7,7 @@ import setAuthToken from '../utils/SetAuthToken';
 import facebook from './assets/facebook.png';
 import youtube from './assets/youtube.png';
 import instagram from './assets/instagram.png';
+import logo from './assets/playLogo.png';
 
 const styles = {
 	error: {
@@ -90,7 +91,10 @@ class Login extends Component {
 							<div className=''>
 								<div className='card'>
 									<div className='card-body'>
-										<h1 className='display-4 text-center'>Play and Trade Guitars </h1>
+										{/* <h1 className='display-4 text-center'>Play and Trade Guitars </h1> */}
+										<div className='logo-container'>
+											<img className='logo' src={logo} alt='logo' />
+										</div>
 										<br />
 
 										<form>

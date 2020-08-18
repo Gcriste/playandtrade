@@ -32,6 +32,14 @@ Link,
 	font-size: 22px;
 	font-weight: 900;
 }
+.logo {
+	width: 100px;
+	height: auto;
+}
+.logo-container {
+	display: flex;
+	justify-content: center;
+}
 
 .create-button {
 	width: 100%;

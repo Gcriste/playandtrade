@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Input, PostButton } from '../components/CreateAccount';
 import { Redirect, Link } from 'react-router-dom';
-
+import logo from './playLogo.png';
 const styles = {
 	error: {
 		color: 'red',
@@ -90,8 +90,10 @@ class CreateAccount extends Component {
 							<div className='col-md-6 m-auto'>
 								<div className='card'>
 									<div className='card-body'>
-										<h4 className='display-4 text-center'>Create Account </h4>
-
+										{/* <h4 className='display-4 text-center'>Create Account </h4> */}
+										<div className='logo-container'>
+											<img className='logo' src={logo} alt='logo' />
+										</div>
 										<br />
 
 										<form>

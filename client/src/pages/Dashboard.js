@@ -38,16 +38,6 @@ class Dashboard extends Component {
 		event.preventDefault();
 		console.log('hi');
 
-		const updateUser = {
-			email: this.state.email,
-			password: this.state.password,
-			firstName: this.state.firstName,
-			lastName: this.state.lastName,
-			avatar: this.state.avatar,
-			zipCode: this.state.zipCode,
-			country: this.state.country,
-			profilePic: this.state.profilePic
-		};
 		axios
 			.put('api/user/', {
 				params: {
