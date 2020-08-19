@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Dashboard from './pages/Dashboard';
 // import NoMatch from './components/NoMatch';
 import CreateAccount from './pages/CreateAccount';
+
 // import SearchGigs from './pages/Search';
 // import Nav from './components/Nav';
 // import Post from './pages/Post';

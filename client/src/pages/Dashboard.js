@@ -4,6 +4,7 @@ import axios from 'axios';
 import setAuthToken from '../utils/SetAuthToken';
 import Moment from 'react-moment';
 import './dashboard.css';
+import FilesUploadComponent from '../components/file-upload-component';
 // import SavedResult from '../components/SavedList';
 // import SavedRequests from '../components/SavedRequests';
 import Nav from '../components/Nav';
@@ -149,7 +150,7 @@ class Dashboard extends Component {
 							<div className='profile-container'>
 								<div className='row'>
 									<div className='col-md-4 col-12'>
-										{/* <h1>Home </h1> */}
+										<FilesUploadComponent />
 										<button className='btn btn-danger' onClick={this.handleLogout}>
 											Logout
 										</button>
