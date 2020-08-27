@@ -1,1 +1,1 @@
-## Play and Trade app for buying and selling guitars app
+## Play and Trade app for buying and selling guitars 
