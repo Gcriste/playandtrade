@@ -21,7 +21,7 @@ class Dashboard extends Component {
 		lastName: '',
 		message: '',
 		avatar: '',
-		profilePic: null,
+		profilePic: '',
 		zipCode: '',
 		country: '',
 		userid: ''
