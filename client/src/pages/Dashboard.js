@@ -21,19 +21,43 @@ class Dashboard extends Component {
 		lastName: '',
 		message: '',
 		avatar: '',
-		profilePic: '',
+		profilePic: null,
 		zipCode: '',
 		country: '',
 		userid: ''
 	};
 
 	handleProfileChange = (event) => {
-		const { name, value } = event.target;
+		console.log(event.target.files[0]);
 		this.setState({
-			[name]: value
+			profilePic: event.target.files[0]
 		});
 	};
 
+	fileUploadHandler = () => {
+		const fd = new FormData();
+		fd.append('image', this.state.profilePic, this.state.profilePic.name);
+		axios
+			.put('api/user/', {
+				params: {
+					id: this.state.user.id
+				},
+				profilePic: this.state.profilePic
+			})
+			.then((response) => {
+				this.setState({
+					redirect: true,
+					errors: {}
+				});
+				console.log(response.data);
+			})
+			.catch((err) => {
+				console.log(err);
+				this.setState({
+					errors: err.response.data
+				});
+			});
+	};
 	//submit button function
 	handleUpdateSubmit = (event) => {
 		event.preventDefault();
@@ -155,15 +179,15 @@ class Dashboard extends Component {
 										{/* <FilesUploadComponent /> */}
 										<input
 											type='file'
-											value={this.state.profilePic}
-											name='profilePic'
+											// value={this.state.profilePic}
+											// name='profilePic'
 											onChange={this.handleProfileChange}
 										/>
 										<button
 											type='submit'
 											className='button submit-button'
 											tabindex='0'
-											onClick={this.handleUpdateSubmit}
+											onClick={this.fileUploadHandler}
 										>
 											<div className='visible content'>Submit</div>
 										</button>
