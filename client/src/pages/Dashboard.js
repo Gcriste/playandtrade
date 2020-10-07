@@ -79,7 +79,8 @@ class Dashboard extends Component {
 				country: response.data.country,
 				avatar: response.data.avatar,
 				user: response.data,
-				userid: response.data.id
+				userid: response.data.id,
+				profilePic: response.data.profilePic
 			});
 
 			// axios.get('/api/gig/' + userId).then((res) => {
@@ -143,6 +144,7 @@ class Dashboard extends Component {
 		}
 		console.log(user.profilePic);
 		if (user.profilePic === null) {
+			console.log('profile pic is null');
 			return (
 				<div className='pic'>
 					<div className='container'>
@@ -150,7 +152,22 @@ class Dashboard extends Component {
 							<div className='profile-container'>
 								<div className='row'>
 									<div className='col-md-4 col-12'>
-										<FilesUploadComponent />
+										{/* <FilesUploadComponent /> */}
+										<input
+											type='file'
+											value={this.state.profilePic}
+											name='profilePic'
+											onChange={this.handleProfileChange}
+										/>
+										<button
+											type='submit'
+											className='button submit-button'
+											tabindex='0'
+											onClick={this.handleUpdateSubmit}
+										>
+											<div className='visible content'>Submit</div>
+										</button>
+
 										<button className='btn btn-danger' onClick={this.handleLogout}>
 											Logout
 										</button>
@@ -188,38 +205,38 @@ class Dashboard extends Component {
 										</strong>
 									</p>
 									{''}
-									<div className='col-md-4 col-12 text-center'>
-										<div class='container'>
-											<div class='row'>
-												<div class='col-sm-8 mt-3'>
-													<h4>Node.js upload images - bezkoder.com</h4>
+									{/* <div className='col-md-4 col-12 text-center'>
+										<div class='container'> */}
+									{/* <div class='row'> */}
+									{/* <div class='col-sm-8 mt-3'> */}
+									{/* <h4>Node.js upload images - bezkoder.com</h4>
 
 													<form
 														class='mt-4'
 														action='/upload'
 														method='POST'
 														enctype='multipart/form-data'
-													>
-														<div class='form-group'>
+													> */}
+									{/* <div class='form-group'>
 															<input
 																type='file'
 																name='file'
 																id='input-files'
 																class='form-control-file border'
 															/>
-														</div>
-														<button type='submit' class='btn btn-primary'>
+														</div> */}
+									{/* <button type='submit' class='btn btn-primary'>
 															Submit
 														</button>
-													</form>
-												</div>
-											</div>
-											<hr />
+													</form> */}
+									{/* </div> */}
+									{/* </div> */}
+									{/* <hr />
 											<div class='row'>
-												<div class='col-sm-12'>
+												{/* <div class='col-sm-12'>
 													<div class='preview-images' />
-												</div>
-											</div>
+												</div> */}
+									{/* </div>
 										</div>
 										<input
 											value={this.state.profilePic}
@@ -228,13 +245,13 @@ class Dashboard extends Component {
 											name='profilePic'
 											placeholder='profilePic-ADDRESS'
 										/>
-									</div>
-									<button
+									</div>  */}
+									{/* <button
 										type='submit'
 										className='button continue-button'
 										tabindex='0'
 										onClick={this.handleUpdateSubmit}
-									/>
+									/> */}
 								</div>
 							</div>
 
@@ -300,9 +317,7 @@ class Dashboard extends Component {
 
 							<div className='col-md-4 col-12 text-center'>
 								<p>
-									<strong>
-										Last Updated: <Moment date={user.updatedAt} format='MM/DD/YYYY' />
-									</strong>
+									<strong>Profile Pic: {user.profilePic}</strong>
 								</p>
 								{''}
 							</div>
@@ -310,19 +325,12 @@ class Dashboard extends Component {
 
 						<div className='container'>
 							<div className='row'>
-								{/* <div className='col-md-6'>
-									<SavedResult
-										savedGigs={this.state.savedGigs}
-										handleDeleteButton={this.handleDeleteButton}
-									/>
+								<div className='col-md-6'>
+									<strong>
+										Last Updated: <Moment date={user.updatedAt} format='MM/DD/YYYY' />
+									</strong>
 								</div>
 
-								<div className='col-md-6'>
-									<SavedRequests
-										savedRequests={this.state.savedRequests}
-										dateForSavedRequests={this.state.dateForSavedRequests}
-										handleDeleteRequest={this.handleDeleteRequest}
-									/> */}
 								{/* </div> */}
 							</div>
 						</div>
