@@ -60,8 +60,19 @@ class Dashboard extends Component {
 	};
 	//submit button function
 	handleUpdateSubmit = (event) => {
-		event.preventDefault();
-		console.log('hi');
+		// const files = event.target.files;
+		// const data = new FormData();
+		// data.append('file', files[0]);
+		// data.append('upload_preset', 'griffin');
+
+		// axios.post('https://api.cloudinary.com/v1_1/dr9jpgt7l/image/upload', data).then((response) => {
+		// 	console.log(response);
+		// 	this.setState({
+		// 		profilePic: response.file.secure_url
+		// 	});
+		// });
+		// event.preventDefault();
+		// console.log('hi');
 
 		axios
 			.put('api/user/', {
@@ -341,7 +352,9 @@ class Dashboard extends Component {
 
 							<div className='col-md-4 col-12 text-center'>
 								<p>
-									<strong>Profile Pic: {user.profilePic}</strong>
+									<strong>
+										Profile Pic: <img src={this.state.profilePic} style={{ width: '300px' }} />
+									</strong>
 								</p>
 								{''}
 							</div>
