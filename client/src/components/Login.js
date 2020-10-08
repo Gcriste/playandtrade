@@ -24,7 +24,8 @@ class Login extends Component {
 			redirect: false,
 			email: '',
 			password: '',
-			errors: {}
+			errors: {},
+			profilePic: ''
 		};
 	}
 
@@ -66,7 +67,8 @@ class Login extends Component {
 
 					this.setState({
 						redirect: true,
-						errors: {}
+						errors: {},
+						profilePic: response.data.profilePic
 					});
 				}
 			})
@@ -78,9 +80,11 @@ class Login extends Component {
 	};
 
 	render() {
-		const { errors, redirect } = this.state;
-		if (redirect) {
-			return <Redirect to={'/dashboard'} />;
+		const { errors, redirect, profilePic } = this.state;
+		if (redirect && profilePic === null) {
+			return <Redirect to={'/dashboard2'} />;
+		} else if (redirect && profilePic !== null) {
+			return <Redirect to={'dashboard'} />;
 		}
 
 		return (

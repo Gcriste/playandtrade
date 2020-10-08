@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import setAuthToken from '../utils/SetAuthToken';
+import logo from './playLogo.png';
+import sample from './facebook.png';
 
-function Dashboard2() {
+function UploadPicture() {
 	const [ image, setImage ] = useState('');
 	const [ loading, setLoading ] = useState(false);
 	const [ user, setUser ] = useState('');
@@ -65,17 +67,27 @@ function Dashboard2() {
 
 	return (
 		<div className='App'>
-			<h1>Upload Image</h1>
-			<input type='file' name='file' placeholder='Upload an image' onChange={uploadImage} />
-			{loading ? (
-				<h3>Loading...</h3>
-			) : (
-				<div>
-					<img src={image} style={{ width: '300px' }} />{' '}
+			<div className='container'>
+				<div className='row'>
+					<div className='col-md-12 text-center'>
+						<div className='logo-container'>
+							<img className='logo' src={logo} alt='logo' />
+						</div>
+						<h2>SELECT PROFILE PICTURE</h2>
+						<img src={sample} style={{ width: '300px' }} />
+						<input type='file' name='file' placeholder='Upload an image' onChange={uploadImage} />
+						{loading ? (
+							<h3>Loading...</h3>
+						) : (
+							<div>
+								<img src={image} style={{ width: '300px' }} />{' '}
+							</div>
+						)}
+					</div>
 				</div>
-			)}
+			</div>
 		</div>
 	);
 }
 
-export default Dashboard2;
+export default UploadPicture;

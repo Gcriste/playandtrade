@@ -4,7 +4,7 @@ import axios from 'axios';
 import setAuthToken from '../utils/SetAuthToken';
 import Moment from 'react-moment';
 import './dashboard.css';
-import FilesUploadComponent from '../components/file-upload-component';
+import logo from './playLogo.png';
 // import SavedResult from '../components/SavedList';
 // import SavedRequests from '../components/SavedRequests';
 import Nav from '../components/Nav';
@@ -27,53 +27,8 @@ class Dashboard extends Component {
 		userid: ''
 	};
 
-	handleProfileChange = (event) => {
-		console.log(event.target.files[0]);
-		this.setState({
-			profilePic: event.target.files[0]
-		});
-	};
-
-	fileUploadHandler = () => {
-		const fd = new FormData();
-		fd.append('image', this.state.profilePic, this.state.profilePic.name);
-		axios
-			.put('api/user/', {
-				params: {
-					id: this.state.user.id
-				},
-				profilePic: this.state.profilePic
-			})
-			.then((response) => {
-				this.setState({
-					redirect: true,
-					errors: {}
-				});
-				console.log(response.data);
-			})
-			.catch((err) => {
-				console.log(err);
-				this.setState({
-					errors: err.response.data
-				});
-			});
-	};
 	//submit button function
-	handleUpdateSubmit = (event) => {
-		// const files = event.target.files;
-		// const data = new FormData();
-		// data.append('file', files[0]);
-		// data.append('upload_preset', 'griffin');
-
-		// axios.post('https://api.cloudinary.com/v1_1/dr9jpgt7l/image/upload', data).then((response) => {
-		// 	console.log(response);
-		// 	this.setState({
-		// 		profilePic: response.file.secure_url
-		// 	});
-		// });
-		// event.preventDefault();
-		// console.log('hi');
-
+	handleUpdateSubmit = () => {
 		axios
 			.put('api/user/', {
 				params: {
@@ -178,203 +133,71 @@ class Dashboard extends Component {
 			return <Redirect to='/' />;
 		}
 		console.log(user.profilePic);
-		if (user.profilePic === null) {
-			console.log('profile pic is null');
-			return (
-				<div className='pic'>
-					<div className='container'>
-						<div className='card'>
-							<div className='profile-container'>
-								<div className='row'>
-									<div className='col-md-4 col-12'>
-										{/* <FilesUploadComponent /> */}
-										<input
-											type='file'
-											// value={this.state.profilePic}
-											// name='profilePic'
-											onChange={this.handleProfileChange}
-										/>
-										<button
-											type='submit'
-											className='button submit-button'
-											tabindex='0'
-											onClick={this.fileUploadHandler}
-										>
-											<div className='visible content'>Submit</div>
-										</button>
 
-										<button className='btn btn-danger' onClick={this.handleLogout}>
-											Logout
-										</button>
-									</div>
-									<div className='col-md-4 col-12'>
-										<h2>
-											<strong>Welcome, {user.firstName}</strong>
-										</h2>
-									</div>
-									{''}
-								</div>
-								<div className='row text-center'>
-									<div className='col-md-4 col-12 text-center'>
-										<p>
-											<strong>Email Address: {user.email}</strong>
-										</p>
-										{''}
-									</div>
-								</div>
-								<div className='row text-center'>
-									<div className='col-md-4 col-12 text-center'>
-										<p className='text-center'>
-											<strong>
-												Member Since: <Moment date={user.createdAt} format='MM/DD/YYYY' />
-											</strong>
-										</p>
-										{''}
-									</div>
-								</div>
-
-								<div className='col-md-4 col-12 text-center'>
-									<p>
-										<strong>
-											Last Updated: <Moment date={user.updatedAt} format='MM/DD/YYYY' />
-										</strong>
-									</p>
-									{''}
-									{/* <div className='col-md-4 col-12 text-center'>
-										<div class='container'> */}
-									{/* <div class='row'> */}
-									{/* <div class='col-sm-8 mt-3'> */}
-									{/* <h4>Node.js upload images - bezkoder.com</h4>
-
-													<form
-														class='mt-4'
-														action='/upload'
-														method='POST'
-														enctype='multipart/form-data'
-													> */}
-									{/* <div class='form-group'>
-															<input
-																type='file'
-																name='file'
-																id='input-files'
-																class='form-control-file border'
-															/>
-														</div> */}
-									{/* <button type='submit' class='btn btn-primary'>
-															Submit
-														</button>
-													</form> */}
-									{/* </div> */}
-									{/* </div> */}
-									{/* <hr />
-											<div class='row'>
-												{/* <div class='col-sm-12'>
-													<div class='preview-images' />
-												</div> */}
-									{/* </div>
-										</div>
-										<input
-											value={this.state.profilePic}
-											type='profilePic'
-											onChange={this.handleProfileChange}
-											name='profilePic'
-											placeholder='profilePic-ADDRESS'
-										/>
-									</div>  */}
-									{/* <button
-										type='submit'
-										className='button continue-button'
-										tabindex='0'
-										onClick={this.handleUpdateSubmit}
-									/> */}
-								</div>
+		return (
+			<div className='container'>
+				<div className='card'>
+					<div className='profile-container'>
+						<div className='row'>
+							<div className='logo-container'>
+								<img className='logo' src={logo} alt='logo' />
 							</div>
-
-							<div className='container'>
-								<div className='row'>
-									{/* <div className='col-md-6'>
-									<SavedResult
-										savedGigs={this.state.savedGigs}
-										handleDeleteButton={this.handleDeleteButton}
-									/>
-								</div>
-
-								<div className='col-md-6'>
-									<SavedRequests
-										savedRequests={this.state.savedRequests}
-										dateForSavedRequests={this.state.dateForSavedRequests}
-										handleDeleteRequest={this.handleDeleteRequest}
-									/> */}
-									{/* </div> */}
-								</div>
+							<div className='col-md-4 col-12'>
+								{/* <h1>Home </h1> */}
+								<button className='btn btn-danger' onClick={this.handleLogout}>
+									Logout
+								</button>
 							</div>
+							<div className='col-md-4 col-12'>
+								<h2>
+									<strong>Welcome, {user.firstName}</strong>
+								</h2>
+							</div>
+							{''}
 						</div>
-					</div>
-				</div>
-			);
-		} else {
-			return (
-				<div className='container'>
-					<div className='card'>
-						<div className='profile-container'>
-							<div className='row'>
-								<div className='col-md-4 col-12'>
-									{/* <h1>Home </h1> */}
-									<button className='btn btn-danger' onClick={this.handleLogout}>
-										Logout
-									</button>
-								</div>
-								<div className='col-md-4 col-12'>
-									<h2>
-										<strong>Welcome, {user.firstName}</strong>
-									</h2>
-								</div>
-								{''}
-							</div>
-							<div className='row text-center'>
-								<div className='col-md-4 col-12 text-center'>
-									<p>
-										<strong>Email Address: {user.email}</strong>
-									</p>
-									{''}
-								</div>
-							</div>
-							<div className='row text-center'>
-								<div className='col-md-4 col-12 text-center'>
-									<p className='text-center'>
-										<strong>
-											Member Since: <Moment date={user.createdAt} format='MM/DD/YYYY' />
-										</strong>
-									</p>
-									{''}
-								</div>
-							</div>
-
+						<div className='row text-center'>
 							<div className='col-md-4 col-12 text-center'>
 								<p>
+									<strong>Email Address: {user.email}</strong>
+								</p>
+								{''}
+							</div>
+						</div>
+						<div className='row text-center'>
+							<div className='col-md-4 col-12 text-center'>
+								<p className='text-center'>
 									<strong>
-										Profile Pic: <img src={this.state.profilePic} style={{ width: '300px' }} />
+										Member Since: <Moment date={user.createdAt} format='MM/DD/YYYY' />
 									</strong>
 								</p>
 								{''}
 							</div>
 						</div>
 
-						<div className='container'>
-							<div className='row'>
-								<div className='col-md-6'>
-									<strong>
-										Last Updated: <Moment date={user.updatedAt} format='MM/DD/YYYY' />
-									</strong>
-								</div>
+						<div className='col-md-4 col-12 text-center'>
+							<p>
+								<strong>
+									Profile Pic: <img src={this.state.profilePic} style={{ width: '300px' }} />
+								</strong>
+							</p>
+							{''}
+						</div>
+					</div>
 
-								{/* </div> */}
+					<div className='container'>
+						<div className='row'>
+							<div className='col-md-6'>
+								<strong>
+									Last Updated: <Moment date={user.updatedAt} format='MM/DD/YYYY' />
+								</strong>
 							</div>
+
+							{/* </div> */}
 						</div>
 					</div>
 				</div>
-			);
-		}
+			</div>
+		);
 	}
 }
 export default Dashboard;

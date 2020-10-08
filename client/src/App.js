@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
 import Login from './components/Login';
 import Dashboard from './pages/Dashboard';
-import Dashboard2 from './pages/Dashboard2';
+import UploadPicture from './pages/UploadPicture';
 // import NoMatch from './components/NoMatch';
 import CreateAccount from './pages/CreateAccount';
 
@@ -26,7 +26,7 @@ function App() {
 					<Route exact path='/' component={Login} />
 					<Route exact path='/createaccount' component={CreateAccount} />
 					<PrivateRoute exact path='/dashboard' component={Dashboard} />
-					<PrivateRoute exact path='/dashboard2' component={Dashboard2} />
+					<PrivateRoute exact path='/uploadpicture' component={UploadPicture} />
 					{/*<PrivateRoute exact path='/post' component={Post} />
 					<PrivateRoute exact path='/post/:id' component={Post} />
 					<PrivateRoute exact path='/request' component={PostRequest} />
