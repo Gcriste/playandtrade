@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function App() {
+function Dashboard2() {
 	const [ image, setImage ] = useState('');
 	const [ loading, setLoading ] = useState(false);
+	const [ user, setUser ] = useState(false);
 
 	const uploadImage = async (e) => {
 		const files = e.target.files;
@@ -19,28 +20,16 @@ function App() {
 
 		setImage(file.secure_url);
 		setLoading(false);
-
-		axios
-			.put('api/user/', {
-				params: {
-					id: this.state.user.id
-				},
-				profilePic: this.state.image
-			})
-			.then((response) => {
-				this.setState({
-					redirect: true,
-					errors: {}
-				});
-				console.log(response.data);
-			})
-			.catch((err) => {
-				console.log(err);
-				this.setState({
-					errors: err.response.data
-				});
-			});
 	};
+
+	const fetchImages = async () => {
+		const res = await axios.get('https://api.cloudinary.com/v1_1/dr9jpgt7l/image/upload');
+		setUser(res.data);
+	};
+
+	useEffect(() => {
+		fetchImages(user);
+	}, user);
 
 	return (
 		<div className='App'>
@@ -51,4 +40,4 @@ function App() {
 	);
 }
 
-export default App;
+export default Dashboard2;
