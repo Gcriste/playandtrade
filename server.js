@@ -21,7 +21,7 @@ app.use('/public', express.static('public'));
 require('./config/passport')(passport);
 
 require('./routes/api/user')(app);
-require('./routes/api/image')(app);
+require('./routes/api/guitar')(app);
 // require('./routes/api/gig')(app);
 // require('./routes/api/request')(app);
 // require('./routes/api/discussion')(app);
