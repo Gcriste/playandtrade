@@ -28,8 +28,21 @@ module.exports = function(sequelize, Sequelize) {
 		},
 		userid: {
 			type: Sequelize.STRING
+		},
+		email: {
+			type: Sequelize.STRING
 		}
 	});
+
+	// Guitar.associate = function(models) {
+	// 	// We're saying that a guitar should belong to an user
+	// 	// A guitar can't be created without a user due to the foreign key constraint
+	// 	Guitar.belongsTo(models.user, {
+	// 		foreignKey: {
+	// 			allowNull: false
+	// 		}
+	// 	});
+	// };
 
 	return Guitar;
 };

@@ -13,17 +13,26 @@ module.exports = function(app) {
 		});
 	});
 
-	// Route GET /api/user
-	// gets current user
-	app.get('/api/guitar', passport.authenticate('jwt', { session: false }), (req, res) => {
-		res.json({});
+	// Get route for retrieving comments based on user
+	app.get('/api/guitar/user/:userid', (req, res) => {
+		// Here we add an "include" property to our options in our findOne query
+		// We set the value to an array of the models we want to include in a left outer join
+		// In this case, just db.user
+		db.guitar
+			.findAll({
+				where: {
+					userid: req.params.userid
+				},
+				include: [ db.user ]
+			})
+			.then((comment) => res.json(comment));
 	});
 
 	//create post route to /api/users
 	//creates a new user
 
 	app.post('/api/guitar', (req, res) => {
-		const { brand, make, model, color, year, value, condition, userid } = req.body;
+		const { brand, make, model, color, year, value, condition, userid, email } = req.body;
 		db.user
 			.findOne({
 				where: {
@@ -39,7 +48,8 @@ module.exports = function(app) {
 					year,
 					value,
 					condition,
-					userid
+					userid,
+					email
 				};
 
 				db.guitar

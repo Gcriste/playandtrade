@@ -37,6 +37,13 @@ module.exports = function(sequelize, Sequelize) {
 			type: Sequelize.BOOLEAN
 		}
 	});
+	User.associate = function(models) {
+		// Associating User with Guitars
+		// When a User is deleted, also delete any associated Guitars
+		User.hasMany(models.guitar, {
+			onDelete: 'cascade'
+		});
+	};
 
 	return User;
 };
