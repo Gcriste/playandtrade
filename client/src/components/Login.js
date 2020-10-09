@@ -81,8 +81,8 @@ class Login extends Component {
 
 	render() {
 		const { errors, redirect, profilePic } = this.state;
-		if (redirect && profilePic === null) {
-			return <Redirect to={'/dashboard2'} />;
+		if (redirect && (profilePic === null || profilePic == '')) {
+			return <Redirect to={'/uploadpicture'} />;
 		} else if (redirect && profilePic !== null) {
 			return <Redirect to={'dashboard'} />;
 		}

@@ -55,3 +55,43 @@
 	margin-bottom: 10px;
 	background: white;
 }
+
+.profile-pic {
+	border-radius: 50%;
+	width: 30vw;
+	height: 15vh;
+}
+.profile-upload-pic {
+	margin-top: 10vh;
+	border-radius: 50%;
+	width: 50vw;
+	height: 25vh;
+}
+
+.profile-image-container {
+	display: flex;
+	justify-content: space-around;
+}
+
+.current-collection {
+	color: #efb5b7;
+	margin-bottom: 5vh;
+}
+
+.guitar-collection {
+	color: grey;
+	text-align: center;
+}
+
+/* .followers {
+	color: grey;
+} */
+
+.top-profile-container {
+	margin-bottom: 5vh;
+}
+
+.recently-added {
+	margin-bottom: 5vh !important;
+	margin-top: 5vh !important;
+}

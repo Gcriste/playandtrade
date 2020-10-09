@@ -5,7 +5,7 @@ import logo from './playLogo.png';
 import { Redirect, Link } from 'react-router-dom';
 // import sample from './facebook.png';
 
-function UploadPicture() {
+function Guitar() {
 	const [ image, setImage ] = useState('');
 	const [ loading, setLoading ] = useState(false);
 	const [ user, setUser ] = useState('');
@@ -81,34 +81,23 @@ function UploadPicture() {
 						<div className='logo-container'>
 							<img className='logo' src={logo} alt='logo' />
 						</div>
-						<h2>SELECT PROFILE PICTURE</h2>
+						<h2>Guitars</h2>
 						{/* <img src={sample} style={{ width: '300px' }} /> */}
 						<input type='file' name='file' placeholder='Upload an image' onChange={uploadImage} />
 						{loading ? (
 							<h3>Loading...</h3>
 						) : (
 							<div>
-								<img className='profile-upload-pic' src={image} />{' '}
+								<img className='profile-pic' src={image} />{' '}
 							</div>
 						)}
 						{/* <button className='btn btn-danger' onClick={this.handleLogout}>
 							Logout
 						</button> */}
 
-						<Link className='save-button' to={'/dashboard'}>
+						<Link className='continue-button' to={'/dashboard'}>
 							SAVE AND VIEW PROFILE
 						</Link>
-						<button className='button add-button'>
-							<Link className='create-button-text' to={'/guitar'}>
-								ADD A GUITAR
-							</Link>
-						</button>
-						<p className='back-link'>
-							{' '}
-							<Link className='back-link-text' to={'/account-settings'}>
-								Account Settings
-							</Link>
-						</p>
 
 						{/* <Link className='back-link-text' to={'/guitar'}>
 																ADD A GUITAR
@@ -120,4 +109,4 @@ function UploadPicture() {
 	);
 }
 
-export default UploadPicture;
+export default Guitar;

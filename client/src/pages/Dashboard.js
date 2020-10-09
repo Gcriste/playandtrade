@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
 import setAuthToken from '../utils/SetAuthToken';
 import Moment from 'react-moment';
@@ -127,7 +127,7 @@ class Dashboard extends Component {
 	// };
 
 	render() {
-		const { redirect, user } = this.state;
+		const { redirect, user, profilePic } = this.state;
 
 		if (redirect) {
 			return <Redirect to='/' />;
@@ -138,60 +138,57 @@ class Dashboard extends Component {
 			<div className='container'>
 				<div className='card'>
 					<div className='profile-container'>
-						<div className='row'>
-							<div className='logo-container'>
+						<div className='logo-container'>
+							<div className='row'>
 								<img className='logo' src={logo} alt='logo' />
 							</div>
-							<div className='col-md-4 col-12'>
-								{/* <h1>Home </h1> */}
-								<button className='btn btn-danger' onClick={this.handleLogout}>
-									Logout
-								</button>
+						</div>
+						<div className='row top-profile-container'>
+							<div className='col-md-6 col-6 text-right'>
+								<img className='profile-pic' src={profilePic} />
 							</div>
-							<div className='col-md-4 col-12'>
-								<h2>
-									<strong>Welcome, {user.firstName}</strong>
-								</h2>
+							<div className='col-md-6 col-6 text-left'>
+								<h2>{user.firstName}</h2>
+
+								<h3> {user.country}</h3>
+								<h4 className='followers'> 0 FOLLOWERS</h4>
+								{''}
 							</div>
+
 							{''}
+						</div>
+						<div className='row'>
+							<div className='col-12'>
+								<h3 className='current-collection'>CURRENT COLLECTION</h3>
+								<h4 className='guitar-collection'>NO GUITARS IN YOUR COLLECTION</h4>
+							</div>
 						</div>
 						<div className='row text-center'>
 							<div className='col-md-4 col-12 text-center'>
-								<p>
-									<strong>Email Address: {user.email}</strong>
-								</p>
-								{''}
+								<button className='button add-button'>
+									<Link className='create-button-text' to={'/guitar'}>
+										ADD A GUITAR
+									</Link>
+								</button>
 							</div>
 						</div>
 						<div className='row text-center'>
 							<div className='col-md-4 col-12 text-center'>
 								<p className='text-center'>
-									<strong>
-										Member Since: <Moment date={user.createdAt} format='MM/DD/YYYY' />
-									</strong>
+									<h3 className='recently-added'>RECENTLY ADDED GUITARS</h3>
 								</p>
 								{''}
 							</div>
-						</div>
-
-						<div className='col-md-4 col-12 text-center'>
-							<p>
-								<strong>
-									Profile Pic: <img src={this.state.profilePic} style={{ width: '300px' }} />
-								</strong>
-							</p>
-							{''}
 						</div>
 					</div>
 
 					<div className='container'>
 						<div className='row'>
-							<div className='col-md-6'>
-								<strong>
-									Last Updated: <Moment date={user.updatedAt} format='MM/DD/YYYY' />
-								</strong>
-							</div>
+							<div className='col-md-6' />
 
+							<button className='btn btn-danger' onClick={this.handleLogout}>
+								Logout
+							</button>
 							{/* </div> */}
 						</div>
 					</div>

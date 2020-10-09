@@ -6,6 +6,7 @@ import PrivateRoute from './utils/PrivateRoute';
 import Login from './components/Login';
 import Dashboard from './pages/Dashboard';
 import UploadPicture from './pages/UploadPicture';
+import Guitar from './pages/Guitar';
 // import NoMatch from './components/NoMatch';
 import CreateAccount from './pages/CreateAccount';
 
@@ -27,6 +28,7 @@ function App() {
 					<Route exact path='/createaccount' component={CreateAccount} />
 					<PrivateRoute exact path='/dashboard' component={Dashboard} />
 					<PrivateRoute exact path='/uploadpicture' component={UploadPicture} />
+					<PrivateRoute exact path='/guitar' component={Guitar} />
 					{/*<PrivateRoute exact path='/post' component={Post} />
 					<PrivateRoute exact path='/post/:id' component={Post} />
 					<PrivateRoute exact path='/request' component={PostRequest} />
