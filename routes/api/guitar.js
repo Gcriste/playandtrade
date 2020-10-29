@@ -13,8 +13,8 @@ module.exports = function(app) {
 		});
 	});
 
-	// Get route for retrieving comments based on user
-	app.get('/api/guitar/user/:userid', (req, res) => {
+	// Get route for retrieving guitars based on user
+	app.get('/api/guitar/:userid', (req, res) => {
 		// Here we add an "include" property to our options in our findOne query
 		// We set the value to an array of the models we want to include in a left outer join
 		// In this case, just db.user
@@ -22,10 +22,9 @@ module.exports = function(app) {
 			.findAll({
 				where: {
 					userid: req.params.userid
-				},
-				include: [ db.user ]
+				}
 			})
-			.then((comment) => res.json(comment));
+			.then((guitar) => res.json(guitar));
 	});
 
 	//create post route to /api/users
@@ -36,7 +35,7 @@ module.exports = function(app) {
 		db.user
 			.findOne({
 				where: {
-					email: req.body.email
+					email
 				}
 			})
 			.then(() => {

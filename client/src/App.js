@@ -37,7 +37,7 @@ function App() {
 					<PrivateRoute exact path='/comment/:id' component={Comment} />
 					<PrivateRoute exact path='/incomingrequest' component={IncomingRequest} />
 					<PrivateRoute exact path='/search' component={SearchGigs} /> */}
-					<Route component={NoMatch} />
+					{/* <Route component={NoMatch} /> */}
 				</Switch>
 			</div>
 		</Router>

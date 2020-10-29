@@ -3,12 +3,22 @@ import axios from 'axios';
 import setAuthToken from '../utils/SetAuthToken';
 import logo from './playLogo.png';
 import { Redirect, Link } from 'react-router-dom';
+import { Input } from '../components/CreateAccount';
 // import sample from './facebook.png';
 
 function Guitar() {
 	const [ image, setImage ] = useState('');
 	const [ loading, setLoading ] = useState(false);
 	const [ user, setUser ] = useState('');
+	const [ userid, setUserId ] = useState('');
+	const [ brand, setBrand ] = useState('');
+	const [ make, setMake ] = useState('');
+	const [ model, setModel ] = useState('');
+	const [ color, setColor ] = useState('');
+	const [ year, setYear ] = useState('');
+	const [ value, setValue ] = useState('');
+	const [ condition, setCondition ] = useState('');
+	const [ email, setEmail ] = useState('');
 
 	const uploadImage = async (e) => {
 		const files = e.target.files;
@@ -50,12 +60,7 @@ function Guitar() {
 	useEffect(
 		() => {
 			axios
-				.put('api/user/', {
-					params: {
-						// id: this.state.user.id
-					},
-					profilePic: image
-				})
+				.post('api/guitar')
 				.then((response) => {
 					console.log(response.data);
 				})
@@ -73,6 +78,10 @@ function Guitar() {
 	// 	});
 	// };
 
+	const SaveGuitar = () => {
+		const newGuitar = {};
+	};
+
 	return (
 		<div className='App'>
 			<div className='container'>
@@ -82,26 +91,93 @@ function Guitar() {
 							<img className='logo' src={logo} alt='logo' />
 						</div>
 						<h2>Guitars</h2>
-						{/* <img src={sample} style={{ width: '300px' }} /> */}
-						<input type='file' name='file' placeholder='Upload an image' onChange={uploadImage} />
-						{loading ? (
-							<h3>Loading...</h3>
-						) : (
-							<div>
-								<img className='profile-pic' src={image} />{' '}
+
+						<form>
+							<div className='field'>
+								<div className='account-info'>
+									<p className='account'>ACCOUNT INFO:</p>
+								</div>
 							</div>
-						)}
-						{/* <button className='btn btn-danger' onClick={this.handleLogout}>
+							<div className='field'>
+								<Input
+									value={brand}
+									onChange={(e) => setBrand(e.target.value)}
+									name='brand'
+									placeholder='BRAND'
+									type='name'
+								/>
+							</div>
+							<div className='field'>
+								<Input
+									value={make}
+									onChange={(e) => setMake(e.target.value)}
+									name='make'
+									placeholder='MAKE'
+									type='name'
+								/>
+							</div>
+							<div className='field'>
+								<Input
+									value={model}
+									onChange={(e) => setModel(e.target.value)}
+									name='model'
+									placeholder='MODEL'
+									type='name'
+								/>
+							</div>
+							<div className='field'>
+								<Input
+									value={color}
+									onChange={(e) => setColor(e.target.value)}
+									name='color'
+									placeholder='COLOR'
+									type='name'
+								/>
+							</div>
+							<div>
+								<Input
+									value={year}
+									onChange={(e) => setYear(e.target.value)}
+									name='year'
+									placeholder='YEAR'
+									type='name'
+								/>
+							</div>
+							<div className='field'>
+								<Input
+									value={value}
+									onChange={(e) => setValue(e.target.value)}
+									name='value'
+									placeholder='VALUE'
+									type='name'
+								/>
+							</div>
+							<div className='field'>
+								<Input
+									value={condition}
+									onChange={(e) => setCondition(e.target.value)}
+									name='condition'
+									placeholder='CONDITION'
+									type='condition'
+								/>
+							</div>
+							{/* <img src={sample} style={{ width: '300px' }} /> */}
+							<input type='file' name='file' placeholder='Upload an image' onChange={uploadImage} />
+							{loading ? (
+								<h3>Loading...</h3>
+							) : (
+								<div>
+									<img className='profile-pic' src={image} />{' '}
+								</div>
+							)}
+							{/* <button className='btn btn-danger' onClick={this.handleLogout}>
 							Logout
 						</button> */}
-
-						<Link className='continue-button' to={'/dashboard'}>
-							SAVE AND VIEW PROFILE
-						</Link>
-
-						{/* <Link className='back-link-text' to={'/guitar'}>
-																ADD A GUITAR
-															</Link> */}
+							<button onClick={SaveGuitar}>Save Guitar</button>
+							<Link className='continue-button' to={'/dashboard'}>
+								SAVE AND VIEW PROFILE
+							</Link>
+						</form>
 					</div>
 				</div>
 			</div>
