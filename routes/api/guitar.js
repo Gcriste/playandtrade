@@ -31,7 +31,7 @@ module.exports = function(app) {
 	//creates a new user
 
 	app.post('/api/guitar', (req, res) => {
-		const { brand, make, model, color, year, value, condition, userid, email } = req.body;
+		const { brand, make, model, color, year, value, condition, userid, email, guitarPic } = req.body;
 		db.user
 			.findOne({
 				where: {
@@ -48,7 +48,8 @@ module.exports = function(app) {
 					value,
 					condition,
 					userid,
-					email
+					email,
+					guitarPic
 				};
 
 				db.guitar

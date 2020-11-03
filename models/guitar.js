@@ -31,6 +31,9 @@ module.exports = function(sequelize, Sequelize) {
 		},
 		email: {
 			type: Sequelize.STRING
+		},
+		guitarPic: {
+			type: Sequelize.STRING
 		}
 	});
 

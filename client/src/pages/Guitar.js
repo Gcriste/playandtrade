@@ -18,7 +18,6 @@ function Guitar() {
 	const [ year, setYear ] = useState('');
 	const [ value, setValue ] = useState('');
 	const [ condition, setCondition ] = useState('');
-	const [ email, setEmail ] = useState('');
 
 	const uploadImage = async (e) => {
 		const files = e.target.files;
@@ -54,6 +53,7 @@ function Guitar() {
 		axios.get('/api/user').then((response) => {
 			console.log(response.data);
 			setUser(response.data.id);
+			// setEmail(response.data.email);
 		});
 	}, []);
 
