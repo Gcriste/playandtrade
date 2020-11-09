@@ -52,24 +52,25 @@ function Guitar() {
 		}
 		axios.get('/api/user').then((response) => {
 			console.log(response.data);
-			setUser(response.data.id);
+			setUser(response.data);
+			setUserId(response.data.userid);
 			// setEmail(response.data.email);
 		});
 	}, []);
 
-	useEffect(
-		() => {
-			axios
-				.post('api/guitar')
-				.then((response) => {
-					console.log(response.data);
-				})
-				.catch((err) => {
-					console.log(err);
-				});
-		},
-		[ uploadImage ]
-	);
+	// useEffect(
+	// 	() => {
+	// 		axios
+	// 			.post('api/guitar')
+	// 			.then((response) => {
+	// 				console.log(response.data);
+	// 			})
+	// 			.catch((err) => {
+	// 				console.log(err);
+	// 			});
+	// 	},
+	// 	[ uploadImage ]
+	// );
 
 	// handleLogout = () => {
 	// 	localStorage.removeItem('example-app');
@@ -79,7 +80,21 @@ function Guitar() {
 	// };
 
 	const SaveGuitar = () => {
-		const newGuitar = {};
+		axios
+			.post('api/guitar', {
+				make,
+				model,
+				brand,
+				color,
+				year,
+				condition
+			})
+			.then((response) => {
+				console.log(response.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 
 	return (
