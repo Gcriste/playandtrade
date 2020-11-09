@@ -7,9 +7,8 @@ import { Input } from '../components/CreateAccount';
 // import sample from './facebook.png';
 
 function Guitar() {
-	const [ image, setImage ] = useState('');
+	const [ guitarPic, setImage ] = useState('');
 	const [ loading, setLoading ] = useState(false);
-	const [ user, setUser ] = useState('');
 	const [ userid, setUserId ] = useState('');
 	const [ brand, setBrand ] = useState('');
 	const [ make, setMake ] = useState('');
@@ -18,6 +17,7 @@ function Guitar() {
 	const [ year, setYear ] = useState('');
 	const [ value, setValue ] = useState('');
 	const [ condition, setCondition ] = useState('');
+	const [ email, setEmail ] = useState('');
 
 	const uploadImage = async (e) => {
 		const files = e.target.files;
@@ -52,8 +52,8 @@ function Guitar() {
 		}
 		axios.get('/api/user').then((response) => {
 			console.log(response.data);
-			setUser(response.data);
-			setUserId(response.data.userid);
+			setUserId(response.data.id);
+			setEmail(response.data.email);
 			// setEmail(response.data.email);
 		});
 	}, []);
@@ -79,16 +79,22 @@ function Guitar() {
 	// 	});
 	// };
 
-	const SaveGuitar = () => {
+	const SaveGuitar = (event) => {
+		event.preventDefault();
+		const newGuitar = {
+			make,
+			model,
+			brand,
+			color,
+			year,
+			value,
+			userid,
+			condition,
+			email,
+			guitarPic
+		};
 		axios
-			.post('api/guitar', {
-				make,
-				model,
-				brand,
-				color,
-				year,
-				condition
-			})
+			.post('api/guitar', newGuitar)
 			.then((response) => {
 				console.log(response.data);
 			})
@@ -182,7 +188,7 @@ function Guitar() {
 								<h3>Loading...</h3>
 							) : (
 								<div>
-									<img className='profile-pic' src={image} />{' '}
+									<img className='profile-pic' src={guitarPic} />{' '}
 								</div>
 							)}
 							{/* <button className='btn btn-danger' onClick={this.handleLogout}>

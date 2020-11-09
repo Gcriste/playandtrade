@@ -24,7 +24,15 @@ class Dashboard extends Component {
 		profilePic: '',
 		zipCode: '',
 		country: '',
-		userid: ''
+		userid: '',
+		savedGuitar: {},
+		brand,
+		make,
+		model,
+		color,
+		year,
+		value,
+		condition
 	};
 
 	//submit button function
@@ -73,37 +81,20 @@ class Dashboard extends Component {
 				profilePic: response.data.profilePic
 			});
 
-			// axios.get('/api/gig/' + userId).then((res) => {
-			// 	this.setState({
-			// 		savedGigs: res.data
-			// 	});
-			// 	console.log(res.data);
-
-			// 	axios
-			// 		.get('/api/request/' + userId)
-			// 		.then((res) => {
-			// 			let gigId = [];
-			// 			for (var i = 0; i < res.data.length; i++) {
-			// 				gigId.push(res.data[i].gigid);
-			// 			}
-			// 			this.setState({
-			// 				savedRequests: res.data
-			// 			});
-
-			// 			for (var i = 0; i < gigId.length; i++) {
-			// 				console.log(gigId[i]);
-			// 				axios.get('/api/gig/id/' + gigId[i]).then((res) => {
-			// 					console.log(res.data);
-			// 					let savedGigs = [];
-			// 					savedGigs = this.state.dateForSavedRequests.concat(res.data);
-			// 					this.setState({
-			// 						dateForSavedRequests: savedGigs
-			// 					});
-			// 				});
-			// 			}
-			// 		})
-			// 		.catch((err) => console.log(err.response));
-			// });
+			axios.get('/api/guitar/' + userId).then((response) => {
+				const { brand, make, model, color, year, value, condition } = response.data[0];
+				this.setState({
+					savedGuitar: response.data[0],
+					brand,
+					make,
+					model,
+					color,
+					year,
+					value,
+					condition
+				});
+				console.log(response.data[0]);
+			});
 		});
 	}
 
