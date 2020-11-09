@@ -26,13 +26,15 @@ class Dashboard extends Component {
 		country: '',
 		userid: '',
 		savedGuitar: {},
-		brand,
-		make,
-		model,
-		color,
-		year,
-		value,
-		condition
+		isGuitar: false,
+		brand: '',
+		make: '',
+		model: '',
+		color: '',
+		year: '',
+		value: '',
+		condition: '',
+		guitarPic: ''
 	};
 
 	//submit button function
@@ -82,7 +84,7 @@ class Dashboard extends Component {
 			});
 
 			axios.get('/api/guitar/' + userId).then((response) => {
-				const { brand, make, model, color, year, value, condition } = response.data[0];
+				const { brand, make, model, color, year, value, condition, guitarPic } = response.data[0];
 				this.setState({
 					savedGuitar: response.data[0],
 					brand,
@@ -91,10 +93,16 @@ class Dashboard extends Component {
 					color,
 					year,
 					value,
-					condition
+					condition,
+					guitarPic
 				});
 				console.log(response.data[0]);
 			});
+			if (this.state.savedGuitar) {
+				this.setState({
+					isGuitar: true
+				});
+			}
 		});
 	}
 
@@ -118,10 +126,17 @@ class Dashboard extends Component {
 	// };
 
 	render() {
-		const { redirect, user, profilePic } = this.state;
+		const { redirect, user, profilePic, isGuitar } = this.state;
 
 		if (redirect) {
 			return <Redirect to='/' />;
+		}
+		if (isGuitar) {
+			console.log('yes guitar');
+			// guitar = {{guitarPic}}
+		} else {
+			console.log('no guitar');
+			// guitar = {{'<div>no guitars yet</div>'}}
 		}
 		console.log(user.profilePic);
 
@@ -151,6 +166,7 @@ class Dashboard extends Component {
 						<div className='row'>
 							<div className='col-12'>
 								<h3 className='current-collection'>CURRENT COLLECTION</h3>
+
 								<h4 className='guitar-collection'>NO GUITARS IN YOUR COLLECTION</h4>
 							</div>
 						</div>
