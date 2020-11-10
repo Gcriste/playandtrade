@@ -203,9 +203,6 @@ function Guitar() {
 									<img className='profile-pic' src={guitarPic} />{' '}
 								</div>
 							)}
-							{/* <button className='btn btn-danger' onClick={this.handleLogout}>
-							Logout
-						</button> */}
 
 							<Link className='continue-button' to={'/dashboard'}>
 								<button onClick={SaveGuitar}>SAVE AND VIEW PROFILE</button>
