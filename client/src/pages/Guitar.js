@@ -103,6 +103,18 @@ function Guitar() {
 			});
 	};
 
+	//logs out user
+	const handleLogout = () => {
+		localStorage.removeItem('example-app');
+		this.setState({
+			redirect: true
+		});
+	};
+
+	// if (redirect) {
+	// 	return <Redirect to='/' />;
+	// }
+
 	return (
 		<div className='App'>
 			<div className='container'>
@@ -194,11 +206,21 @@ function Guitar() {
 							{/* <button className='btn btn-danger' onClick={this.handleLogout}>
 							Logout
 						</button> */}
-							<button onClick={SaveGuitar}>Save Guitar</button>
+
 							<Link className='continue-button' to={'/dashboard'}>
-								SAVE AND VIEW PROFILE
+								<button onClick={SaveGuitar}>SAVE AND VIEW PROFILE</button>
 							</Link>
 						</form>
+					</div>
+				</div>
+				<div className='container'>
+					<div className='row'>
+						<div className='col-md-6' />
+
+						<button className='btn btn-danger' onClick={handleLogout}>
+							Logout
+						</button>
+						{/* </div> */}
 					</div>
 				</div>
 			</div>

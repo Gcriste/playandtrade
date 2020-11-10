@@ -84,25 +84,28 @@ class Dashboard extends Component {
 			});
 
 			axios.get('/api/guitar/' + userId).then((response) => {
-				const { brand, make, model, color, year, value, condition, guitarPic } = response.data[0];
-				this.setState({
-					savedGuitar: response.data[0],
-					brand,
-					make,
-					model,
-					color,
-					year,
-					value,
-					condition,
-					guitarPic
-				});
-				console.log(response.data[0]);
+				if (response.data[0] == undefined) {
+					const { brand, make, model, color, year, value, condition, guitarPic } = this.state;
+				} else {
+					this.setState({
+						isGuitar: true
+					});
+
+					const { brand, make, model, color, year, value, condition, guitarPic } = response.data[0];
+					this.setState({
+						savedGuitar: response.data[0],
+						brand,
+						make,
+						model,
+						color,
+						year,
+						value,
+						condition,
+						guitarPic
+					});
+					console.log(response.data[0]);
+				}
 			});
-			if (this.state.savedGuitar) {
-				this.setState({
-					isGuitar: true
-				});
-			}
 		});
 	}
 
@@ -126,7 +129,20 @@ class Dashboard extends Component {
 	// };
 
 	render() {
-		const { redirect, user, profilePic, isGuitar } = this.state;
+		const {
+			redirect,
+			user,
+			profilePic,
+			isGuitar,
+			brand,
+			make,
+			model,
+			color,
+			year,
+			value,
+			condition,
+			guitarPic
+		} = this.state;
 
 		if (redirect) {
 			return <Redirect to='/' />;
@@ -166,8 +182,13 @@ class Dashboard extends Component {
 						<div className='row'>
 							<div className='col-12'>
 								<h3 className='current-collection'>CURRENT COLLECTION</h3>
-
-								<h4 className='guitar-collection'>NO GUITARS IN YOUR COLLECTION</h4>
+								<div>
+									{brand ? (
+										<h4 className='guitar-collection'>Brand: {brand}</h4>
+									) : (
+										<h4 className='guitar-collection'>NO GUITARS IN YOUR COLLECTION</h4>
+									)}
+								</div>
 							</div>
 						</div>
 						<div className='row text-center'>
