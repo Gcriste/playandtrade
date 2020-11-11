@@ -217,7 +217,6 @@ function Guitar() {
 						<button className='btn btn-danger' onClick={handleLogout}>
 							Logout
 						</button>
-						{/* </div> */}
 					</div>
 				</div>
 			</div>
