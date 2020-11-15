@@ -6,4 +6,3 @@
 
 #### I am the sole creator and owner
 
-#### play and trade
