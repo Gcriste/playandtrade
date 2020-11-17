@@ -4,5 +4,5 @@
 
 ### @Copyright Griffin Criste
 
-#### I am the sole creator and owner
+#### I am the sole creator and owner of this app
 
