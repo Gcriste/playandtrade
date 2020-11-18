@@ -88,7 +88,7 @@ class CreateAccount extends Component {
 					<div className='container'>
 						<div className='row'>
 							<div className='col-md-6 m-auto'>
-								<div className='card'>
+								<div>
 									<div className='card-body'>
 										{/* <h4 className='display-4 text-center'>Create Account </h4> */}
 										<div className='logo-container'>

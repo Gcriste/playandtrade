@@ -158,7 +158,7 @@ class Dashboard extends Component {
 
 		return (
 			<div className='container'>
-				<div className='card'>
+				<div>
 					<div className='profile-container'>
 						<div className='logo-container'>
 							<div className='row'>
