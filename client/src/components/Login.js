@@ -93,8 +93,8 @@ class Login extends Component {
 					<div className='row'>
 						<div className='col-md-6 m-auto'>
 							<div className=''>
-								<div className='card'>
-									<div className='card-body'>
+								<div>
+									<div>
 										{/* <h1 className='display-4 text-center'>Play and Trade Guitars </h1> */}
 										<div className='logo-container'>
 											<img className='logo' src={logo} alt='logo' />
