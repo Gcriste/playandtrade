@@ -18,6 +18,7 @@ function Guitar() {
 	const [ value, setValue ] = useState('');
 	const [ condition, setCondition ] = useState('');
 	const [ email, setEmail ] = useState('');
+	const [ redirect, setRedirect ] = useState(false);
 
 	const uploadImage = async (e) => {
 		const files = e.target.files;
@@ -101,19 +102,22 @@ function Guitar() {
 			.catch((err) => {
 				console.log(err);
 			});
+
+		setRedirect(true);
 	};
 
 	//logs out user
 	const handleLogout = () => {
 		localStorage.removeItem('example-app');
-		this.setState({
-			redirect: true
-		});
+		setRedirect(true);
+		if (redirect) {
+			return <Redirect to='/' />;
+		}
 	};
 
-	// if (redirect) {
-	// 	return <Redirect to='/' />;
-	// }
+	if (redirect) {
+		return <Redirect to='/dashboard' />;
+	}
 
 	return (
 		<div className='App'>

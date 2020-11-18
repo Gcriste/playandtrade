@@ -182,9 +182,9 @@ class Dashboard extends Component {
 						<div className='row'>
 							<div className='col-12'>
 								<h3 className='current-collection'>CURRENT COLLECTION</h3>
-								<div>
-									{brand ? (
-										<h4 className='guitar-collection'>Brand: {brand}</h4>
+								<div className='display-guitar-container'>
+									{guitarPic ? (
+										<img className='guitar-collection display-guitar' src={guitarPic} />
 									) : (
 										<h4 className='guitar-collection'>NO GUITARS IN YOUR COLLECTION</h4>
 									)}
