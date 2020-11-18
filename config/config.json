@@ -1,24 +1,24 @@
 {
 	"development": {
-		"username": "root",
-		"password": "Nirvana5430",
-		"database": "reactauthtemplate",
-		"host": "localhost",
+		"username": "fa9l5mdtpnnbn2vp",
+		"password": "hclv12d0e0zr0orr",
+		"database": "pv0e0sc5zhwnt6cp",
+		"host": "m7nj9dclezfq7ax1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
 		"dialect": "mysql"
 	},
 	"test": {
-		"username": "root",
-		"password": "Nirvana5430",
-		"database": "reactauthtemplate",
-		"host": "localhost",
+		"username": "fa9l5mdtpnnbn2vp",
+		"password": "hclv12d0e0zr0orr",
+		"database": "pv0e0sc5zhwnt6cp",
+		"host": "m7nj9dclezfq7ax1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
 		"dialect": "mysql"
 	},
 
 	"production": {
-		"username": "root",
-		"password": "Nirvana5430",
-		"database": "reactauthtemplate",
-		"host": "localhost",
+		"username": "fa9l5mdtpnnbn2vp",
+		"password": "hclv12d0e0zr0orr",
+		"database": "pv0e0sc5zhwnt6cp",
+		"host": "m7nj9dclezfq7ax1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
 		"dialect": "mysql"
 	}
 }
