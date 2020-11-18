@@ -208,8 +208,10 @@ function Guitar() {
 								</div>
 							)}
 
-							<Link className='continue-button' to={'/dashboard'}>
-								<button onClick={SaveGuitar}>SAVE AND VIEW PROFILE</button>
+							<Link to={'/dashboard'}>
+								<button className='save-guitar-button' onClick={SaveGuitar}>
+									SAVE AND VIEW PROFILE
+								</button>
 							</Link>
 						</form>
 					</div>
