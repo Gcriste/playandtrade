@@ -34,7 +34,7 @@ Link,
 }
 .logo {
 	width: 300px;
-	height: auto;
+	height: 200px;
 }
 .logo-container {
 	display: flex;
