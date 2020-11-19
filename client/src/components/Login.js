@@ -153,21 +153,27 @@ class Login extends Component {
 												<div className='col-md-6 col-4 text-center'>
 													<div className='facebook-container'>
 														<div className='icon-container'>
-															<img className='icon' src={facebook} alt='facebook' />
+															<a href='https://www.facebook.com/playandtradeguitars'>
+																<img className='icon' src={facebook} alt='facebook' />
+															</a>
 														</div>
 													</div>
 												</div>
 												<div className='col-md-6 col-4 text-center'>
 													<div className='youtube-container'>
 														<div className='icon-container'>
-															<img className='icon' src={youtube} alt='youtube' />
+															<a href='https://www.youtube.com/channel/UC9IULQ7EHJoserChf09I_4w'>
+																<img className='icon' src={youtube} alt='youtube' />
+															</a>
 														</div>
 													</div>
 												</div>
 												<div className='col-md-6 col-4 text-center'>
 													<div className='instagram-container'>
 														<div className='icon-container'>
-															<img className='icon' src={instagram} alt='instagram' />
+															<a href='https://www.instagram.com/playandtrade/?hl=en'>
+																<img className='icon' src={instagram} alt='instagram' />
+															</a>
 														</div>
 													</div>
 												</div>
