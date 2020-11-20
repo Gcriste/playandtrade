@@ -122,3 +122,14 @@
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+
+.name-dashboard {
+	font-size: 30px;
+	margin-bottom: 0px;
+}
+
+.country-dashboard {
+	font-size: 28px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}

@@ -39,6 +39,7 @@ Link,
 .logo-container {
 	display: flex;
 	justify-content: center;
+	height: 180px;
 }
 
 .create-button {

@@ -169,10 +169,10 @@ class Dashboard extends Component {
 							<div className='col-md-6 col-6 text-right'>
 								<img className='profile-pic' src={profilePic} />
 							</div>
-							<div className='col-md-6 col-6 text-center'>
-								<h2>{user.firstName}</h2>
+							<div className='col-md-6 col-6 text-left'>
+								<h2 className='name-dashboard'>{user.firstName}</h2>
 
-								<h3> {user.country}</h3>
+								<h3 className='country-dashboard'> {user.country}</h3>
 								<h4 className='followers'> 0 FOLLOWERS</h4>
 								{''}
 							</div>
