@@ -18,6 +18,7 @@ class CreateAccount extends Component {
 			redirect: false,
 			email: '',
 			password: '',
+			password2: '',
 			errors: {},
 			firstName: '',
 			lastName: '',
@@ -34,7 +35,6 @@ class CreateAccount extends Component {
 		this.setState({
 			[name]: value
 		});
-
 		if (this.state.overEighteen === 'on') {
 			this.setState({
 				overEighteen: 1
@@ -47,33 +47,45 @@ class CreateAccount extends Component {
 	handleCreateSubmit = (event) => {
 		event.preventDefault();
 		console.log('hi');
-
-		const newUser = {
-			email: this.state.email,
-			password: this.state.password,
-			firstName: this.state.firstName,
-			lastName: this.state.lastName,
-			avatar: this.state.avatar,
-			zipCode: this.state.zipCode,
-			country: this.state.country,
-			overEighteen: this.state.overEighteen
-		};
-		axios
-			.post('api/user', newUser)
-			.then((response) => {
-				this.setState({
-					message: alert('You successfully created an account'),
-					redirect: true,
-					errors: {}
-				});
-				console.log(response.data);
-			})
-			.catch((err) => {
-				console.log(err);
-				this.setState({
-					errors: err.response.data
-				});
+		if (this.state.overEighteen === 'on') {
+			this.setState({
+				overEighteen: 1
 			});
+			console.log(this.state.overEighteen);
+		}
+
+		if (this.state.password !== this.state.password2) {
+			console.log('dont match');
+			alert('Your passwords dont match');
+		} else {
+			const newUser = {
+				email: this.state.email,
+				password: this.state.password,
+				firstName: this.state.firstName,
+				lastName: this.state.lastName,
+				avatar: this.state.avatar,
+				zipCode: this.state.zipCode,
+				country: this.state.country,
+				overEighteen: this.state.overEighteen
+			};
+
+			axios
+				.post('api/user', newUser)
+				.then((response) => {
+					this.setState({
+						message: alert('You successfully created an account'),
+						redirect: true,
+						errors: {}
+					});
+					console.log(response.data);
+				})
+				.catch((err) => {
+					console.log(err);
+					this.setState({
+						errors: err.response.data
+					});
+				});
+		}
 	};
 
 	render() {
@@ -165,9 +177,9 @@ class CreateAccount extends Component {
 												</div>
 												<div className='field'>
 													<Input
-														value={this.state.password}
+														value={this.state.password2}
 														onChange={this.handleCreateChange}
-														name='password'
+														name='password2'
 														placeholder='CONFIRM PASSWORD'
 														type='password'
 													/>
@@ -175,7 +187,7 @@ class CreateAccount extends Component {
 												<div className='field col-md-6 checkbox-container'>
 													<input
 														className='checkbox-text'
-														checked={this.state.overEighteen}
+														checked={!!this.state.overEighteen}
 														onChange={this.handleCreateChange}
 														type='checkbox'
 														name='overEighteen'

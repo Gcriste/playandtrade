@@ -34,7 +34,10 @@ class Dashboard extends Component {
 		year: '',
 		value: '',
 		condition: '',
-		guitarPic: ''
+		guitarPic: '',
+		guitarPic2: '',
+		guitarPic3: '',
+		guitarArray: []
 	};
 
 	//submit button function
@@ -84,8 +87,20 @@ class Dashboard extends Component {
 			});
 
 			axios.get('/api/guitar/' + userId).then((response) => {
+				console.log(response.data);
 				if (response.data[0] == undefined) {
-					const { brand, make, model, color, year, value, condition, guitarPic } = this.state;
+					const {
+						brand,
+						make,
+						model,
+						color,
+						year,
+						value,
+						condition,
+						guitarPic,
+						guitarPic2,
+						guitarPic3
+					} = this.state;
 				} else {
 					this.setState({
 						isGuitar: true
@@ -101,7 +116,9 @@ class Dashboard extends Component {
 						year,
 						value,
 						condition,
-						guitarPic
+						guitarPic,
+						guitarPic2: response.data[1].guitarPic,
+						guitarPic3: response.data[2].guitarPic
 					});
 					console.log(response.data[0]);
 				}
@@ -141,7 +158,9 @@ class Dashboard extends Component {
 			year,
 			value,
 			condition,
-			guitarPic
+			guitarPic,
+			guitarPic2,
+			guitarPic3
 		} = this.state;
 
 		if (redirect) {
@@ -196,15 +215,15 @@ class Dashboard extends Component {
 										)}
 									</div>
 									<div className='col-4'>
-										{guitarPic ? (
-											<img className='guitar-collection display-guitar' src={guitarPic} />
+										{guitarPic2 ? (
+											<img className='guitar-collection display-guitar' src={guitarPic2} />
 										) : (
 											<h4 className='guitar-collection'>NO GUITARS IN YOUR COLLECTION</h4>
 										)}
 									</div>
 									<div className='col-4'>
-										{guitarPic ? (
-											<img className='guitar-collection display-guitar' src={guitarPic} />
+										{guitarPic3 ? (
+											<img className='guitar-collection display-guitar' src={guitarPic3} />
 										) : (
 											<h4 className='guitar-collection'>NO GUITARS IN YOUR COLLECTION</h4>
 										)}
