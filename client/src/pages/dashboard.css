@@ -58,11 +58,12 @@
 
 .profile-pic {
 	border-radius: 50%;
-	width: 30vw;
-	height: 15vh;
+	width: 34vw;
+	height: 20vh;
 }
 .profile-upload-pic {
-	margin-top: 10vh;
+	margin-top: 8vh;
+	margin-bottom: 6vh;
 	border-radius: 50%;
 	width: 50vw;
 	height: 25vh;
@@ -71,6 +72,10 @@
 .profile-image-container {
 	display: flex;
 	justify-content: space-around;
+}
+
+.checked-star {
+	color: #ffdf00;
 }
 
 .current-collection {
@@ -108,7 +113,7 @@
 	margin-left: auto;
 	margin-right: auto;
 	width: 100%;
-	height: 300px;
+	height: 200px;
 }
 
 .save-guitar-button {

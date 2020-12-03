@@ -42,6 +42,15 @@ Link,
 	height: 180px;
 }
 
+.logo-container-guitar {
+	display: flex;
+	justify-content: center;
+	height: 140px;
+}
+.guitar-header {
+	font-size: 44px;
+}
+
 .create-button {
 	width: 100%;
 	border-radius: 5px;

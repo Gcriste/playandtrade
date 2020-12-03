@@ -173,6 +173,11 @@ class Dashboard extends Component {
 								<h2 className='name-dashboard'>{user.firstName}</h2>
 
 								<h3 className='country-dashboard'> {user.country}</h3>
+								<span className='fa fa-star checked-star' />
+								<span className='fa fa-star checked-star' />
+								<span className='fa fa-star checked-star' />
+								<span className='fa fa-star checked-star' />
+								<span className='fa fa-star checked-star' />
 								<h4 className='followers'> 0 FOLLOWERS</h4>
 								{''}
 							</div>
@@ -183,11 +188,27 @@ class Dashboard extends Component {
 							<div className='col-12'>
 								<h3 className='current-collection'>CURRENT COLLECTION</h3>
 								<div className='display-guitar-container'>
-									{guitarPic ? (
-										<img className='guitar-collection display-guitar' src={guitarPic} />
-									) : (
-										<h4 className='guitar-collection'>NO GUITARS IN YOUR COLLECTION</h4>
-									)}
+									<div className='col-4'>
+										{guitarPic ? (
+											<img className='guitar-collection display-guitar' src={guitarPic} />
+										) : (
+											<h4 className='guitar-collection'>NO GUITARS IN YOUR COLLECTION</h4>
+										)}
+									</div>
+									<div className='col-4'>
+										{guitarPic ? (
+											<img className='guitar-collection display-guitar' src={guitarPic} />
+										) : (
+											<h4 className='guitar-collection'>NO GUITARS IN YOUR COLLECTION</h4>
+										)}
+									</div>
+									<div className='col-4'>
+										{guitarPic ? (
+											<img className='guitar-collection display-guitar' src={guitarPic} />
+										) : (
+											<h4 className='guitar-collection'>NO GUITARS IN YOUR COLLECTION</h4>
+										)}
+									</div>
 								</div>
 							</div>
 						</div>

@@ -124,10 +124,10 @@ function Guitar() {
 			<div className='container'>
 				<div className='row'>
 					<div className='col-md-12 text-center'>
-						<div className='logo-container'>
+						<div className='logo-container-guitar'>
 							<img className='logo' src={logo} alt='logo' />
 						</div>
-						<h2>Guitars</h2>
+						<h2 className='guitar-header'>Guitars</h2>
 
 						<form>
 							<div className='field'>
