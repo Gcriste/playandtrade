@@ -88,6 +88,7 @@ class Dashboard extends Component {
 
 			axios.get('/api/guitar/' + userId).then((response) => {
 				console.log(response.data);
+				console.log(response.data[0]);
 				if (response.data[0] == undefined) {
 					const {
 						brand,
@@ -116,11 +117,27 @@ class Dashboard extends Component {
 						year,
 						value,
 						condition,
-						guitarPic,
-						guitarPic2: response.data[1].guitarPic,
-						guitarPic3: response.data[2].guitarPic
+						guitarPic
 					});
 					console.log(response.data[0]);
+				}
+				if (response.data[1] == undefined) {
+					this.setState({
+						guitarPic2: ''
+					});
+				} else {
+					this.setState({
+						guitarPic2: response.data[1].guitarPic
+					});
+				}
+				if (response.data[2] == undefined) {
+					this.setState({
+						guitarPic3: ''
+					});
+				} else {
+					this.setState({
+						guitarPic3: response.data[2].guitarPic
+					});
 				}
 			});
 		});
@@ -218,14 +235,14 @@ class Dashboard extends Component {
 										{guitarPic2 ? (
 											<img className='guitar-collection display-guitar' src={guitarPic2} />
 										) : (
-											<h4 className='guitar-collection'>NO GUITARS IN YOUR COLLECTION</h4>
+											<h4 className='guitar-collection' />
 										)}
 									</div>
 									<div className='col-4'>
 										{guitarPic3 ? (
 											<img className='guitar-collection display-guitar' src={guitarPic3} />
 										) : (
-											<h4 className='guitar-collection'>NO GUITARS IN YOUR COLLECTION</h4>
+											<h4 className='guitar-collection' />
 										)}
 									</div>
 								</div>
