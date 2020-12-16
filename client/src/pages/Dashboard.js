@@ -249,7 +249,7 @@ class Dashboard extends Component {
 							</div>
 						</div>
 						<div className='row text-center'>
-							<div className='col-md-4 col-12 text-center'>
+							<div className='col-12 text-center'>
 								<button className='button add-button'>
 									<Link className='create-button-text' to={'/guitar'}>
 										ADD A GUITAR

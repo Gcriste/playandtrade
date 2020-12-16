@@ -196,7 +196,7 @@ class CreateAccount extends Component {
 													<p>I AM 18 YEARS OR OLDER</p>
 												</div>
 												<div className='row'>
-													<div className='field col-md-6'>
+													<div className='field col-12'>
 														<button
 															type='submit'
 															className='button continue-button'
@@ -206,8 +206,9 @@ class CreateAccount extends Component {
 															<div className='visible content'>CONTINUE</div>
 														</button>
 													</div>
-
-													<div className='field col-md-6'>
+												</div>
+												<div className='row'>
+													<div className='field col-12'>
 														<p className='back-link'>
 															{' '}
 															<Link className='back-link-text' to={'/'}>

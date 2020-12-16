@@ -94,21 +94,34 @@ function UploadPicture() {
 						{/* <button className='btn btn-danger' onClick={this.handleLogout}>
 							Logout
 						</button> */}
-
-						<Link className='save-button' to={'/dashboard'}>
-							SAVE AND VIEW PROFILE
-						</Link>
-						<button className='button add-button'>
-							<Link className='create-button-text' to={'/guitar'}>
-								ADD A GUITAR
-							</Link>
-						</button>
-						<p className='back-link'>
-							{' '}
-							<Link className='back-link-text' to={'/account-settings'}>
-								Account Settings
-							</Link>
-						</p>
+						<div className='row'>
+							<div className='col-md-12'>
+								<Link className='save-button' to={'/dashboard'}>
+									SAVE AND VIEW PROFILE
+								</Link>
+							</div>
+						</div>
+						<div className='row'>
+							<div className='col-md-12'>
+								<button className='button add-button'>
+									<Link className='create-button-text' to={'/guitar'}>
+										ADD A GUITAR
+									</Link>
+								</button>
+							</div>
+						</div>
+						<div className='row'>
+							<div className='col-12'>
+								<button className='button add-button'>
+									<p className='account-settings-button'>
+										{' '}
+										<Link className='back-link-text' to={'/account-settings'}>
+											Account Settings
+										</Link>
+									</p>
+								</button>
+							</div>
+						</div>
 
 						{/* <Link className='back-link-text' to={'/guitar'}>
 																ADD A GUITAR

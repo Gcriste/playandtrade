@@ -124,7 +124,7 @@ class Login extends Component {
 												/>
 											</div>
 											<div className='row'>
-												<div className='col-md-6 col-12'>
+												<div className='col-12'>
 													<button
 														type='submit'
 														className='button enter-button'
@@ -138,7 +138,7 @@ class Login extends Component {
 													</div>
 												</div>
 
-												<div className='col-md-6 col-12'>
+												<div className='col-12'>
 													<div className='new-container'>
 														<div className='new-user'>
 															<p class='new-user-text'>NEW USER?</p>
@@ -150,7 +150,7 @@ class Login extends Component {
 														</button>
 													</div>
 												</div>
-												<div className='col-md-6 col-4 text-center'>
+												<div className='col-4 text-center'>
 													<div className='facebook-container'>
 														<div className='icon-container'>
 															<a href='https://www.facebook.com/playandtradeguitars'>
@@ -159,7 +159,7 @@ class Login extends Component {
 														</div>
 													</div>
 												</div>
-												<div className='col-md-6 col-4 text-center'>
+												<div className='col-4 text-center'>
 													<div className='youtube-container'>
 														<div className='icon-container'>
 															<a href='https://www.youtube.com/channel/UC9IULQ7EHJoserChf09I_4w'>
@@ -168,7 +168,7 @@ class Login extends Component {
 														</div>
 													</div>
 												</div>
-												<div className='col-md-6 col-4 text-center'>
+												<div className='col-4 text-center'>
 													<div className='instagram-container'>
 														<div className='icon-container'>
 															<a href='https://www.instagram.com/playandtrade/?hl=en'>

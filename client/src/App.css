@@ -101,7 +101,8 @@ Link,
 .back-link {
 	font-size: 18px;
 	text-align: center;
-	margin-top: 6px;
+	margin-top: 6px !important;
+	margin-bottom: 50px !important;
 }
 
 .back-link-text {
@@ -126,7 +127,7 @@ Link,
 
 /* upload */
 .add-button {
-	width: 70%;
+	width: 80%;
 	border-radius: 5px;
 	background-color: white;
 	padding: 8px 20px;
@@ -141,8 +142,14 @@ Link,
 	width: 100%;
 	color: white;
 	background-color: black;
-	padding: 8px 50px;
+	padding: 8px 60px;
 	/* box-shadow: 0px 3px 6px grey, 0px 3px 6px grey; */
 	font-size: 26px;
 	font-weight: 900;
+}
+
+.account-settings-button {
+	font-size: 18px;
+	text-align: center;
+	margin-top: 6px !important;
 }
