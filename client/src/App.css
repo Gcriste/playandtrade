@@ -74,7 +74,7 @@ Link,
 }
 .forgot-div {
 	margin-top: 8px;
-	margin-bottom: 8px;
+	margin-bottom: 40px;
 }
 .new-user-text {
 	font-size: 22px;
@@ -86,7 +86,7 @@ Link,
 }
 
 .icon {
-	width: 80px;
+	width: 70px;
 	height: auto;
 }
 
@@ -126,6 +126,11 @@ Link,
 }
 
 /* upload */
+@media only screen and (max-width: 767px) {
+	.card {
+		display: none;
+	}
+}
 .add-button {
 	width: 80%;
 	border-radius: 5px;
@@ -152,4 +157,7 @@ Link,
 	font-size: 18px;
 	text-align: center;
 	margin-top: 6px !important;
+}
+.form-group {
+	margin-bottom: 0.5rem !important;
 }

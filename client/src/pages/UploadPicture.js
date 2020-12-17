@@ -75,7 +75,7 @@ function UploadPicture() {
 
 	return (
 		<div className='App'>
-			<div className='container'>
+			<div className='container card'>
 				<div className='row'>
 					<div className='col-md-12 text-center'>
 						<div className='logo-container'>
