@@ -278,7 +278,8 @@ class Dashboard extends Component {
 													<h3 className='brand guitar-collection-header'>{guitar.brand}</h3>
 													<h3 className='model guitar-collection-header'>{guitar.model}</h3>
 													<p className='email guitar-collection-header'>
-														Email: <a href='mailto:`${guitar.email}`'>{guitar.email}</a>
+														Email: <br />
+														<a href='mailto:`${guitar.email}`'>{guitar.email}</a>
 													</p>
 													<img className='guitar-collection-image' src={guitar.guitarPic} />
 												</div>
