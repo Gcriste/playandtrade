@@ -158,6 +158,10 @@
 .guitar-collection-div {
 	margin-bottom: 30px;
 }
+.guitar-swipe-div {
+	color: black;
+	background-color: black;
+}
 .no-guitar-image-div {
 	position: absolute;
 	top: 50%;

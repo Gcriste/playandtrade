@@ -15,7 +15,6 @@
 		"react": "^16.13.1",
 		"react-day-picker": "^7.4.8",
 		"react-dom": "^16.13.1",
-		"react-gesture": "0.0.5",
 		"react-moment": "^0.9.7",
 		"react-phone-number-input": "^3.0.25",
 		"react-router-dom": "^5.2.0",
