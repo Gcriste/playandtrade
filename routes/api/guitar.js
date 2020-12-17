@@ -13,6 +13,10 @@ module.exports = function(app) {
 		});
 	});
 
+	app.get('/api/guitar', (req, res) => {
+		db.guitar.findAll().then((guitars) => res.json(guitars)).catch((err) => console.log(err));
+	});
+
 	// Get route for retrieving guitars based on user
 	app.get('/api/guitar/:userid', (req, res) => {
 		// Here we add an "include" property to our options in our findOne query

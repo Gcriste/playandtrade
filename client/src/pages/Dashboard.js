@@ -37,7 +37,8 @@ class Dashboard extends Component {
 		guitarPic: '',
 		guitarPic2: '',
 		guitarPic3: '',
-		guitarArray: []
+		guitarArray: [],
+		guitarCollection: []
 	};
 
 	//submit button function
@@ -69,6 +70,13 @@ class Dashboard extends Component {
 		if (token) {
 			setAuthToken(token);
 		}
+
+		axios.get('/api/guitar').then((response) => {
+			console.log(response.data);
+			this.setState({
+				guitarCollection: response.data
+			});
+		});
 
 		axios.get('/api/user').then((response) => {
 			console.log(response.data);
@@ -262,7 +270,28 @@ class Dashboard extends Component {
 								<p className='text-center'>
 									<h3 className='recently-added'>RECENTLY ADDED GUITARS</h3>
 								</p>
-								{''}
+								<div className='row'>
+									{this.state.guitarCollection.map((guitar, index) => (
+										<div className='col-4 guitar-collection-div'>
+											{guitar.guitarPic ? (
+												<div>
+													<h3 className='brand guitar-collection-header'>{guitar.brand}</h3>
+													<h3 className='model guitar-collection-header'>{guitar.model}</h3>
+													<p className='email guitar-collection-header'>
+														Email: <a href='mailto:`${guitar.email}`'>{guitar.email}</a>
+													</p>
+													<img className='guitar-collection-image' src={guitar.guitarPic} />
+												</div>
+											) : (
+												<div className='no-guitar-image-div'>
+													<h4 className='no-guitar-image-provided'>
+														NO GUITAR IMAGE PROVIDED
+													</h4>
+												</div>
+											)}
+										</div>
+									))}
+								</div>
 							</div>
 						</div>
 					</div>
