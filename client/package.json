@@ -10,14 +10,17 @@
 		"axios": "^0.19.2",
 		"jwt-decode": "^2.2.0",
 		"moment": "^2.27.0",
+		"nuka-carousel": "4.7.4",
 		"rc-time-picker": "^3.7.3",
 		"react": "^16.13.1",
 		"react-day-picker": "^7.4.8",
 		"react-dom": "^16.13.1",
+		"react-gesture": "0.0.5",
 		"react-moment": "^0.9.7",
 		"react-phone-number-input": "^3.0.25",
 		"react-router-dom": "^5.2.0",
-		"react-scripts": "3.4.3"
+		"react-scripts": "3.4.3",
+		"react-spring": "8.0.27"
 	},
 	"scripts": {
 		"start": "react-scripts start",
@@ -29,7 +32,15 @@
 		"extends": "react-app"
 	},
 	"browserslist": {
-		"production": [ ">0.2%", "not dead", "not op_mini all" ],
-		"development": [ "last 1 chrome version", "last 1 firefox version", "last 1 safari version" ]
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
 	}
 }

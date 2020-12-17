@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
 import setAuthToken from '../utils/SetAuthToken';
-import Moment from 'react-moment';
 import './dashboard.css';
 import logo from './playLogo.png';
 // import SavedResult from '../components/SavedList';
 // import SavedRequests from '../components/SavedRequests';
-import Nav from '../components/Nav';
 
 class Dashboard extends Component {
 	state = {
@@ -261,6 +259,15 @@ class Dashboard extends Component {
 								<button className='button add-button'>
 									<Link className='create-button-text' to={'/guitar'}>
 										ADD A GUITAR
+									</Link>
+								</button>
+							</div>
+						</div>
+						<div className='row text-center'>
+							<div className='col-12 text-center'>
+								<button className='button add-button'>
+									<Link className='create-button-text' to={'/guitarswipe'}>
+										SWIPE ALL GUITARS
 									</Link>
 								</button>
 							</div>
