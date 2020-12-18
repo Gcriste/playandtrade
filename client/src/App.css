@@ -124,11 +124,11 @@ Link,
 }
 
 /* upload */
-@media only screen and (max-width: 767px) {
+/* @media only screen and (max-width: 767px) {
 	.card {
 		display: none;
 	}
-}
+} */
 .add-button {
 	width: 80%;
 	border-radius: 5px;

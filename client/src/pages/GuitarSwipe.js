@@ -6,7 +6,7 @@ import setAuthToken from '../utils/SetAuthToken';
 import './dashboard.css';
 import logo from './playLogo.png';
 
-class Dashboard extends Component {
+class GuitarSwipe extends Component {
 	state = {
 		redirect: false,
 		user: {},
@@ -198,19 +198,10 @@ class Dashboard extends Component {
 		console.log(user.profilePic);
 
 		return (
-			<div className='container'>
-				<div>
-					<div className='profile-container'>
-						<div className='logo-container'>
-							<div className='row'>
-								<img className='logo' src={logo} alt='logo' />
-							</div>
-						</div>
-						<Deck />
-					</div>
-				</div>
+			<div className=''>
+				<Deck />
 			</div>
 		);
 	}
 }
-export default Dashboard;
+export default GuitarSwipe;

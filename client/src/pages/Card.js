@@ -19,7 +19,7 @@ const Card = ({ i, x, y, rot, scale, trans, bind, data }) => {
 					transform: interpolate([ rot, scale ], trans)
 				}}
 			>
-				<div className='animated-card'>
+				<div className='card'>
 					<Carousel>{pics.map((pic, index) => <img src={pic} key={index} alt='profilePicture' />)}</Carousel>
 					<h2>{name},</h2>
 					<h2>{age}</h2>

@@ -2,47 +2,41 @@
 	box-sizing: border-box;
 }
 
-h1 {
-	font-family: 'Mouse Memoirs', sans-serif;
-	font-size: 72px !important;
-	text-align: center;
-}
-
 html,
 body {
 	overscroll-behavior-y: contain;
 	margin: 0;
 	padding: 0;
-	/* height: 100%; */
+	height: 100%;
 	width: 100%;
 	user-select: none;
-	font-family: 'Montserrat', sans-serif;
-	/* position: fixed; */
-	/* overflow: hidden; */
+	font-family: Raleway, sans-serif;
+	position: fixed;
+	overflow: hidden;
 }
 
-.animated-card {
-	background: rgb(254, 60, 114);
+#root {
+	background: salmon;
 	position: fixed;
 	overflow: hidden;
 	width: 100%;
-	height: 400px;
+	height: 100%;
 	cursor: url("https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png") 39
 			39,
 		auto;
 }
 
-.animated-card > div {
-	position: absolute !important;
-	width: 100vw !important;
-	height: 100vh !important;
+#root > div {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
 	will-change: transform;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-.animated-card > div > div {
+#root > div > div {
 	padding: 5px;
 	background-color: white;
 	background-size: auto 85%;
@@ -65,7 +59,7 @@ img {
 
 button[aria-label="previous"],
 button[aria-label="next"] {
-	background: rgb(254, 60, 114) !important;
+	background: salmon !important;
 	color: black !important;
 }
 
@@ -84,16 +78,15 @@ h5 {
 	margin-left: 2px;
 	color: lightgray;
 }
-
 h5:last-of-type {
 	color: darkgray;
 }
 
-.animated-card > div {
+.card > div {
 	height: 380px !important;
 }
 
-.animated-card {
+.card {
 	height: 500px !important;
 }
 
@@ -102,5 +95,5 @@ h5:last-of-type {
 }
 
 .slider-control-bottomcenter > ul > li > button {
-	color: rgb(254, 60, 114) !important;
+	color: salmon !important;
 }
