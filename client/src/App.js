@@ -9,7 +9,7 @@ import UploadPicture from './pages/UploadPicture';
 import Guitar from './pages/Guitar';
 // import NoMatch from './components/NoMatch';
 import CreateAccount from './pages/CreateAccount';
-import Deck from './pages/Deck';
+import GuitarSwipe from './pages/GuitarSwipe';
 
 // import SearchGigs from './pages/Search';
 // import Nav from './components/Nav';
@@ -30,7 +30,7 @@ function App() {
 					<PrivateRoute exact path='/dashboard' component={Dashboard} />
 					<PrivateRoute exact path='/uploadpicture' component={UploadPicture} />
 					<PrivateRoute exact path='/guitar' component={Guitar} />
-					<Route exact path='/guitarswipe' component={Deck} />
+					<PrivateRoute exact path='/guitarswipe' component={GuitarSwipe} />
 					{/*<PrivateRoute exact path='/post' component={Post} />
 					<PrivateRoute exact path='/post/:id' component={Post} />
 					<PrivateRoute exact path='/request' component={PostRequest} />
