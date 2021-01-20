@@ -1,33 +1,61 @@
-
 * {
     box-sizing: border-box;
   }
   
+  #root {
+    background: #ED213A;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #93291E, #ED213A);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #93291E, #ED213A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  
   html,
   body {
-    /* overscroll-behavior-y: contain;
+    /* overscroll-behavior-y: contain; */
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
     user-select: none;
     font-family: Raleway, sans-serif;
-    position: fixed;
-    overflow: hidden; */
+    position: fixed; 
+    /* overflow: scroll; */
+  
+    background: #ED213A;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #93291E, #ED213A);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #93291E, #ED213A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
+  
+  main {
+    overflow: scroll; 
+    position: relative;
+    color: yellowgreen;
+    padding: 1%;
+    padding-bottom: 50%;
+    margin-bottom: 110px;
+    height: 1500px;
+  
+    transform: translateY(140px);
+  }
+  
+  /* .deckContainer was originally #root */
   
   #tinder-root {
-    background: salmon;
+    background: #ED213A;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #93291E, #ED213A);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #93291E, #ED213A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
     position: fixed;
-    overflow: hidden;
+    position: relative;
+    /* overflow: scroll; */
     width: 100%;
     height: 100%;
-    cursor: url("https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png")
+    /* cursor: url("https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png")
         39 39,
-      auto;
-  }
+      auto; */
+  } 
   
-  #tinder-root > div {
+  #tinder-root > div > div {
+    overflow: scroll;
     position: absolute;
     width: 100vw;
     height: 100vh;
@@ -37,7 +65,8 @@
     justify-content: center;
   }
   
-  #tinder-root > div > div {
+  #tinder-root > div > div > div {
+    overflow: scroll;
     padding: 5px;
     background-color: white;
     background-size: auto 85%;
@@ -53,49 +82,4 @@
       0 10px 10px -10px rgba(50, 50, 73, 0.3);
   }
   
-  img {
-    height: 380px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-  }
   
-  button[aria-label="previous"],
-  button[aria-label="next"] {
-    background: salmon !important;
-    color: black !important;
-  }
-  
-  h2 {
-    display: inline-block;
-    margin-right: 10px;
-  }
-  
-  h2:nth-of-type(2) {
-    opacity: 0.7;
-    font-size: 1.35rem;
-  }
-  
-  h5 {
-    margin-top: -15px;
-    margin-left: 2px;
-    color: lightgray;
-  }
-  h5:last-of-type {
-    color: darkgray;
-  }
-  
-  .tinder-card > div {
-    height: 380px !important;
-  }
-  
-  .tinder-card {
-    height: 500px !important;
-  }
-  
-  .slider-control-bottomcenter {
-    bottom: -15px !important;
-  }
-  
-  .slider-control-bottomcenter > ul > li > button {
-    color: salmon !important;
-  }
