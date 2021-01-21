@@ -4,7 +4,7 @@ import { animated, interpolate } from "react-spring/hooks";
 import Carousel from "nuka-carousel";
 
 const Card = ({ i, x, y, rot, scale, trans, bind, data }) => {
-  const { name, age, distance, text, pics } = data[i];
+  const { name, year, rating, plot, pics} = data[i];
 
   return (
     <animated.div
@@ -25,10 +25,13 @@ const Card = ({ i, x, y, rot, scale, trans, bind, data }) => {
               <img src={pic} key={index} alt="profilePicture" />
             ))}
           </Carousel>
-          <h2>{name},</h2>
+          {/* <h2>{name},</h2>
           <h2>{age}</h2>
           <h5>{distance}</h5>
-          <h5>{text}</h5>
+          <h5>{text}</h5> */}
+		    <span><p className="MovieName">{name},</p> <p className="MovieYear">{year}</p></span>
+          <p className="MovieRating">{rating}</p>
+          <p className="MoviePlot">{plot}</p>
         </div>
       </animated.div>
     </animated.div>
@@ -37,9 +40,9 @@ const Card = ({ i, x, y, rot, scale, trans, bind, data }) => {
 
 Card.propTypes = {
   name: string,
-  age: number,
-  distance: string,
-  text: string,
+  year: number,
+  rating: string,
+  plot: string,
   pics: array
 };
 
