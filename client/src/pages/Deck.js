@@ -6,7 +6,7 @@ import data from '../data.js';
 import randomMovies from '../randomMovies.js';
 import axios from 'axios';
 import setAuthToken from '../utils/SetAuthToken';
-
+import { Redirect, Link } from 'react-router-dom';
 import { useSprings } from 'react-spring/hooks';
 import { useGesture } from 'react-with-gesture';
 
@@ -45,27 +45,27 @@ const from = (i) => ({ rot: 0, scale: 1.5, y: -1000 });
 // This is being used down there in the view, it interpolates rotation and scale into a css transform
 const trans = (r, s) => `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`;
 
-export default function Deck({ db, fetchData, guitarCollection }) {
-	// const [ guitarCollection, setGuitarCollection] = useState('');
-	// const [ user, setUser ] = useState('');
+export default function Deck({ db, fetchData }) {
+	const [guitarCollection, setGuitarCollection] = useState('');
+	const [user, setUser] = useState('');
 	const history = useHistory();
 
-	// useEffect(() => {
-	// 	const token = localStorage.getItem('example-app');
-	// 	if (token) {
-	// 		setAuthToken(token);
-	// 	}
+	useEffect(() => {
+		const token = localStorage.getItem('example-app');
+		if (token) {
+			setAuthToken(token);
+		}
 
-	// 	axios.get('/api/user').then((response) => {
-	// 		console.log(response.data);
-	// 		setUser(response.data.id);
-	// 	});
-	// 	axios.get('/api/guitar').then((response) => {
-	// 		console.log(response.data);
-	// 		setGuitarCollection(response.data)
-	// 	});
-	// }, []);
-	// console.log(guitarCollection)
+		axios.get('/api/user').then((response) => {
+			console.log(response.data);
+			setUser(response.data.id);
+		});
+		axios.get('/api/guitar').then((response) => {
+			console.log(response.data);
+			setGuitarCollection(response.data);
+		});
+	}, []);
+	console.log(guitarCollection);
 	shuffleNewMovieDeck();
 
 	if (data.length > 5) {
@@ -212,8 +212,11 @@ export default function Deck({ db, fetchData, guitarCollection }) {
 	});
 	// Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
 	return props.map(({ x, y, rot, scale }, i) => (
-		<div className='deckContainer'>
-			<Card i={i} x={x} y={y} rot={rot} scale={scale} trans={trans} data={data} bind={bind} />
+		<div>
+			<div className='deckContainer'>
+				<Card i={i} x={x} y={y} rot={rot} scale={scale} trans={trans} data={data} bind={bind} />
+			</div>
+			<br></br>
 		</div>
 	));
 }

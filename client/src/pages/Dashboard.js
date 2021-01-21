@@ -273,7 +273,7 @@ class Dashboard extends Component {
 							</div>
 						</div>
 						<div className='row text-center'>
-							<div className='col-md-4 col-12 text-center'>
+							<div className='col-md-8 offset-md-2 col-12 text-center'>
 								<p className='text-center'>
 									<h3 className='recently-added'>RECENTLY ADDED GUITARS</h3>
 								</p>
