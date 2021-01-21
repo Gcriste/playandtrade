@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
 import Login from './components/Login';
 import Dashboard from './pages/Dashboard';
+import NoMatch from './components/NoMatch';
 import UploadPicture from './pages/UploadPicture';
 import Guitar from './pages/Guitar';
 // import NoMatch from './components/NoMatch';
@@ -39,7 +40,7 @@ function App() {
 					<PrivateRoute exact path='/comment/:id' component={Comment} />
 					<PrivateRoute exact path='/incomingrequest' component={IncomingRequest} />
 					<PrivateRoute exact path='/search' component={SearchGigs} /> */}
-					{/* <Route component={NoMatch} /> */}
+					<Route component={NoMatch} />
 				</Switch>
 			</div>
 		</Router>

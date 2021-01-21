@@ -7,18 +7,18 @@ import { Input } from '../components/CreateAccount';
 // import sample from './facebook.png';
 
 function Guitar() {
-	const [ guitarPic, setImage ] = useState('');
-	const [ loading, setLoading ] = useState(false);
-	const [ userid, setUserId ] = useState('');
-	const [ brand, setBrand ] = useState('');
-	const [ make, setMake ] = useState('');
-	const [ model, setModel ] = useState('');
-	const [ color, setColor ] = useState('');
-	const [ year, setYear ] = useState('');
-	const [ value, setValue ] = useState('');
-	const [ condition, setCondition ] = useState('');
-	const [ email, setEmail ] = useState('');
-	const [ redirect, setRedirect ] = useState(false);
+	const [guitarPic, setImage] = useState('');
+	const [loading, setLoading] = useState(false);
+	const [userid, setUserId] = useState('');
+	const [brand, setBrand] = useState('');
+	const [make, setMake] = useState('');
+	const [model, setModel] = useState('');
+	const [color, setColor] = useState('');
+	const [year, setYear] = useState('');
+	const [value, setValue] = useState('');
+	const [condition, setCondition] = useState('');
+	const [email, setEmail] = useState('');
+	const [redirect, setRedirect] = useState(false);
 
 	const uploadImage = async (e) => {
 		const files = e.target.files;
