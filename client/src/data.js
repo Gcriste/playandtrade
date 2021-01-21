@@ -39,6 +39,27 @@ export default [
       distance: "4 miles away",
       text:
         "Respiratory Therapy Student. Cute enough to take your breath away, smart enough to bring it back"
-    }
+    },{
+    pics: [
+        "https://images.unsplash.com/photo-1527628217451-b2414a1ee733?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+        "https://images.unsplash.com/photo-1546728150-b3cbeddb6f6d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+      ],
+      name: "Heather",
+      age: 32,
+      distance: "4 miles away",
+      text:
+        "Respiratory Therapy Student. Cute enough to take your breath away, smart enough to bring it back"
+    },
+    {
+        pics: [
+            "https://images.unsplash.com/photo-1527628217451-b2414a1ee733?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+            "https://images.unsplash.com/photo-1546728150-b3cbeddb6f6d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+          ],
+          name: "Heather",
+          age: 32,
+          distance: "4 miles away",
+          text:
+            "Respiratory Therapy Student. Cute enough to take your breath away, smart enough to bring it back"
+        },
   ];
   

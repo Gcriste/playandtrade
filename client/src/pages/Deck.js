@@ -1,9 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
 
-import Card from "./Card";
+import Card from "../components/Card";
 // import {LoginContext} from "../../context/LoginState";
 import data from "../data.js";
 import randomMovies from "../randomMovies.js";
+import axios from 'axios';
+import setAuthToken from '../utils/SetAuthToken';
 
 import { useSprings } from "react-spring/hooks";
 import { useGesture } from "react-with-gesture";
@@ -17,7 +19,6 @@ import "./deck.css";
 ///Attempt to generate 5 random cards ///
 function shuffleNewMovieDeck() {
 
- //data = [];
 
 let length = randomMovies.length;
 let randomMovieIndex = ""
@@ -32,21 +33,6 @@ for (let i = 1; i <= 5; i++){
 
 }
 
-
-// function shuffleNewMovieDeck2() {
-
-//  let length = randomMovies.length;
-//  let randomMovieIndex = ""
-//  if (data.length > 5){
-//    data.splice(5)
-//  }
- 
-//  for (let i = 1; i <= 5; i++){
-//    randomMovieIndex = Math.floor(Math.random() * length)
-//    data.push(randomMovies[randomMovieIndex])
-//  }
- 
-//  }
 
 
 
@@ -69,16 +55,27 @@ const trans = (r, s) =>
 
 
 export default function Deck({db, fetchData}) {
-//   useEffect(() => {
-//    setTimeout(function(){ window.location.reload(true); }, 1);
-//  },[])
+	const [ guitarCollection, setGuitarCollection] = useState('');
+	const [ user, setUser ] = useState('');
 const history = useHistory();
 
-//   const {loginUser, isUserLoggedIn} = useContext(LoginContext);
-  //console.log("GOT IT?????", loginUser)
-  //console.log("HOW ABOUT THIS?????", isUserLoggedIn)
+useEffect(() => {
+	const token = localStorage.getItem('example-app');
+	if (token) {
+		setAuthToken(token);
+	}
 
+	axios.get('/api/user').then((response) => {
+		console.log(response.data);
+		setUser(response.data.id);
+	});
+	axios.get('/api/guitar').then((response) => {
+		console.log(response.data);
+		setGuitarCollection(response.data)
+	});
+}, []);
   shuffleNewMovieDeck()
+  
   if (data.length > 5){
 
     data.shift()
