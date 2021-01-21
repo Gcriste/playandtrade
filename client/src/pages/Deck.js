@@ -241,6 +241,7 @@ const history = useHistory();
   );
     // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
   return props.map(({ x, y, rot, scale }, i) => (
+	  <div className='deckContainer'>
         <Card
           i={i}
           x={x}
@@ -251,5 +252,6 @@ const history = useHistory();
           data={data}
           bind={bind}
         />
+		</div>
       ))
 }

@@ -1,8 +1,4 @@
-* {
-    box-sizing: border-box;
-  }
-  
-  #root {
+#root {
     background: #ED213A;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #93291E, #ED213A);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #93291E, #ED213A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -39,7 +35,7 @@
   
   /* .deckContainer was originally #root */
   
-  #tinder-root {
+  .deckContainer {
     background: #ED213A;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #93291E, #ED213A);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #93291E, #ED213A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -54,7 +50,7 @@
       auto; */
   } 
   
-  #tinder-root > div > div {
+  .deckContainer > div > div {
     overflow: scroll;
     position: absolute;
     width: 100vw;
@@ -65,7 +61,7 @@
     justify-content: center;
   }
   
-  #tinder-root > div > div > div {
+  .deckContainer > div > div > div {
     overflow: scroll;
     padding: 5px;
     background-color: white;
@@ -83,7 +79,7 @@
   }
   
   /* NEW CONTAINER TO HELP RESIZE TABLE */
-.favTableContainer{
+  .favTableContainer{
     background: #ED213A;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #93291E, #ED213A);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #93291E, #ED213A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -133,57 +129,74 @@
     color: gray;
   }
   
-.deleteSingleMovieButton {
-	box-shadow:inset 0px 34px 0px -15px #270b06;
-	background-color:#1d0e0e;
-	border:1px solid darkred;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
-	/* font-size:15px;
-	font-weight:bold; */
-	padding:9px 23px;
-	text-decoration:none;
-	text-shadow:0px -1px 0px #7a2a1d;
-}
-.deleteSingleMovieButton:hover {
-  box-shadow:inset 0px 34px 0px -15px #340902;
-  background-color:#380d07;
-}
-.deleteSingleMovieButton:active {
-	position:relative;
-	top:1px;
-}
-
-.deleteAllMoviesButtonContainer{
-  display: flex; justify-content: center;
-}
-
-.deleteAllMoviesButton {  
-  box-shadow:inset 0px 34px 0px -15px darkred;
-  background-color: darkred;
-	border:1 solid black;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
-	/* font-size:15px;
-	font-weight:bold; */
-	padding:9px 23px;
-	text-decoration:none;
-	text-shadow:0px -1px 0px #7a2a1d;
-}
-.deleteSingleMovieButton:hover {
-  box-shadow:inset 0px 34px 0px -15px #340902;
-  background-color:#380d07;
-}
-.deleteSingleMovieButton:active {
-	position:relative;
-	top:1px;
-}
-
-h2 {
+  /* .deleteSingleMovieButton{
+    background-color:darkred;
+    color: white;
+  /* } */
+  /* .btn-danger.custom-btn {
+      background-color: #000;
+    border-color: #000;
+    
+    width: fit-content;
+    height: fit-content;
+    vertical-align: 0px;
+    padding-top: -20;
+    padding-bottom: -20px;
+  }  */
+  
+  
+  .deleteSingleMovieButton {
+      box-shadow:inset 0px 34px 0px -15px #270b06;
+      background-color:#1d0e0e;
+      border:1px solid darkred;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      /* font-size:15px;
+      font-weight:bold; */
+      padding:9px 23px;
+      text-decoration:none;
+      text-shadow:0px -1px 0px #7a2a1d;
+  }
+  .deleteSingleMovieButton:hover {
+    box-shadow:inset 0px 34px 0px -15px #340902;
+    background-color:#380d07;
+  }
+  .deleteSingleMovieButton:active {
+      position:relative;
+      top:1px;
+  }
+  
+  .deleteAllMoviesButtonContainer{
+    display: flex; justify-content: center;
+  }
+  
+  .deleteAllMoviesButton {  
+    box-shadow:inset 0px 34px 0px -15px darkred;
+    background-color: darkred;
+      border:1 solid black;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      /* font-size:15px;
+      font-weight:bold; */
+      padding:9px 23px;
+      text-decoration:none;
+      text-shadow:0px -1px 0px #7a2a1d;
+  }
+  .deleteSingleMovieButton:hover {
+    box-shadow:inset 0px 34px 0px -15px #340902;
+    background-color:#380d07;
+  }
+  .deleteSingleMovieButton:active {
+      position:relative;
+      top:1px;
+  }
+  
+  
+  h2 {
     display: inline-block;
     margin-right: 10px;
   }
@@ -202,11 +215,11 @@ h2 {
     color: darkgray;
   }
   
-  .tinder-card > div {
+  .card > div {
     height: 380px !important;
   }
   
-  .tinder-card {
+  .card {
     height: 540px !important;
   }
   
@@ -224,3 +237,4 @@ h2 {
       transform: translateY(80px);
     }
   }
+  

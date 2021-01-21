@@ -19,7 +19,7 @@ const Card = ({ i, x, y, rot, scale, trans, bind, data }) => {
           transform: interpolate([rot, scale], trans)
         }}
       >
-        <div className="tinder-card">
+        <div className="card">
           <Carousel>
             {pics.map((pic, index) => (
               <img src={pic} key={index} alt="profilePicture" />
