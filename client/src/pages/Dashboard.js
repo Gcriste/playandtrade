@@ -227,30 +227,28 @@ class Dashboard extends Component {
 							{''}
 						</div>
 						<div className='row'>
-							<div className='col-12'>
-								<h3 className='current-collection'>CURRENT COLLECTION</h3>
-								<div className='display-guitar-container'>
-									<div className='col-4'>
-										{guitarPic ? (
-											<img className='guitar-collection display-guitar' src={guitarPic} />
-										) : (
-											<h4 className='guitar-collection'>NO GUITARS IN YOUR COLLECTION</h4>
-										)}
-									</div>
-									<div className='col-4'>
-										{guitarPic2 ? (
-											<img className='guitar-collection display-guitar' src={guitarPic2} />
-										) : (
-											<h4 className='guitar-collection' />
-										)}
-									</div>
-									<div className='col-4'>
-										{guitarPic3 ? (
-											<img className='guitar-collection display-guitar' src={guitarPic3} />
-										) : (
-											<h4 className='guitar-collection' />
-										)}
-									</div>
+							<h3 className='current-collection'>CURRENT COLLECTION</h3>
+							<div className='display-guitar-container'>
+								<div className='col-4 col-md-3 col-offset-md-1'>
+									{guitarPic ? (
+										<img className='guitar-collection display-guitar' src={guitarPic} />
+									) : (
+										<h4 className='guitar-collection'>NO GUITARS IN YOUR COLLECTION</h4>
+									)}
+								</div>
+								<div className='col-4 col-md-3'>
+									{guitarPic2 ? (
+										<img className='guitar-collection display-guitar' src={guitarPic2} />
+									) : (
+										<h4 className='guitar-collection' />
+									)}
+								</div>
+								<div className='col-4 col-md-3'>
+									{guitarPic3 ? (
+										<img className='guitar-collection display-guitar' src={guitarPic3} />
+									) : (
+										<h4 className='guitar-collection' />
+									)}
 								</div>
 							</div>
 						</div>
@@ -291,7 +289,7 @@ class Dashboard extends Component {
 													<img className='guitar-collection-image' src={guitar.guitarPic} />
 												</div>
 											) : (
-												<div className='no-guitar-image-div'>
+												<div className='no-guitar-image-div text-center'>
 													<h4 className='no-guitar-image-provided'>
 														NO GUITAR IMAGE PROVIDED
 													</h4>
