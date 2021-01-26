@@ -15,35 +15,9 @@ import { useHistory } from 'react-router-dom';
 import './deck.css';
 
 ///Attempt to generate 5 random cards ///
-function shuffleNewMovieDeck() {
-	let length = randomMovies.length;
-	let randomMovieIndex = '';
-	if (data.length > 5) {
-		data.splice(5);
-	}
+// function shuffleNewMovieDeck() {
 
-	for (let i = 1; i <= 5; i++) {
-		randomMovieIndex = Math.floor(Math.random() * length);
-		data.push(randomMovies[randomMovieIndex]);
-	}
-	console.log('data ' + data);
-	console.log('Guitar Collection ' + randomMovies);
-}
-
-let count = 0;
-let selectedMovie = '';
-let swipeRight = false;
-// These two are just helpers, they curate spring data, values that are later being interpolated into css
-const to = (i) => ({
-	x: 0,
-	y: i * -10,
-	scale: 1,
-	rot: -10 + Math.random() * 20,
-	delay: i * 100
-});
-const from = (i) => ({ rot: 0, scale: 1.5, y: -1000 });
-// This is being used down there in the view, it interpolates rotation and scale into a css transform
-const trans = (r, s) => `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`;
+// }
 
 export default function Deck({ db, fetchData }) {
 	const [guitarCollection, setGuitarCollection] = useState('');
@@ -66,7 +40,40 @@ export default function Deck({ db, fetchData }) {
 		});
 	}, []);
 	console.log(guitarCollection);
-	shuffleNewMovieDeck();
+
+	// let newCollection = [];
+	// newCollection = newCollection.concat(guitarCollection);
+	// console.log(newCollection);
+	// shuffleNewMovieDeck();
+
+	let length = randomMovies.length;
+	let randomMoviesIndex = '';
+	if (data.length > 5) {
+		data.splice(5);
+	}
+
+	for (let i = 1; i <= 5; i++) {
+		randomMoviesIndex = Math.floor(Math.random() * length);
+		data.push(randomMovies[randomMoviesIndex]);
+	}
+
+	let count = 0;
+	let selectedMovie = '';
+	let swipeRight = false;
+	// These two are just helpers, they curate spring data, values that are later being interpolated into css
+	const to = (i) => ({
+		x: 0,
+		y: i * -10,
+		scale: 1,
+		rot: -10 + Math.random() * 20,
+		delay: i * 100
+	});
+	const from = (i) => ({ rot: 0, scale: 1.5, y: -1000 });
+	// This is being used down there in the view, it interpolates rotation and scale into a css transform
+	const trans = (r, s) => `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`;
+
+	console.log('data ' + data);
+	console.log('Guitar Collection ' + guitarCollection);
 
 	if (data.length > 5) {
 		data.shift();
