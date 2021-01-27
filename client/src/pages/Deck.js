@@ -20,22 +20,6 @@ import './deck.css';
 // }
 
 export default function Deck({ db, fetchData }) {
-	// newCollection = [];
-	// newCollection = newCollection.push(guitarCollection);
-	// console.log(newCollection);
-	// shuffleNewMovieDeck();
-	const runFunction = () => {};
-	let length = randomMovies.length;
-	let randomMoviesIndex = '';
-	if (data.length > 5) {
-		data.splice(5);
-	}
-
-	for (let i = 1; i <= 5; i++) {
-		randomMoviesIndex = Math.floor(Math.random() * length);
-		data.push(randomMovies[randomMoviesIndex]);
-	}
-
 	const [guitarCollection, setGuitarCollection] = useState('');
 	const [user, setUser] = useState('');
 	const history = useHistory();
@@ -56,6 +40,21 @@ export default function Deck({ db, fetchData }) {
 	}, []);
 	console.log(guitarCollection);
 	console.log(guitarCollection[0]);
+	// newCollection = [];
+	// newCollection = newCollection.push(guitarCollection);
+	// console.log(newCollection);
+	// shuffleNewMovieDeck();
+
+	let length = randomMovies.length;
+	let randomMoviesIndex = '';
+	if (data.length > 5) {
+		data.splice(5);
+	}
+
+	for (let i = 1; i <= 5; i++) {
+		randomMoviesIndex = Math.floor(Math.random() * length);
+		data.push(randomMovies[randomMoviesIndex]);
+	}
 
 	let count = 0;
 	let selectedMovie = '';
