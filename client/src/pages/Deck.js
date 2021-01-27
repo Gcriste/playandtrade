@@ -20,32 +20,11 @@ import './deck.css';
 // }
 
 export default function Deck({ db, fetchData }) {
-	const [guitarCollection, setGuitarCollection] = useState('');
-	const [user, setUser] = useState('');
-	const history = useHistory();
-
-	useEffect(() => {
-		const token = localStorage.getItem('example-app');
-		if (token) {
-			setAuthToken(token);
-		}
-
-		axios.get('/api/user').then((response) => {
-			console.log(response.data);
-			setUser(response.data.id);
-		});
-		axios.get('/api/guitar').then((response) => {
-			console.log(response.data);
-			setGuitarCollection(response.data);
-		});
-	}, []);
-	console.log(guitarCollection);
-
-	// let newCollection = [];
-	// newCollection = newCollection.concat(guitarCollection);
+	// newCollection = [];
+	// newCollection = newCollection.push(guitarCollection);
 	// console.log(newCollection);
 	// shuffleNewMovieDeck();
-
+	const runFunction = () => {};
 	let length = randomMovies.length;
 	let randomMoviesIndex = '';
 	if (data.length > 5) {
@@ -56,6 +35,27 @@ export default function Deck({ db, fetchData }) {
 		randomMoviesIndex = Math.floor(Math.random() * length);
 		data.push(randomMovies[randomMoviesIndex]);
 	}
+
+	const [guitarCollection, setGuitarCollection] = useState('');
+	const [user, setUser] = useState('');
+	const history = useHistory();
+
+	useEffect(() => {
+		const token = localStorage.getItem('example-app');
+		if (token) {
+			setAuthToken(token);
+		}
+		axios.get('/api/user').then((response) => {
+			console.log(response.data);
+			setUser(response.data.id);
+		});
+		axios.get('/api/guitar').then((response) => {
+			console.log(response.data);
+			setGuitarCollection(response.data);
+		});
+	}, []);
+	console.log(guitarCollection);
+	console.log(guitarCollection[0]);
 
 	let count = 0;
 	let selectedMovie = '';
