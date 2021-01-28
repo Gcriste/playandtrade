@@ -3,7 +3,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import Card from '../components/Card';
 // import {LoginContext} from "../../context/LoginState";
 import data from '../data.js';
-import randomMovies from '../randomMovies.js';
+// import randomMovies from '../randomMovies.js';
 import axios from 'axios';
 import setAuthToken from '../utils/SetAuthToken';
 import { Redirect, Link } from 'react-router-dom';
@@ -35,12 +35,6 @@ export default function Deck({ db, fetchData }) {
 		});
 	}, []);
 
-	// useEffect(() => {
-	//     fetch("/api/guitar").then(
-	//         res => setGuitarCollection(res.data)
-	//     )
-	// }, [])
-
 	useEffect(() => {
 		axios.get('/api/guitar').then((response) => {
 			console.log(response.data);
@@ -48,39 +42,33 @@ export default function Deck({ db, fetchData }) {
 		});
 	}, []);
 
-	console.log(guitarCollection);
-	console.log(guitarCollection[0]);
-	// newCollection = [];
-	// newCollection = newCollection.push(guitarCollection);
-	// console.log(newCollection);
-	// shuffleNewMovieDeck();
-
 	// useEffect(() => {
-
-	// let length = guitarCollection.length;
-	// let guitarCollectionIndex = '';
-	// if (data.length > 5) {
-	// 	data.splice(5);
-	// }
-
+	let length = guitarCollection.length;
+	// let randomMoviesIndex = '';
 	// for (let i = 1; i <= 5; i++) {
-	// 	guitarCollectionIndex = Math.floor(Math.random() * length);
-	// 	data.push(guitarCollection[guitarCollectionIndex]);
+	// 	randomMoviesIndex = Math.floor(Math.random() * length);
+	// 	data.push(randomMovies[randomMoviesIndex]);
 	// }
+	function shuffleArray(array) {
+		let i = array.length - 1;
+		for (; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			const temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
+		}
+		return array;
+	}
 
-	// useEffect(() => {
-
-	let length = randomMovies.length;
-	let randomMoviesIndex = '';
+	let data = shuffleArray(guitarCollection);
 	if (data.length > 5) {
 		data.splice(5);
 	}
-
+	let guitarCollectionIndex = '';
 	for (let i = 1; i <= 5; i++) {
-		randomMoviesIndex = Math.floor(Math.random() * length);
-		data.push(randomMovies[randomMoviesIndex]);
+		guitarCollectionIndex = Math.floor(Math.random() * length);
+		// let data = data.push(guitarCollection[guitarCollectionIndex]);
 	}
-	// }, []);
 
 	let count = 0;
 	let selectedMovie = '';
@@ -97,8 +85,8 @@ export default function Deck({ db, fetchData }) {
 	// This is being used down there in the view, it interpolates rotation and scale into a css transform
 	const trans = (r, s) => `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`;
 
-	console.log('data ' + data);
-	console.log('Guitar Collection ' + guitarCollection);
+	console.log(data);
+	console.log(guitarCollection);
 
 	if (data.length > 5) {
 		data.shift();
@@ -119,7 +107,7 @@ export default function Deck({ db, fetchData }) {
 		data.shift();
 
 		setTimeout(() => {
-			history.push('/deck');
+			history.push('/guitarswipe');
 		}, 0);
 		//setTimeout(function(){ window.location.reload(true); }, 0);
 	}
@@ -201,7 +189,7 @@ export default function Deck({ db, fetchData }) {
 			}
 			//Save to Database When Swipe Right
 			console.log('Final value of swipeRight = ', swipeRight);
-			console.log('SelectedMovieName', selectedMovie.name);
+			console.log('SelectedMovieName', selectedMovie);
 
 			if (isGone === true && swipeRight === true) {
 				// db
@@ -240,7 +228,7 @@ export default function Deck({ db, fetchData }) {
 
 		if (!down && gone.size === data.length) setTimeout(() => gone.clear() || set((i) => to(i)), 600);
 		console.log('Final value of swipeRight = ', swipeRight);
-		console.log('SelectedMovieName', selectedMovie.name);
+		console.log('SelectedMovieName', selectedMovie);
 	});
 
 	// Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
