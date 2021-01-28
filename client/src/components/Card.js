@@ -5,6 +5,7 @@ import Carousel from 'nuka-carousel';
 
 const Card = ({ i, x, y, rot, scale, trans, bind, data }) => {
 	const { name, year, rating, plot, pics } = data[i];
+	// const { guitarPic, make, model, value, email } = data[i];
 
 	return (
 		<animated.div
@@ -24,11 +25,19 @@ const Card = ({ i, x, y, rot, scale, trans, bind, data }) => {
 						{pics.map((pic, index) => (
 							<img src={pic} key={index} alt='profilePicture' />
 						))}
+
+						{/* <img src={guitarPic} alt='profilePicture' /> */}
 					</Carousel>
 					{/* <h2>{name},</h2>
           <h2>{age}</h2>
           <h5>{distance}</h5>
           <h5>{text}</h5> */}
+					{/* <span>
+						<p className='MovieName'>{make},</p> <p className='MovieYear'>{model}</p>
+					</span>
+					<p className='MovieRating'>{value}</p>
+					<p className='MoviePlot'>{email}</p> */}
+
 					<span>
 						<p className='MovieName'>{name},</p> <p className='MovieYear'>{year}</p>
 					</span>
@@ -45,7 +54,12 @@ Card.propTypes = {
 	year: number,
 	rating: string,
 	plot: string,
-	pics: array
+	pics: array,
+	guitarPic: string,
+	make: string,
+	model: string,
+	value: number,
+	email: string
 };
 
 export default Card;

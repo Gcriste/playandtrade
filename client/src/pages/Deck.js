@@ -20,7 +20,7 @@ import './deck.css';
 // }
 
 export default function Deck({ db, fetchData }) {
-	const [guitarCollection, setGuitarCollection] = useState('');
+	const [guitarCollection, setGuitarCollection] = useState([]);
 	const [user, setUser] = useState('');
 	const history = useHistory();
 
@@ -33,17 +33,42 @@ export default function Deck({ db, fetchData }) {
 			console.log(response.data);
 			setUser(response.data.id);
 		});
+	}, []);
+
+	// useEffect(() => {
+	//     fetch("/api/guitar").then(
+	//         res => setGuitarCollection(res.data)
+	//     )
+	// }, [])
+
+	useEffect(() => {
 		axios.get('/api/guitar').then((response) => {
 			console.log(response.data);
 			setGuitarCollection(response.data);
 		});
 	}, []);
+
 	console.log(guitarCollection);
 	console.log(guitarCollection[0]);
 	// newCollection = [];
 	// newCollection = newCollection.push(guitarCollection);
 	// console.log(newCollection);
 	// shuffleNewMovieDeck();
+
+	// useEffect(() => {
+
+	// let length = guitarCollection.length;
+	// let guitarCollectionIndex = '';
+	// if (data.length > 5) {
+	// 	data.splice(5);
+	// }
+
+	// for (let i = 1; i <= 5; i++) {
+	// 	guitarCollectionIndex = Math.floor(Math.random() * length);
+	// 	data.push(guitarCollection[guitarCollectionIndex]);
+	// }
+
+	// useEffect(() => {
 
 	let length = randomMovies.length;
 	let randomMoviesIndex = '';
@@ -55,6 +80,7 @@ export default function Deck({ db, fetchData }) {
 		randomMoviesIndex = Math.floor(Math.random() * length);
 		data.push(randomMovies[randomMoviesIndex]);
 	}
+	// }, []);
 
 	let count = 0;
 	let selectedMovie = '';
@@ -216,6 +242,7 @@ export default function Deck({ db, fetchData }) {
 		console.log('Final value of swipeRight = ', swipeRight);
 		console.log('SelectedMovieName', selectedMovie.name);
 	});
+
 	// Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
 	return props.map(({ x, y, rot, scale }, i) => (
 		<div>
