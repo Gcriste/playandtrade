@@ -53,11 +53,11 @@ const Card = ({ i, x, y, rot, scale, trans, bind, data }) => {
 };
 
 Card.propTypes = {
-	name: string,
-	year: number,
-	rating: string,
-	plot: string,
-	pics: array,
+	// name: string,
+	// year: number,
+	// rating: string,
+	// plot: string,
+	// pics: array,
 	guitarPic: string,
 	make: string,
 	model: string,

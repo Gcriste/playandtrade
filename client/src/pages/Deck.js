@@ -64,11 +64,6 @@ export default function Deck({ db, fetchData }) {
 	if (data.length > 5) {
 		data.splice(5);
 	}
-	let guitarCollectionIndex = '';
-	for (let i = 1; i <= 5; i++) {
-		guitarCollectionIndex = Math.floor(Math.random() * length);
-		// let data = data.push(guitarCollection[guitarCollectionIndex]);
-	}
 
 	let count = 0;
 	let selectedMovie = '';
@@ -125,7 +120,7 @@ export default function Deck({ db, fetchData }) {
 	}));
 	const bind = useGesture(({ args: [index], down, delta: [xDelta], distance, direction: [xDir], velocity }) => {
 		// If you flick hard enough it should trigger the card to fly out
-		const trigger = velocity > 0.2;
+		const trigger = velocity > 0.1;
 		// Direction should either point left or right
 		const dir = xDir < 0 ? -1 : 1;
 		// If button/finger's up and trigger velocity is reached, we flag the card
@@ -165,7 +160,7 @@ export default function Deck({ db, fetchData }) {
 				// console.log("DATAAAAA", data)
 				// console.log("shuffling cards")
 				setTimeout(() => {
-					history.push('/deck');
+					history.push('/guitarswipe');
 				}, 300);
 			}
 		}
