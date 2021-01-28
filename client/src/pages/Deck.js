@@ -83,29 +83,29 @@ export default function Deck({ db, fetchData }) {
 	console.log(data);
 	console.log(guitarCollection);
 
-	if (data.length > 5) {
-		data.shift();
-		data.shift();
-		data.shift();
-		data.shift();
-		data.shift();
+	// if (data.length > 5) {
+	// 	data.shift();
+	// 	data.shift();
+	// 	data.shift();
+	// 	data.shift();
+	// 	data.shift();
 
-		console.log('DATAAA', data);
-	}
-	count = 0;
-	if (data.length > 5) {
-		//data.splice(5)
-		data.shift();
-		data.shift();
-		data.shift();
-		data.shift();
-		data.shift();
+	// 	console.log('DATAAA', data);
+	// }
+	// count = 0;
+	// if (data.length > 5) {
+	// 	//data.splice(5)
+	// 	data.shift();
+	// 	data.shift();
+	// 	data.shift();
+	// 	data.shift();
+	// 	data.shift();
 
-		setTimeout(() => {
-			history.push('/guitarswipe');
-		}, 0);
-		//setTimeout(function(){ window.location.reload(true); }, 0);
-	}
+	// 	setTimeout(() => {
+	// 		history.push('/guitarswipe');
+	// 	}, 0);
+	// 	//setTimeout(function(){ window.location.reload(true); }, 0);
+	// }
 	console.log('Current deck of cards is: ', data);
 	console.log('Count', count);
 	console.log('all cards gone now!');
@@ -120,7 +120,7 @@ export default function Deck({ db, fetchData }) {
 	}));
 	const bind = useGesture(({ args: [index], down, delta: [xDelta], distance, direction: [xDir], velocity }) => {
 		// If you flick hard enough it should trigger the card to fly out
-		const trigger = velocity > 0.1;
+		const trigger = velocity > 0.2;
 		// Direction should either point left or right
 		const dir = xDir < 0 ? -1 : 1;
 		// If button/finger's up and trigger velocity is reached, we flag the card
