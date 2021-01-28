@@ -3,7 +3,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import Card from '../components/Card';
 // import {LoginContext} from "../../context/LoginState";
 import data from '../data.js';
-// import randomMovies from '../randomMovies.js';
+import randomMovies from '../randomMovies.js';
 import axios from 'axios';
 import setAuthToken from '../utils/SetAuthToken';
 import { Redirect, Link } from 'react-router-dom';
@@ -43,27 +43,27 @@ export default function Deck({ db, fetchData }) {
 	}, []);
 
 	// useEffect(() => {
-	let length = guitarCollection.length;
-	// let randomMoviesIndex = '';
-	// for (let i = 1; i <= 5; i++) {
-	// 	randomMoviesIndex = Math.floor(Math.random() * length);
-	// 	data.push(randomMovies[randomMoviesIndex]);
+	let length = randomMovies.length;
+	let randomMoviesIndex = '';
+	for (let i = 1; i <= 5; i++) {
+		randomMoviesIndex = Math.floor(Math.random() * length);
+		data.push(randomMovies[randomMoviesIndex]);
+	}
+	// function shuffleArray(array) {
+	// 	let i = array.length - 1;
+	// 	for (; i > 0; i--) {
+	// 		const j = Math.floor(Math.random() * (i + 1));
+	// 		const temp = array[i];
+	// 		array[i] = array[j];
+	// 		array[j] = temp;
+	// 	}
+	// 	return array;
 	// }
-	function shuffleArray(array) {
-		let i = array.length - 1;
-		for (; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			const temp = array[i];
-			array[i] = array[j];
-			array[j] = temp;
-		}
-		return array;
-	}
 
-	let data = shuffleArray(guitarCollection);
-	if (data.length > 5) {
-		data.splice(5);
-	}
+	// let data = shuffleArray(guitarCollection);
+	// if (data.length > 5) {
+	// 	data.splice(5);
+	// }
 
 	let count = 0;
 	let selectedMovie = '';
@@ -83,29 +83,29 @@ export default function Deck({ db, fetchData }) {
 	console.log(data);
 	console.log(guitarCollection);
 
-	// if (data.length > 5) {
-	// 	data.shift();
-	// 	data.shift();
-	// 	data.shift();
-	// 	data.shift();
-	// 	data.shift();
+	if (data.length > 5) {
+		data.shift();
+		data.shift();
+		data.shift();
+		data.shift();
+		data.shift();
 
-	// 	console.log('DATAAA', data);
-	// }
-	// count = 0;
-	// if (data.length > 5) {
-	// 	//data.splice(5)
-	// 	data.shift();
-	// 	data.shift();
-	// 	data.shift();
-	// 	data.shift();
-	// 	data.shift();
+		console.log('DATAAA', data);
+	}
+	count = 0;
+	if (data.length > 5) {
+		//data.splice(5)
+		data.shift();
+		data.shift();
+		data.shift();
+		data.shift();
+		data.shift();
 
-	// 	setTimeout(() => {
-	// 		history.push('/guitarswipe');
-	// 	}, 0);
-	// 	//setTimeout(function(){ window.location.reload(true); }, 0);
-	// }
+		// setTimeout(() => {
+		// 	history.push('/deck');
+		// }, 0);
+		//setTimeout(function(){ window.location.reload(true); }, 0);
+	}
 	console.log('Current deck of cards is: ', data);
 	console.log('Count', count);
 	console.log('all cards gone now!');
@@ -149,18 +149,20 @@ export default function Deck({ db, fetchData }) {
 			count++;
 			console.log('Count', count);
 			if (count === 5) {
-				//setTimeout(function(){ window.location.reload(true); }, 300);
-				//data=[];
+				// setTimeout(function () {
+				// 	window.location.reload(true);
+				// }, 300);
+				// data = [];
 				// let length = randomMovies.length;
-				// let randomMovieIndex = ""
-				// for (let i = 1; i <= 5; i++){
-				//   randomMovieIndex = Math.floor(Math.random() * length)
-				//   data.push(randomMovies[randomMovieIndex])
+				// let randomMovieIndex = '';
+				// for (let i = 1; i <= 5; i++) {
+				// 	randomMovieIndex = Math.floor(Math.random() * length);
+				// 	data.push(randomMovies[randomMovieIndex]);
 				// }
-				// console.log("DATAAAAA", data)
-				// console.log("shuffling cards")
+				// console.log('DATAAAAA', data);
+				// console.log('shuffling cards');
 				setTimeout(() => {
-					history.push('/guitarswipe');
+					history.push('/deck');
 				}, 300);
 			}
 		}
