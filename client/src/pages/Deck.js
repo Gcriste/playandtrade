@@ -43,27 +43,32 @@ export default function Deck({ db, fetchData }) {
 	}, []);
 
 	// useEffect(() => {
-	let length = randomMovies.length;
-	let randomMoviesIndex = '';
-	for (let i = 1; i <= 5; i++) {
-		randomMoviesIndex = Math.floor(Math.random() * length);
-		data.push(randomMovies[randomMoviesIndex]);
-	}
-	// function shuffleArray(array) {
-	// 	let i = array.length - 1;
-	// 	for (; i > 0; i--) {
-	// 		const j = Math.floor(Math.random() * (i + 1));
-	// 		const temp = array[i];
-	// 		array[i] = array[j];
-	// 		array[j] = temp;
-	// 	}
-	// 	return array;
-	// }
+	// let length = randomMovies.length;
+	// let randomMoviesIndex = '';
 
-	// let data = shuffleArray(guitarCollection);
-	// if (data.length > 5) {
-	// 	data.splice(5);
+	// for (let i = 1; i <= 5; i++) {
+	// 	randomMoviesIndex = Math.floor(Math.random() * length);
+	// 	data.push(randomMovies[randomMoviesIndex]);
 	// }
+	function shuffleArray(array) {
+		let i = array.length - 1;
+		for (; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			const temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
+		}
+		return array;
+	}
+	let data = [];
+
+	if (data.length > 5) {
+		data.splice(5);
+	}
+	data = shuffleArray(guitarCollection);
+	if (data.length > 5) {
+		data.splice(5);
+	}
 
 	let count = 0;
 	let selectedMovie = '';
