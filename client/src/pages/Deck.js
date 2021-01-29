@@ -70,13 +70,14 @@ export default function Deck({ db, fetchData }) {
 		return array;
 	}
 
-	let cards = shuffleArray(guitarCollection);
-	console.log('cards', cards);
-	let data = cards;
+	let data = guitarCollection;
+	// let cards = shuffleArray(guitarCollection);
+	// console.log('cards', cards);
+	// let data = cards;
 	// if (data.length > 5) {
 	// 	data.splice(5);
 	// }
-	console.log(cards);
+	// console.log(cards);
 	let count = 0;
 	let selectedMovie = '';
 	let swipeRight = false;
