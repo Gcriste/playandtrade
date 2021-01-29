@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 
 import Card from '../components/Card';
 // import {LoginContext} from "../../context/LoginState";
-import data from '../data.js';
+// import data from '../data.js';
 import randomMovies from '../randomMovies.js';
 import axios from 'axios';
 import setAuthToken from '../utils/SetAuthToken';
@@ -23,6 +23,7 @@ export default function Deck({ db, fetchData }) {
 	const [guitarCollection, setGuitarCollection] = useState([]);
 	const [user, setUser] = useState('');
 	const history = useHistory();
+	// const [data, setData] = useState([]);
 
 	useEffect(() => {
 		const token = localStorage.getItem('example-app');
@@ -39,17 +40,25 @@ export default function Deck({ db, fetchData }) {
 		axios.get('/api/guitar').then((response) => {
 			console.log(response.data);
 			setGuitarCollection(response.data);
+			// setData(response.data);
 		});
 	}, []);
 
+	// if (data.length > 5) {
+	// 	data.splice(5);
+	// }
 	// useEffect(() => {
 	// let length = randomMovies.length;
-	// let randomMoviesIndex = '';
+	// let randomMovieIndex = '';
+	// if (data.length > 5) {
+	// 	data.splice(5);
+	// }
 
 	// for (let i = 1; i <= 5; i++) {
-	// 	randomMoviesIndex = Math.floor(Math.random() * length);
-	// 	data.push(randomMovies[randomMoviesIndex]);
+	// 	randomMovieIndex = Math.floor(Math.random() * length);
+	// 	data.push(randomMovies[randomMovieIndex]);
 	// }
+
 	function shuffleArray(array) {
 		let i = array.length - 1;
 		for (; i > 0; i--) {
@@ -60,16 +69,14 @@ export default function Deck({ db, fetchData }) {
 		}
 		return array;
 	}
-	let data = [];
 
-	if (data.length > 5) {
-		data.splice(5);
-	}
-	data = shuffleArray(guitarCollection);
-	if (data.length > 5) {
-		data.splice(5);
-	}
-
+	let cards = shuffleArray(guitarCollection);
+	console.log('cards', cards);
+	let data = cards;
+	// if (data.length > 5) {
+	// 	data.splice(5);
+	// }
+	console.log(cards);
 	let count = 0;
 	let selectedMovie = '';
 	let swipeRight = false;
@@ -86,31 +93,13 @@ export default function Deck({ db, fetchData }) {
 	const trans = (r, s) => `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`;
 
 	console.log(data);
-	console.log(guitarCollection);
 
 	if (data.length > 5) {
-		data.shift();
-		data.shift();
-		data.shift();
-		data.shift();
-		data.shift();
+		data.shift(data.length);
 
 		console.log('DATAAA', data);
 	}
 	count = 0;
-	if (data.length > 5) {
-		//data.splice(5)
-		data.shift();
-		data.shift();
-		data.shift();
-		data.shift();
-		data.shift();
-
-		// setTimeout(() => {
-		// 	history.push('/deck');
-		// }, 0);
-		//setTimeout(function(){ window.location.reload(true); }, 0);
-	}
 	console.log('Current deck of cards is: ', data);
 	console.log('Count', count);
 	console.log('all cards gone now!');

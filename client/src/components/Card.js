@@ -43,8 +43,8 @@ const Card = ({ i, x, y, rot, scale, trans, bind, data }) => {
 					</span>
 					<p className='MovieRating'>{value}</p>
 					<p className='MoviePlot'>{email}</p>
-
-					{/* <span>
+					{/* 
+					<span>
 						<p className='MovieName'>{name},</p> <p className='MovieYear'>{year}</p>
 					</span>
 					<p className='MovieRating'>{rating}</p>
