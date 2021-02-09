@@ -11,7 +11,6 @@ import CreateAccount from './pages/CreateAccount';
 import Guitar from './pages/Guitar';
 import GuitarSwipe from './pages/GuitarSwipe';
 
-// import SearchGigs from './pages/Search';
 // import Nav from './components/Nav';
 // import Post from './pages/Post';
 // import PostRequest from './pages/Request';
