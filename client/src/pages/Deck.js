@@ -54,16 +54,16 @@ export default function Deck({ db, fetchData }) {
 	// 	data.push(randomMovies[randomMovieIndex]);
 	// }
 
-	function shuffleArray(array) {
-		let i = array.length - 1;
-		for (; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			const temp = array[i];
-			array[i] = array[j];
-			array[j] = temp;
-		}
-		return array;
-	}
+	// function shuffleArray(array) {
+	// 	let i = array.length - 1;
+	// 	for (; i > 0; i--) {
+	// 		const j = Math.floor(Math.random() * (i + 1));
+	// 		const temp = array[i];
+	// 		array[i] = array[j];
+	// 		array[j] = temp;
+	// 	}
+	// 	return array;
+	// }
 
 	let data = guitarCollection;
 	// let cards = shuffleArray(guitarCollection);
