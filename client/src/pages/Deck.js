@@ -14,11 +14,6 @@ import { useHistory } from 'react-router-dom';
 
 import './deck.css';
 
-///Attempt to generate 5 random cards ///
-// function shuffleNewMovieDeck() {
-
-// }
-
 export default function Deck({ db, fetchData }) {
 	const [guitarCollection, setGuitarCollection] = useState([]);
 	const [user, setUser] = useState('');
