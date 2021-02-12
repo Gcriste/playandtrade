@@ -108,7 +108,7 @@ export default function Deck({ db, fetchData }) {
 		data.shift();
 
 		setTimeout(() => {
-			//   history.push("/deck")
+			history.push('/guitarswipe');
 		}, 0);
 		//setTimeout(function(){ window.location.reload(true); }, 0);
 	}
@@ -127,7 +127,7 @@ export default function Deck({ db, fetchData }) {
 	}));
 	const bind = useGesture(({ args: [index], down, delta: [xDelta], distance, direction: [xDir], velocity }) => {
 		// If you flick hard enough it should trigger the card to fly out
-		const trigger = velocity > 0.2;
+		const trigger = velocity > 0.1;
 		// Direction should either point left or right
 		const dir = xDir < 0 ? -1 : 1;
 		// If button/finger's up and trigger velocity is reached, we flag the card
