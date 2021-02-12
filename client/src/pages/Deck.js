@@ -14,6 +14,7 @@ import { useHistory } from 'react-router-dom';
 
 import './deck.css';
 let data = [];
+
 // if (data.length > 5) {
 // 	data.splice(5);
 // }
@@ -66,6 +67,7 @@ export default function Deck({ db, fetchData }) {
 	const [guitarCollection, setGuitarCollection] = useState([]);
 	const [user, setUser] = useState('');
 	const history = useHistory();
+	const [picArray, setpicArray] = useState([]);
 	// const [data, setData] = useState([]);
 
 	useEffect(() => {
@@ -81,37 +83,38 @@ export default function Deck({ db, fetchData }) {
 
 	useEffect(() => {
 		axios.get('/api/guitar').then((response) => {
-			console.log(response.data);
 			setGuitarCollection(response.data);
-			// setData(response.data);
+			setpicArray(response.data.guitarPic);
 		});
 	}, []);
 
+	console.log(guitarCollection);
 	data = guitarCollection;
+	// guitarCollection.guitarPic = picArray;
 
-	if (data.length > 5) {
-		data.shift();
-		data.shift();
-		data.shift();
-		data.shift();
-		data.shift();
+	// if (data.length > 5) {
+	// 	data.shift();
+	// 	data.shift();
+	// 	data.shift();
+	// 	data.shift();
+	// 	data.shift();
 
-		console.log('DATAAA', data);
-	}
-	count = 0;
-	if (data.length > 5) {
-		//data.splice(5)
-		data.shift();
-		data.shift();
-		data.shift();
-		data.shift();
-		data.shift();
+	// 	console.log('DATAAA', data);
+	// // }
+	// count = 0;
+	// if (data.length > 5) {
+	// 	//data.splice(5)
+	// 	data.shift();
+	// 	data.shift();
+	// 	data.shift();
+	// 	data.shift();
+	// 	data.shift();
 
-		setTimeout(() => {
-			history.push('/guitarswipe');
-		}, 0);
-		//setTimeout(function(){ window.location.reload(true); }, 0);
-	}
+	// 	setTimeout(() => {
+	// 		history.push('/guitarswipe');
+	// 	}, 0);
+	// 	//setTimeout(function(){ window.location.reload(true); }, 0);
+	// }
 	count = 0;
 	console.log('Current deck of cards is: ', data);
 	console.log('Count', count);
