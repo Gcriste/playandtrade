@@ -4,7 +4,6 @@ module.exports = function (app) {
 	const db = require('../../models');
 	const jwt = require('jsonwebtoken');
 	const keys = require('../../config/keys');
-	const gravatar = require('gravatar');
 
 	app.get('/api/guitar/test', passport.authenticate('jwt', { session: false }), (req, res) => {
 		res.json({
