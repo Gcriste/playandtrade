@@ -1,4 +1,4 @@
-module.exports = function(app) {
+module.exports = function (app) {
 	const passport = require('passport');
 	const bcrypt = require('bcryptjs');
 	const db = require('../../models');
@@ -14,18 +14,21 @@ module.exports = function(app) {
 	});
 
 	app.get('/api/guitar', (req, res) => {
-		db.guitar.findAll().then((guitars) => res.json(guitars)).catch((err) => console.log(err));
+		db.guitar
+			.findAll()
+			.then((guitars) => res.json(guitars))
+			.catch((err) => console.log(err));
 	});
 
 	// Get route for retrieving guitars based on user
-	app.get('/api/guitar/:userid', (req, res) => {
+	app.get('/api/guitar/:userId', (req, res) => {
 		// Here we add an "include" property to our options in our findOne query
 		// We set the value to an array of the models we want to include in a left outer join
 		// In this case, just db.user
 		db.guitar
 			.findAll({
 				where: {
-					userid: req.params.userid
+					userId: req.params.userId
 				}
 			})
 			.then((guitar) => res.json(guitar));
@@ -35,7 +38,7 @@ module.exports = function(app) {
 	//creates a new user
 
 	app.post('/api/guitar', (req, res) => {
-		const { brand, make, model, color, year, value, condition, userid, email, guitarPic } = req.body;
+		const { brand, make, model, color, year, value, condition, userId, email, guitarPic } = req.body;
 		db.user
 			.findOne({
 				where: {
@@ -51,7 +54,7 @@ module.exports = function(app) {
 					year,
 					value,
 					condition,
-					userid,
+					userId,
 					email,
 					guitarPic
 				};

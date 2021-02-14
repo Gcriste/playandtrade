@@ -1,4 +1,4 @@
-module.exports = function(sequelize, Sequelize) {
+module.exports = function (sequelize, Sequelize) {
 	const Guitar = sequelize.define('guitar', {
 		id: {
 			type: Sequelize.UUID,
@@ -26,9 +26,9 @@ module.exports = function(sequelize, Sequelize) {
 		condition: {
 			type: Sequelize.STRING
 		},
-		userid: {
-			type: Sequelize.STRING
-		},
+		// userid: {
+		// 	type: Sequelize.STRING
+		// },
 		email: {
 			type: Sequelize.STRING
 		},
@@ -37,15 +37,15 @@ module.exports = function(sequelize, Sequelize) {
 		}
 	});
 
-	// Guitar.associate = function(models) {
-	// 	// We're saying that a guitar should belong to an user
-	// 	// A guitar can't be created without a user due to the foreign key constraint
-	// 	Guitar.belongsTo(models.user, {
-	// 		foreignKey: {
-	// 			allowNull: false
-	// 		}
-	// 	});
-	// };
+	Guitar.associate = function (models) {
+		// We're saying that a Guitar should belong to an user
+		// A Guitar can't be created without a user due to the foreign key constraint
+		Guitar.belongsTo(models.user, {
+			foreignKey: {
+				allowNull: false
+			}
+		});
+	};
 
 	return Guitar;
 };

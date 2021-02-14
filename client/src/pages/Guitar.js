@@ -9,7 +9,7 @@ import { Input } from '../components/CreateAccount';
 function Guitar() {
 	const [guitarPic, setImage] = useState('');
 	const [loading, setLoading] = useState(false);
-	const [userid, setUserId] = useState('');
+	const [userId, setUserId] = useState('');
 	const [brand, setBrand] = useState('');
 	const [make, setMake] = useState('');
 	const [model, setModel] = useState('');
@@ -89,7 +89,7 @@ function Guitar() {
 			color,
 			year,
 			value,
-			userid,
+			userId,
 			condition,
 			email,
 			guitarPic

@@ -22,7 +22,7 @@ class Dashboard extends Component {
 		profilePic: '',
 		zipCode: '',
 		country: '',
-		userid: '',
+		userId: '',
 		savedGuitar: {},
 		isGuitar: false,
 		brand: '',
@@ -88,7 +88,7 @@ class Dashboard extends Component {
 				country: response.data.country,
 				avatar: response.data.avatar,
 				user: response.data,
-				userid: response.data.id,
+				userId: response.data.id,
 				profilePic: response.data.profilePic
 			});
 

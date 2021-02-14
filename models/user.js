@@ -1,4 +1,4 @@
-module.exports = function(sequelize, Sequelize) {
+module.exports = function (sequelize, Sequelize) {
 	const User = sequelize.define('user', {
 		id: {
 			type: Sequelize.UUID,
@@ -37,13 +37,13 @@ module.exports = function(sequelize, Sequelize) {
 			type: Sequelize.BOOLEAN
 		}
 	});
-	// User.associate = function(models) {
-	// 	// Associating User with Guitars
-	// 	// When a User is deleted, also delete any associated Guitars
-	// 	User.hasMany(models.guitar, {
-	// 		onDelete: 'cascade'
-	// 	});
-	// };
+	User.associate = function (models) {
+		// Associating Discussion with guitars
+		// When a Discussion is deleted, also delete any associated guitars
+		User.hasMany(models.guitar, {
+			onDelete: 'cascade'
+		});
+	};
 
 	return User;
 };
