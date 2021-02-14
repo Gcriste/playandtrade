@@ -5,12 +5,17 @@ import Carousel from 'nuka-carousel';
 
 const Card = ({ i, x, y, rot, scale, trans, bind, data }) => {
 	// const { name, year, rating, plot, pics } = data[i];
-	const { guitarPic, make, model, value, email, id } = data[i];
+	const { make, model, value, email, id, guitarPic } = data[i];
 	console.log('guitar pic' + guitarPic);
-	let picArray = [];
-	picArray.push(guitarPic);
+	let newArray = [];
+	data.map((guitar) => {
+		return newArray.push(guitar.guitarPic);
+	});
+	console.log(newArray);
+	// let picArray = [];
+	// picArray.push(guitarPic);
 
-	console.log(picArray);
+	// console.log(picArray);
 	return (
 		<animated.div
 			key={i}
@@ -26,8 +31,8 @@ const Card = ({ i, x, y, rot, scale, trans, bind, data }) => {
 			>
 				<div className='card'>
 					<Carousel>
-						{/* {picArray.map((pic, index) => ( */}
-						<img src={guitarPic} key={id} alt='profilePicture' />
+						{/* {newArray.map((pic, index) => ( */}
+						<img src={guitarPic} key={data.id} alt='profilePicture' />
 						{/* ))} */}
 
 						{/* {pics.map((pic, index) => (

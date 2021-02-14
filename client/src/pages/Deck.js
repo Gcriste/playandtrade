@@ -89,6 +89,7 @@ export default function Deck({ db, fetchData }) {
 	}, []);
 
 	console.log(guitarCollection);
+
 	data = guitarCollection;
 	// guitarCollection.guitarPic = picArray;
 
