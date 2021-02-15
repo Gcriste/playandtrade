@@ -187,6 +187,7 @@ export default function Deck({ db, fetchData }) {
 			}
 		}
 		set((i) => {
+			s;
 			// We're only interested in changing spring-data for the currentspring
 			if (index !== i) return;
 			const isGone = gone.has(index);
