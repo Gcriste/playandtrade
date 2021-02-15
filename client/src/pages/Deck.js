@@ -88,9 +88,18 @@ export default function Deck({ db, fetchData }) {
 		});
 	}, []);
 
-	console.log(guitarCollection);
+	let length = randomMovies.length;
+	let randomMovieIndex = '';
+	if (data.length > 5) {
+		data.splice(5);
+	}
 
-	data = guitarCollection;
+	console.log(guitarCollection);
+	for (let i = 1; i <= 5; i++) {
+		randomMovieIndex = Math.floor(Math.random() * length);
+		data.push(randomMovies[randomMovieIndex]);
+	}
+	// data = guitarCollection;
 	// guitarCollection.guitarPic = picArray;
 
 	// if (data.length > 5) {
