@@ -86,11 +86,6 @@ export default function Deck({ db, fetchData }) {
 			setGuitarCollection(response.data);
 			setpicArray(response.data.guitarPic);
 		});
-		console.log(` guitar collection is ${guitarCollection}`);
-		const newCollection = guitarCollection.map((guitar) => {
-			console.log(` new guitar collection contains ${guitar}`);
-		});
-		console.log(newCollection);
 	}, []);
 
 	let length = randomMovies.length;
@@ -99,7 +94,18 @@ export default function Deck({ db, fetchData }) {
 		data.splice(5);
 	}
 
-	console.log(`guitar collection is lower here : ${guitarCollection}`);
+	// console.log(`guitar collection is lower here : ${JSON.stringify(guitarCollection)}`);
+	// console.log(` guitar collection is ${JSON.stringify(guitarCollection)}`);
+	let guitarPicArray = [];
+	const newCollection = guitarCollection
+		.map((guitar) => {
+			console.log(` new guitar collection contains ${JSON.stringify(guitar)}`);
+		})
+		.forEach((guitar) => {
+			guitarPicArray.push(guitar);
+		});
+	console.log(newCollection);
+	console.log(guitarPicArray);
 	for (let i = 1; i <= 5; i++) {
 		randomMovieIndex = Math.floor(Math.random() * length);
 		data.push(randomMovies[randomMovieIndex]);
