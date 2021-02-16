@@ -86,6 +86,11 @@ export default function Deck({ db, fetchData }) {
 			setGuitarCollection(response.data);
 			setpicArray(response.data.guitarPic);
 		});
+		console.log(` guitar collection is ${guitarCollection}`);
+		const newCollection = guitarCollection.map((guitar) => {
+			console.log(` new guitar collection contains ${guitar}`);
+		});
+		console.log(newCollection);
 	}, []);
 
 	let length = randomMovies.length;
@@ -94,7 +99,7 @@ export default function Deck({ db, fetchData }) {
 		data.splice(5);
 	}
 
-	console.log(guitarCollection);
+	console.log(`guitar collection is lower here : ${guitarCollection}`);
 	for (let i = 1; i <= 5; i++) {
 		randomMovieIndex = Math.floor(Math.random() * length);
 		data.push(randomMovies[randomMovieIndex]);
@@ -187,7 +192,6 @@ export default function Deck({ db, fetchData }) {
 			}
 		}
 		set((i) => {
-			s;
 			// We're only interested in changing spring-data for the currentspring
 			if (index !== i) return;
 			const isGone = gone.has(index);
