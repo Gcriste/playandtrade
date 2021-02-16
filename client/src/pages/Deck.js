@@ -93,30 +93,31 @@ export default function Deck({ db, fetchData }) {
 		data.splice(5);
 	}
 
-	// console.log(`guitar collection is lower here : ${JSON.stringify(guitarCollection)}`);
-	// console.log(` guitar collection is ${JSON.stringify(guitarCollection)}`);
-	let guitarPicArray = [];
-	const newCollection = guitarCollection
-		.map((guitar) => guitar)
-		.forEach((guitar) => {
-			guitarPicArray.push(guitar.guitarPic);
-		});
-	console.log(newCollection);
-	console.log(guitarPicArray);
+	// let guitarPicArray = [];
+	// const newCollection = guitarCollection
+	// 	.map((guitar) => guitar)
+	// 	.forEach((guitar) => {
+	// 		guitarPicArray.push(guitar.guitarPic);
+	// 	});
+	// console.log(newCollection);
+	// console.log(guitarPicArray);
 
-	// newCollection.push(guitarPicArray);
+	// for (let i = 1; i <= 5; i++) {
+	// 	randomMovieIndex = Math.floor(Math.random() * length);
+	// 	data.push(randomMovies[randomMovieIndex]);
+	// }
 
-	for (let i = 1; i <= 5; i++) {
-		randomMovieIndex = Math.floor(Math.random() * length);
-		data.push(randomMovies[randomMovieIndex]);
-	}
-	// data = guitarCollection;
+	// const newCollection = guitarCollection.map((guitar) => {
+	// 	return [guitar.guitarPic];
+	// });
+	data = guitarCollection;
 	// data.push(guitarPicArray);
 
-	let newData = guitarCollection;
-	newData.push(guitarPicArray);
-	console.log(newData);
+	// let newData = guitarCollection;
+	// newData.push(guitarPicArray);
+	// console.log(newData);
 
+	// data = newData;
 	// if (data.length > 5) {
 	// 	data.shift();
 	// 	data.shift();
