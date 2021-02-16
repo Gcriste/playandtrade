@@ -104,14 +104,18 @@ export default function Deck({ db, fetchData }) {
 	console.log(newCollection);
 	console.log(guitarPicArray);
 
-	newCollection.push(guitarPicArray);
+	// newCollection.push(guitarPicArray);
 
 	for (let i = 1; i <= 5; i++) {
 		randomMovieIndex = Math.floor(Math.random() * length);
 		data.push(randomMovies[randomMovieIndex]);
 	}
 	// data = guitarCollection;
-	// guitarCollection.guitarPic = picArray;
+	// data.push(guitarPicArray);
+
+	let newData = guitarCollection;
+	newData.push(guitarPicArray);
+	console.log(newData);
 
 	// if (data.length > 5) {
 	// 	data.shift();
