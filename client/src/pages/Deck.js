@@ -67,7 +67,7 @@ export default function Deck({ db, fetchData }) {
 	const [guitarCollection, setGuitarCollection] = useState([]);
 	const [user, setUser] = useState('');
 	const history = useHistory();
-	const [picArray, setpicArray] = useState([]);
+	// const [picArray, setpicArray] = useState([]);
 	// const [data, setData] = useState([]);
 
 	useEffect(() => {
@@ -84,7 +84,6 @@ export default function Deck({ db, fetchData }) {
 	useEffect(() => {
 		axios.get('/api/guitar').then((response) => {
 			setGuitarCollection(response.data);
-			setpicArray(response.data.guitarPic);
 		});
 	}, []);
 
@@ -98,14 +97,15 @@ export default function Deck({ db, fetchData }) {
 	// console.log(` guitar collection is ${JSON.stringify(guitarCollection)}`);
 	let guitarPicArray = [];
 	const newCollection = guitarCollection
-		.map((guitar) => {
-			console.log(` new guitar collection contains ${JSON.stringify(guitar)}`);
-		})
+		.map((guitar) => guitar)
 		.forEach((guitar) => {
-			guitarPicArray.push(guitar);
+			guitarPicArray.push(guitar.guitarPic);
 		});
 	console.log(newCollection);
 	console.log(guitarPicArray);
+
+	newCollection.push(guitarPicArray);
+
 	for (let i = 1; i <= 5; i++) {
 		randomMovieIndex = Math.floor(Math.random() * length);
 		data.push(randomMovies[randomMovieIndex]);
