@@ -39,10 +39,10 @@ const Card = ({ i, x, y, rot, scale, trans, bind, data }) => {
 							<img src={pic} key={index} alt='profilePicture' />
 						))} */}
 
-						{newArray.map((pic, index) => (
+						{/* {guitarPic.map((pic, index) => (
 							<img src={pic} key={index} alt='profilePicture' />
-						))}
-						{/* <img src={guitarPic} key={id} alt='profilePicture' /> */}
+						))} */}
+						<img src={guitarPic} key={id} alt='profilePicture' />
 						{/* <img src={guitarPic} alt='profilePicture' /> */}
 					</Carousel>
 					{/* <h2>{name},</h2>

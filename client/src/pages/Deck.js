@@ -67,7 +67,7 @@ export default function Deck({ db, fetchData }) {
 	const [guitarCollection, setGuitarCollection] = useState([]);
 	const [user, setUser] = useState('');
 	const history = useHistory();
-	// const [picArray, setpicArray] = useState([]);
+	const [picArray, setpicArray] = useState([]);
 	// const [data, setData] = useState([]);
 
 	useEffect(() => {
@@ -87,11 +87,11 @@ export default function Deck({ db, fetchData }) {
 		});
 	}, []);
 
-	let length = randomMovies.length;
-	let randomMovieIndex = '';
-	if (data.length > 5) {
-		data.splice(5);
-	}
+	// let length = randomMovies.length;
+	// let randomMovieIndex = '';
+	// if (data.length > 5) {
+	// 	data.splice(5);
+	// }
 
 	// let guitarPicArray = [];
 	// const newCollection = guitarCollection
@@ -107,9 +107,10 @@ export default function Deck({ db, fetchData }) {
 	// 	data.push(randomMovies[randomMovieIndex]);
 	// }
 
-	// const newCollection = guitarCollection.map((guitar) => {
-	// 	return [guitar.guitarPic];
+	// guitarCollection.forEach((guitar) => {
+	// 	console.log([guitar.guitarPic]);
 	// });
+
 	data = guitarCollection;
 	// data.push(guitarPicArray);
 
