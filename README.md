@@ -1,4 +1,4 @@
-## Play and Trade guitar app for trading and selling guitars 
+## Play and Trade guitar app for trading guitars 
 
 ### Made with Reactjs, nodejs, express, Javascript, MySQL, 
 
