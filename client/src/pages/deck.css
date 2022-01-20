@@ -22,7 +22,9 @@ main {
 
 	transform: translateY(140px);
 }
-
+h3 {
+	margin-top: unset;
+}
 /* .deckContainer was originally #root */
 
 .deckContainer {
@@ -48,7 +50,7 @@ main {
 	/* overflow: scroll; */
 	position: absolute;
 	width: 100vw;
-	height: 100vh;
+	height: 80vh;
 	will-change: transform;
 	display: flex;
 	align-items: center;
@@ -87,6 +89,7 @@ main {
 img {
 	height: 380px;
 	border-radius: 5px;
+	width: 100%;
 }
 
 /* REENABLE VISIBILITY THIS TO ADD THE LITTLE NEXT BUTTONS ON TOP OF EACH CARD TO DISPLAY MORE THAN ONE PHOTO" */
@@ -97,7 +100,7 @@ button[aria-label='next'] {
 	color: black !important;
 }
 
-.MovieName {
+/* .MovieName {
 	font-size: 20px;
 	display: inline-block;
 	margin-right: 10px;
@@ -123,7 +126,7 @@ button[aria-label='next'] {
 	margin-top: -15px;
 	margin-left: 2px;
 	color: gray;
-}
+} */
 
 /* .deleteSingleMovieButton{
     background-color:darkred;
@@ -211,11 +214,17 @@ h5:last-of-type {
 }
 
 .card > div {
-	height: 380px !important;
+	/* height: 380px !important; */
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
 }
-
+.card > div:nth-of-type(1) {
+	margin-top: 0.5em;
+}
 .card {
-	height: 540px !important;
+	display: flex;
+	flex-direction: column;
 }
 
 .slider-control-bottomcenter {

@@ -6,12 +6,21 @@ const NewDeck = ({ guitarCollection }) => {
 	const [lastDirection, setLastDirection] = useState();
 
 	const swiped = (direction, nameToDelete) => {
-		console.log('removing: ' + nameToDelete);
+		// console.log('removing: ' + nameToDelete);
+		console.log(direction);
 		setLastDirection(direction);
 	};
 
 	const outOfFrame = (name) => {
 		console.log(name + ' left the screen!');
+	};
+
+	const makeFirstLetterCapital = (word) => {
+		return word.charAt(0).toUpperCase() + word.slice(1);
+	};
+
+	const addDollarSign = (word) => {
+		return `$${word}`;
 	};
 
 	return (
@@ -24,18 +33,23 @@ const NewDeck = ({ guitarCollection }) => {
 					<TinderCard
 						className='swipe'
 						key={guitar.name}
-						onSwipe={(dir) => swiped(dir, guitar.name)}
-						onCardLeftScreen={() => outOfFrame(guitar.name)}
+						onSwipe={(dir) => swiped(dir, guitar.id)}
+						onCardLeftScreen={() => outOfFrame(guitar.id)}
+						preventSwipe={['up', 'down']}
+						// flickOnSwipe={true}
 					>
-						<div className='card'>
-							<img src={guitar.guitarPic} key={guitar.id} alt='profilePicture' />
-							{/* <img src={guitar.guitarPic} alt='profilePicture' /> */}
-
-							<span>
-								<p className='MovieName'>{guitar.make},</p> <p className='MovieYear'>{guitar.model}</p>
-							</span>
-							<p className='MovieRating'>{guitar.value}</p>
-							<p className='MoviePlot'>{guitar.email}</p>
+						<div className='card-container'>
+							<div className='card'>
+								<img src={guitar.guitarPic} key={guitar.id} alt='profilePicture' />
+								<div classsName='first-row'>
+									<h3 className='guitar-make'>{makeFirstLetterCapital(guitar.make)},</h3>
+									<h3 className='guitar-model'>{makeFirstLetterCapital(guitar.model)}</h3>
+								</div>
+								<div className='second-row'>
+									<h3 className='guitar-value'>{addDollarSign(guitar.value)}</h3>
+									<h3 className='guitar-user-email'>{makeFirstLetterCapital(guitar.email)}</h3>
+								</div>
+							</div>
 						</div>
 					</TinderCard>
 				))}
