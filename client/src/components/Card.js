@@ -7,10 +7,12 @@ const Card = ({ i, x, y, rot, scale, trans, bind, data }) => {
 	// const { name, year, rating, plot, pics } = data[i];
 	const { make, model, value, email, id, guitarPic, guitarPicArray } = data[i];
 	// console.log('guitar pic' + guitarPic);
+	// console.log(data);
 
 	const newArray = data.map((guitar) => {
 		return [guitar.guitarPic];
 	});
+
 	// console.log(newArray);
 	// let picArray = [];
 	// picArray.push(guitarPic);
@@ -22,12 +24,14 @@ const Card = ({ i, x, y, rot, scale, trans, bind, data }) => {
 			style={{
 				transform: interpolate([x, y], (x, y) => `translate3d(${x}px,${y}px,0)`)
 			}}
+			className='top-one'
 		>
 			<animated.div
 				{...bind(i)}
 				style={{
 					transform: interpolate([rot, scale], trans)
 				}}
+				className='bottom-one'
 			>
 				<div className='card'>
 					<Carousel>

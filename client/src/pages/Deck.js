@@ -13,7 +13,7 @@ import { useGesture } from 'react-with-gesture';
 import { useHistory } from 'react-router-dom';
 
 import './deck.css';
-let data = [];
+// let data = [];
 
 // if (data.length > 5) {
 // 	data.splice(5);
@@ -48,44 +48,25 @@ let data = [];
 // 	data.splice(5);
 // }
 // console.log(cards);
-let count = 0;
-let selectedMovie = '';
-let swipeRight = false;
-// These two are just helpers, they curate spring data, values that are later being interpolated into css
-const to = (i) => ({
-	x: 0,
-	y: i * -10,
-	scale: 1,
-	rot: -10 + Math.random() * 20,
-	delay: i * 100
-});
-const from = (i) => ({ rot: 0, scale: 1.5, y: -1000 });
-// This is being used down there in the view, it interpolates rotation and scale into a css transform
-const trans = (r, s) => `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`;
 
-export default function Deck({ db, fetchData }) {
-	const [guitarCollection, setGuitarCollection] = useState([]);
-	const [user, setUser] = useState('');
+export default function Deck({ guitarCollection }) {
 	const history = useHistory();
 	const [picArray, setpicArray] = useState([]);
 	// const [data, setData] = useState([]);
-
-	useEffect(() => {
-		const token = localStorage.getItem('example-app');
-		if (token) {
-			setAuthToken(token);
-		}
-		axios.get('/api/user').then((response) => {
-			console.log(response.data);
-			setUser(response.data.id);
-		});
-	}, []);
-
-	useEffect(() => {
-		axios.get('/api/guitar').then((response) => {
-			setGuitarCollection(response.data);
-		});
-	}, []);
+	let count = 0;
+	let selectedMovie = '';
+	let swipeRight = false;
+	// These two are just helpers, they curate spring data, values that are later being interpolated into css
+	const to = (i) => ({
+		x: 0,
+		y: i * -10,
+		scale: 1,
+		rot: -10 + Math.random() * 20,
+		delay: i * 100
+	});
+	const from = (i) => ({ rot: 0, scale: 1.5, y: -1000 });
+	// This is being used down there in the view, it interpolates rotation and scale into a css transform
+	const trans = (r, s) => `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`;
 
 	// let length = randomMovies.length;
 	// let randomMovieIndex = '';
@@ -111,7 +92,8 @@ export default function Deck({ db, fetchData }) {
 	// 	console.log([guitar.guitarPic]);
 	// });
 
-	data = guitarCollection;
+	// let data = guitarCollection;
+
 	// data.push(guitarPicArray);
 
 	// let newData = guitarCollection;
@@ -143,19 +125,22 @@ export default function Deck({ db, fetchData }) {
 	// 	//setTimeout(function(){ window.location.reload(true); }, 0);
 	// }
 	count = 0;
-	console.log('Current deck of cards is: ', data);
-	console.log('Count', count);
-	console.log('all cards gone now!');
+	// console.log('Current deck of cards is: ', data);
+	// console.log('Count', count);
+	// console.log('all cards gone now!');
 	// The set flags all the cards that are flicked out
 	const [gone] = useState(() => new Set());
 
 	// Create a bunch of springs using the helpers above
 	// Create a gesture, we're interested in down-state, delta (current-pos - click-pos), direction and velocity
-	const [props, set] = useSprings(data.length, (i) => ({
+
+	const [props, set] = useSprings(guitarCollection.length, (i) => ({
 		...to(i),
 		from: from(i)
 	}));
+
 	const bind = useGesture(({ args: [index], down, delta: [xDelta], distance, direction: [xDir], velocity }) => {
+		console.log(guitarCollection);
 		// If you flick hard enough it should trigger the card to fly out
 		const trigger = velocity > 0.1;
 		// Direction should either point left or right
@@ -163,26 +148,27 @@ export default function Deck({ db, fetchData }) {
 		// If button/finger's up and trigger velocity is reached, we flag the card
 		if (!down && trigger) {
 			gone.add(index);
+
 			if (count === 0) {
-				selectedMovie = data[4];
-				console.log('Selected Movie was ', data[4]);
+				selectedMovie = guitarCollection;
+				console.log('Selected Movie was ', selectedMovie);
 			}
 			if (count === 1) {
-				selectedMovie = data[3];
-				console.log('Selected Movie was ', data[3]);
+				selectedMovie = guitarCollection[1];
+				console.log('Selected Movie was ', selectedMovie);
 			}
 			if (count === 2) {
-				selectedMovie = data[2];
-				console.log('Selected Movie was ', data[2]);
+				selectedMovie = guitarCollection[0];
+				console.log('Selected Movie was ', selectedMovie);
 			}
-			if (count === 3) {
-				selectedMovie = data[1];
-				console.log('Selected Movie was ', data[1]);
-			}
-			if (count === 4) {
-				selectedMovie = data[0];
-				console.log('Selected Movie was ', data[0]);
-			}
+			// if (count === 3) {
+			// 	selectedMovie = data[1];
+			// 	console.log('Selected Movie was ', data[1]);
+			// }
+			// if (count === 4) {
+			// 	selectedMovie = data[0];
+			// 	console.log('Selected Movie was ', data[0]);
+			// }
 			count++;
 			console.log('Count', count);
 			if (count === 5) {
@@ -209,7 +195,8 @@ export default function Deck({ db, fetchData }) {
 			const isGone = gone.has(index);
 			// When a card is gone it flys out left or right, otherwise goes back to zero
 			const x = isGone ? (200 + window.innerWidth) * dir : down ? xDelta : 0;
-			console.log('isGone is', isGone);
+			// console.log('isGone is', isGone);
+			console.log(x);
 			// How much the card tilts, flicking it harder makes it rotate faster
 			const rot = xDelta / 100 + (isGone ? dir * 10 * velocity : 0);
 			// Active cards lift up a bit
@@ -222,8 +209,8 @@ export default function Deck({ db, fetchData }) {
 				swipeRight = false;
 			}
 			//Save to Database When Swipe Right
-			console.log('Final value of swipeRight = ', swipeRight);
-			console.log('SelectedMovieName', selectedMovie);
+			// console.log('Final value of swipeRight = ', swipeRight);
+			// console.log('SelectedMovieName', selectedMovie);
 
 			if (isGone === true && swipeRight === true) {
 				// db
@@ -260,18 +247,20 @@ export default function Deck({ db, fetchData }) {
 			};
 		});
 
-		if (!down && gone.size === data.length) setTimeout(() => gone.clear() || set((i) => to(i)), 600);
-		console.log('Final value of swipeRight = ', swipeRight);
-		console.log('SelectedMovieName', selectedMovie);
+		if (!down && gone.size === guitarCollection.length) setTimeout(() => gone.clear() || set((i) => to(i)), 600);
+		// console.log('Final value of swipeRight = ', swipeRight);
+		// console.log('SelectedMovieName', selectedMovie);
 	});
 
 	// Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
-	return props.map(({ x, y, rot, scale }, i) => (
-		<div>
-			<div className='deckContainer'>
-				<Card i={i} x={x} y={y} rot={rot} scale={scale} trans={trans} data={data} bind={bind} />
+	if (guitarCollection) {
+		return props.map(({ x, y, rot, scale }, i) => (
+			<div>
+				<div className='deckContainer'>
+					<Card i={i} x={x} y={y} rot={rot} scale={scale} trans={trans} data={guitarCollection} bind={bind} />
+				</div>
+				<br></br>
 			</div>
-			<br></br>
-		</div>
-	));
+		));
+	}
 }

@@ -19,6 +19,7 @@
 		"node-sass": "5.0.0",
 		"passport": "^0.4.1",
 		"passport-jwt": "^4.0.0",
+		"react-tinder-card": "1.4.5",
 		"sequelize": "^5.22.3",
 		"uuid": "^8.3.0"
 	},
